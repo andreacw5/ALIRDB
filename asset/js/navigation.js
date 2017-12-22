@@ -19,6 +19,7 @@ $(function () {
 function goToHome() {
     searchType = "";
     $('#multiresult').attr('hidden', true);
+
 }
 
 function searchPlayerBar(){
@@ -34,11 +35,11 @@ function searchPlayerBar(){
     });
 }
 
-function searchGangBar(){
-    $('.searchselection').attr('hidden',true);
+function searchGangBar() {
+    $('.searchselection').attr('hidden', true);
     $('#mainsearchbar').removeAttr('hidden');
     $('#inputsearch')
-        .attr('placeholder','Ricerca per gang')
+        .attr('placeholder', 'Ricerca per gang')
         .val('');
     searchType = "gang";
     $('#searchbutton').click(function () {
@@ -53,6 +54,8 @@ function searchGangBar(){
 
 function searchByPlayer(user) {
 
+    cleanSearchValue();
+
     $.ajax({
         url: "http://37.59.102.107:5100/players?q="+ user +"&format=json",
         type: 'GET',
@@ -61,11 +64,11 @@ function searchByPlayer(user) {
 
         if(data.length > 1){
 
-            searchMultyResultView(data, data.length, "player");
+            searchMultyResultView(data, data.length, "giocatori");
 
         }else if(data.length === 1){
 
-            console.log(data);
+            findPlayerByid(data.playerid, data);
 
         }else{
 
@@ -82,6 +85,8 @@ function searchByPlayer(user) {
 
 function searchByGang(gang) {
 
+    cleanSearchValue();
+
     $.ajax({
         url: "http://37.59.102.107:5200/gangs?q="+ gang +"&format=json",
         type: 'GET',
@@ -94,7 +99,6 @@ function searchByGang(gang) {
 
         }else if(data.length === 1){
 
-            console.log(data);
 
         }else{
 
@@ -108,15 +112,21 @@ function searchByGang(gang) {
 
 }
 
+
+function cleanSearchValue() {
+    $('#searchtitle').text('').attr('hidden', true);
+}
+
 function searchMultyResultView(searchResult, numbers, searchFor) {
 
     for (var i = 0; i < numbers; i++) {
 
-        console.log(searchResult[i]);
+        $('#searchtitle').removeAttr('hidden').text('Ho trovato ' + numbers + ' ' + searchFor);
 
         $('#multiresult').removeAttr('hidden');
 
         var playerid = searchResult[i].playerid;
+        var playerinfo = searchResult[i];
 
         var element = $('<a href="#" data-id="'+ playerid +'" id="element'+ playerid +'" class="list-group-item list-group-item-action flex-column align-items-start">\n' +
             '                            <div class="d-flex w-100 justify-content-between">\n' +
@@ -126,23 +136,52 @@ function searchMultyResultView(searchResult, numbers, searchFor) {
             '                            <p class="mb-1">Alias noti: '+ searchResult[i].aliases +' - playerid: ' + searchResult[i].playerid + '</p>\n' +
             '                        </a>');
 
-
-
         $('#multiresultappendlist').append(element);
 
         $('#element' + playerid + '').click(function(){
-            findPlayerByid($(this).data("id"));
+            findPlayerByid($(this).data("id"), playerinfo);
         });
 
     }
 }
 
-function findPlayerByid(playerid) {
+function findPlayerByid(playerid, playerInfo) {
     console.log(playerid);
-}
+    console.log(playerInfo);
+    $('#mainsection').attr('hidden',true);
+    $('#userresultview').removeAttr('hidden').show();
 
+    // Visualizzo le informazioni dell'utente
+    $('#userbankacc').text(playerInfo.bankacc);
+    $('#usercash').text(playerInfo.cash);
+    $('#usercoplevel').text(playerInfo.coplevel);
+    $('#usermedlevel').text(playerInfo.mediclevel);
+    $('#useralias').text(playerInfo.aliases);
 
-function goToFactionSelection() {
+    // Personalizzo il nome associato al livello donatore visualizzato
+
+    var stars = '<i class="fa fa-star" style="color: yellow"></i>';
+    var donatorTitle = $('#userdonorlevel');
+
+    if (playerInfo.donorlevel === '1') {
+        $('#userdonorlevel').html(stars);
+        donatorTitle.attr('title', 'Livello 1');
+    } else if (playerInfo.donorlevel === '2') {
+        $('#userdonorlevel').html(stars + ' ' + stars);
+        donatorTitle.attr('title', 'Livello 2');
+    } else if (playerInfo.donorlevel === '3') {
+        $('#userdonorlevel').html(stars + ' ' + stars + ' ' + stars);
+        donatorTitle.attr('title', 'Livello 3');
+    } else if (playerInfo.donorlevel === '4') {
+        $('#userdonorlevel').html(stars + ' ' + stars + ' ' + stars + ' ' + stars);
+        donatorTitle.attr('title', 'Livello 4');
+    } else if (playerInfo.donorlevel === '5') {
+        $('#userdonorlevel').html(stars + ' ' + stars + ' ' + stars + ' ' + stars + ' ' + stars);
+        donatorTitle.attr('title', 'Livello 5');
+    } else {
+        $('#userdonorlevel').text("No");
+        donatorTitle.attr('title', '');
+    }
 
 }
 

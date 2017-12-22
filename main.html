@@ -71,66 +71,172 @@
     </div>
 </nav>
 <main role="main" class="container pagec" style="padding-bottom: 3%">
-    <div class="container searchcontainer">
-        <div class="row">
-            <div class="col-sm padbot">
-                <div class="searchselection">
-                    <h5>Effettua una ricerca tra...</h5>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="card padonphone  animated fadeInLeft" onclick="searchPlayerBar()" style="cursor:pointer;" title="Ricerca per giocatore"
-                                 id="searchuser">
-                                <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title"> Giocatori</h4>
+    <section id="mainsection">
+        <div class="container searchcontainer">
+            <div class="row">
+                <div class="col-sm padbot">
+                    <div class="searchselection">
+                        <h5>Effettua una ricerca tra...</h5>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="card padonphone  animated fadeInLeft" onclick="searchPlayerBar()" style="cursor:pointer;" title="Ricerca per giocatore"
+                                     id="searchuser">
+                                    <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Giocatori</h4>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="card padonphone  animated fadeInLeft" onclick="searchGangBar()" style="cursor:pointer;" id="searchgang" title="Ricerca per gang">
-                                <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title"><span id="alirstatsGroups"></span> Gruppi</h4>
+                            <div class="col-sm-6">
+                                <div class="card padonphone  animated fadeInLeft" onclick="searchGangBar()" style="cursor:pointer;" id="searchgang" title="Ricerca per gang">
+                                    <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><span id="alirstatsGroups"></span> Gruppi</h4>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="input-group input-group-lg" id="mainsearchbar" hidden="">
-                    <input type="text" class="form-control animated fadeInLeft" placeholder="" id="inputsearch">
-                    <span class="input-group-btn">
+                    <section id="mainsearchbar" hidden="">
+                        <h5 id="searchtitle" hidden=""></h5>
+                        <div class="input-group input-group-lg">
+                            <input type="text" class="form-control animated fadeInLeft" placeholder="" id="inputsearch">
+                            <span class="input-group-btn">
                         <button class="btn btn-primary animated fadeInLeft" type="button" id="searchbutton"><i class="fas fa-search"></i></button>
                     </span>
-                </div>
-                <div id="multiresult" class="animated fadeInLeft" hidden="">
-                    <div class="list-group" id="multiresultappendlist" style="padding-top: 2%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="searchselection">
-    <div class="container">
-        <h5 class="text-right">... o visualizza le liste!</h5>
-        <div class="row">
-            <div class="col-sm padbot">
-                <div class="card padonphone  animated fadeInLeft" id="factionviewhelp" style="cursor:pointer;" title="Visualizza elenchi di fazione">
-                    <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">Fazioni</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm padbot">
-                <div class="card padonphone  animated fadeInLeft" id="wantedviewhelp" style="cursor:pointer;" title="Visualizza i ricercati">
-                    <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title"><span id="alirstatsWanted"></span> Ricercati</h4>
-                    </div>
+                        </div>
+                        <div id="multiresult" class="animated fadeInLeft" hidden="">
+                            <div class="list-group" id="multiresultappendlist" style="padding-top: 2%"></div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
+        <div class="searchselection">
+            <div class="container">
+                <h5 class="text-right">... o visualizza le liste!</h5>
+                <div class="row">
+                    <div class="col-sm padbot">
+                        <div class="card padonphone  animated fadeInLeft" id="factionviewhelp" style="cursor:pointer;" title="Visualizza elenchi di fazione">
+                            <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Fazioni</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm padbot">
+                        <div class="card padonphone  animated fadeInLeft" id="wantedviewhelp" style="cursor:pointer;" title="Visualizza i ricercati">
+                            <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title"><span id="alirstatsWanted"></span> Ricercati</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="userresultview" hidden>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 padbot">
+                    <h3 class="alir-name-title" id="usernameplace">Active</h3>
+                </div>
+                <div class="col-12 padbot">
+                    <nav class="nav nav-pills nav-fill">
+                        <a id="infonav" class="nav-item nav-link active" href="#" onclick="showUserInfo()"
+                           data-toggle="tooltip" data-placement="top" title="Informazioni generali">Informazioni</a>
+                        <a id="licensenav" class="nav-item nav-link disabled"
+                           data-toggle="tooltip" data-placement="top" title="Coming soon">Licenze</a>
+                        <a id="vehiclenav" class="nav-item nav-link" href="#" onclick="showUserVehicle()"
+                           data-toggle="tooltip" data-placement="top" title="Veicoli nel garage">Veicoli</a>
+                        <a class="nav-item nav-link" id="steamLink" data-toggle="tooltip" data-placement="top"
+                           title="Link all'account Steam" target="_blank">Steam</a>
+                        <a class="nav-item nav-link" id="forumLink" hidden href="#" data-toggle="tooltip" data-placement="top"
+                           title="Link al profilo sul forum">Account</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <section id="userinfopanel">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm padbot">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Patrimonio</h4>
+                                <h6 class="card-subtitle mb-2 text-muted">Le informazioni finanziarie</h6>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Fondo bancario: <span class="pull-right"><span
+                                        id="userbankacc">2.020</span> €</span></li>
+                                <li class="list-group-item">Contanti: <span class="pull-right"><span
+                                        id="usercash">20</span> €</span></li>
+                                <li class="list-group-item">Livello donatore: <span class="pull-right"><span
+                                        id="userdonorlevel"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                        class="fa fa-star"></i></span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm padbot">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Gruppi</h4>
+                                <h6 class="card-subtitle mb-2 text-muted">Le associazioni dell'utente</h6>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Gang: <span class="pull-right"><span
+                                        id="usergangon">Nessuna</span></span></li>
+                                <li class="list-group-item">Polizia: <span class="pull-right"><span id="usercoplevel">Ispettore</span></span>
+                                </li>
+                                <li class="list-group-item">Medici: <span class="pull-right"><span id="usermedlevel">Medico di Livello 4°</span></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 padbot">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Alias</h4>
+                                <h6 class="card-subtitle mb-2 text-muted">Il nome utilizzato in precedenza dall'utente</h6>
+                            </div>
+                            <ul class="list-group list-group-flush" id="useraliasappend">
+                                <li class="list-group-item" id="useralias">Nessuno conosciuto</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="userlicensepanel" hidden>
+            <div class="row">
+                <div class="col-12 padbot">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="uservehiclepanel" hidden>
+            <div class="row" id="uservehicleappender">
+                <div class="col padbot">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title"><i class="fa fa-car"></i> Offroad</h4>
+                            <h6 class="card-subtitle mb-2 text-muted">Veicolo civile, targato 390051 (colore 0)</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
 </main>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
