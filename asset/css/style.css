@@ -51,6 +51,11 @@ h5{
     .padonphone{
         margin-top: 2%;
     }
+
+    .footer{
+        visibility: hidden;
+        display: none;
+    }
 }
 
 @media screen and (min-width: 1100px){

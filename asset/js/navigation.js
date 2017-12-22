@@ -20,7 +20,7 @@ function goToHome() {
 }
 
 function searchPlayerBar(){
-    $('#searchselection').attr('hidden',true).hide();
+    $('.searchselection').attr('hidden',true).hide();
     $('#mainsearchbar').removeAttr('hidden').show();
     $('#inputsearch')
         .attr('placeholder','Ricerca per giocatore o GUID')
@@ -33,7 +33,7 @@ function searchPlayerBar(){
 }
 
 function searchGangBar(){
-    $('#searchselection').attr('hidden',true);
+    $('.searchselection').attr('hidden',true);
     $('#mainsearchbar').removeAttr('hidden');
     $('#inputsearch')
         .attr('placeholder','Ricerca per gang')
@@ -50,7 +50,27 @@ function searchGangBar(){
  */
 
 function searchByPlayer(user) {
-    console.log(user)
+
+    $.ajax({
+        url: "http://37.59.102.107:5100/players?q="+ user +"&format=json",
+        type: 'GET',
+        timeout: 1500
+    }).done(function (data) {
+
+        if(data.length > 1){
+
+        }else if(data.length === 1){
+
+        }else{
+
+        }
+
+        console.log(data);
+    }).fail(function () {
+
+    });
+
+
 }
 
 function searchByGang(gang) {
