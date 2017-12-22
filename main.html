@@ -16,7 +16,10 @@
     <link href="asset/css/style.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/intro.js@2.8.0-alpha.1/introjs.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+          integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
+          crossorigin="anonymous">
 
     <!-- Hotjar Tracking Code for www.alir.eu -->
     <!--<script>
@@ -35,7 +38,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-    <a class="navbar-brand" style="font-size: 150%" href="#guide-top"><i class="fas fa-database"></i> <b style="color: #007BCC">ALIR</b>DB</a>
+    <a class="navbar-brand" style="font-size: 150%" href="" onclick="goToHome()"><i class="fas fa-database"></i> <b style="color: #007BCC">ALIR</b>DB</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -43,13 +46,13 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#alirguide-index"> <i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#alirguide-index"> <i class="fas fa-home"></i> G</a>
+                <a class="nav-link" href="" onclick="goToHome()"> <i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" style='cursor: not-allowed;'> <i class="fas fa-question-circle"></i> FAQ</a>
+                <a class="nav-link disabled" style='cursor: not-allowed;' href=""> <i class="fas fa-external-link-alt"></i> ALIRBook</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" style='cursor: not-allowed;'> <i class="fas fa-external-link-alt"></i> FAQ</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="https://www.alir.eu/"> <i class="fas fa-external-link-alt"></i> Torna al forum</a>
@@ -61,21 +64,23 @@
     <div class="container searchcontainer">
         <div class="row">
             <div class="col-sm padbot">
-                <h5>Effettua una ricerca tra...</h5>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <button class="btn btn-block btn-lg btn-primary" id="searchuser">i <span id="alirstatsUser"></span> Giocatori</button>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="btn-group btn-block padonphone">
-                            <button class="btn btn-block btn-lg btn-primary" id="searchgang">le 90 Gang</button>
+                <div id="searchselection">
+                    <h5>Effettua una ricerca tra...</h5>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button class="btn btn-block btn-lg btn-primary animated fadeInLeft" onclick="searchPlayerBar()" id="searchuser">i <span id="alirstatsUser">55</span> Giocatori</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="btn-group btn-block padonphone">
+                                <button class="btn btn-block btn-lg btn-primary animated fadeInLeft" onclick="searchGangBar()" id="searchgang">le 90 Gang</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="input-group input-group-lg" id="mainsearchbar" hidden>
-                    <input type="text" class="form-control" placeholder="" aria-label="Ricerca per...">
+                <div class="input-group input-group-lg" id="mainsearchbar" hidden="">
+                    <input type="text" class="form-control animated fadeInLeft" placeholder="" id="inputsearch">
                     <span class="input-group-btn">
-                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                        <button class="btn btn-primary animated fadeInLeft" type="button" id="searchbutton"><i class="fas fa-search"></i></button>
                     </span>
                 </div>
             </div>
@@ -83,16 +88,16 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-sm padbot animated fadein">
-                <div class="card padonphone" id="playersearchhelp">
+            <div class="col-sm padbot">
+                <div class="card padonphone  animated fadeInLeft" id="playersearchhelp">
                     <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
                     <div class="card-body">
-                        <h4 class="card-title"><span id="alirstatsUser"></span> Giocatori</h4>
+                        <h4 class="card-title"> Giocatori</h4>
                     </div>
                 </div>
             </div>
             <div class="col-sm padbot">
-                <div class="card padonphone" id="groupsearchhelp">
+                <div class="card padonphone  animated fadeInLeft" id="groupsearchhelp">
                     <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
                     <div class="card-body">
                         <h4 class="card-title"><span id="alirstatsGroups"></span> Gruppi</h4>
@@ -100,7 +105,7 @@
                 </div>
             </div>
             <div class="col-sm padbot">
-                <div class="card padonphone" id="factionviewhelp">
+                <div class="card padonphone  animated fadeInLeft" id="factionviewhelp">
                     <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
                     <div class="card-body">
                         <h4 class="card-title">Fazioni</h4>
@@ -108,7 +113,7 @@
                 </div>
             </div>
             <div class="col-sm padbot">
-                <div class="card padonphone" id="wantedviewhelp">
+                <div class="card padonphone  animated fadeInLeft" id="wantedviewhelp">
                     <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
                     <div class="card-body">
                         <h4 class="card-title"><span id="alirstatsWanted"></span> Ricercati</h4>
@@ -121,7 +126,7 @@
 
 <footer class="footer">
     <div class="container">
-        <span>Made with <i class="fas fa-heart"></i> by <a href="https://www.alir.eu/profile/3-andreacw/">Andreacw</a></span> <span style="float: right"> <i class="fab fa-creative-commons"></i> 2017 - <a href="https://www.alir.eu/">Altis Life Italia Reloaded</a> - <i class="fab fa-github"></i> <a href="https://github.com/andreacw5/ALIRBook"> GitHub</a></span>
+        <span>Made with <i style="color: firebrick" class="fas fa-heart animated infinite pulse"></i> by <a href="https://www.alir.eu/profile/3-andreacw/">Andreacw</a></span> <span style="float: right"> <i class="fab fa-creative-commons"></i> 2017 - <a href="https://www.alir.eu/">Altis Life Italia Reloaded</a> - <i class="fab fa-github"></i> <a href="https://github.com/andreacw5/ALIRBD"> GitHub</a></span>
     </div>
 </footer>
 
