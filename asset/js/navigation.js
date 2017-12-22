@@ -5,6 +5,7 @@
 
 var searchType = "";
 var searchId = "";
+var searchData;
 
 // Abilito i tooltip ovunque
 $(function () {
@@ -59,13 +60,19 @@ function searchByPlayer(user) {
 
         if(data.length > 1){
 
+            console.log(data.length);
+            console.log(data);
+
         }else if(data.length === 1){
+
+            console.log(data);
 
         }else{
 
+            console.log("no result");
+
         }
 
-        console.log(data);
     }).fail(function () {
 
     });
@@ -74,8 +81,36 @@ function searchByPlayer(user) {
 }
 
 function searchByGang(gang) {
-    console.log(gang)
+
+    $.ajax({
+        url: "http://37.59.102.107:5200/gangs?q="+ gang +"&format=json",
+        type: 'GET',
+        timeout: 1500
+    }).done(function (data) {
+
+        if(data.length > 1){
+
+            console.log(data.length);
+            console.log(data);
+
+        }else if(data.length === 1){
+
+            console.log(data);
+
+        }else{
+
+            console.log("no result");
+
+        }
+
+    }).fail(function () {
+
+    });
+
 }
+
+
+
 
 function goToFactionSelection() {
 
