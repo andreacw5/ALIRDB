@@ -62,9 +62,15 @@
                 <a class="nav-link" href="https://www.alir.eu/"> <i class="fas fa-external-link-alt"></i> Torna al forum</a>
             </li>
         </ul>
+        <span class="navbar-text">
+              <span>Made with <i style="color: firebrick" class="fas fa-heart animated infinite pulse"></i> by <a
+                href="https://www.alir.eu/profile/3-andreacw/">Andreacw</a></span> - <i
+            class="fab fa-creative-commons"></i> - <a href="https://www.alir.eu/">Altis Life Italia Reloaded</a> - <i
+            class="fab fa-github"></i> <a href="https://github.com/andreacw5/ALIRBD"> GitHub</a>
+        </span>
     </div>
 </nav>
-<main role="main" class="container pagec">
+<main role="main" class="container pagec" style="padding-bottom: 3%">
     <div class="container searchcontainer">
         <div class="row">
             <div class="col-sm padbot">
@@ -93,9 +99,11 @@
                 <div class="input-group input-group-lg" id="mainsearchbar" hidden="">
                     <input type="text" class="form-control animated fadeInLeft" placeholder="" id="inputsearch">
                     <span class="input-group-btn">
-                        <button class="btn btn-primary animated fadeInLeft" type="button" id="searchbutton"><i
-                                class="fas fa-search"></i></button>
+                        <button class="btn btn-primary animated fadeInLeft" type="button" id="searchbutton"><i class="fas fa-search"></i></button>
                     </span>
+                </div>
+                <div id="multiresult" class="animated fadeInLeft" hidden="">
+                    <div class="list-group" id="multiresultappendlist" style="padding-top: 2%"></div>
                 </div>
             </div>
         </div>
@@ -124,15 +132,6 @@
     </div>
     </div>
 </main>
-
-<footer class="footer">
-    <div class="container">
-        <span>Made with <i style="color: firebrick" class="fas fa-heart animated infinite pulse"></i> by <a
-                href="https://www.alir.eu/profile/3-andreacw/">Andreacw</a></span> <span style="float: right"> <i
-            class="fab fa-creative-commons"></i> 2017 - <a href="https://www.alir.eu/">Altis Life Italia Reloaded</a> - <i
-            class="fab fa-github"></i> <a href="https://github.com/andreacw5/ALIRBD"> GitHub</a></span>
-    </div>
-</footer>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

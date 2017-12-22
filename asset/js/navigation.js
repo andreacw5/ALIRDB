@@ -18,6 +18,7 @@ $(function () {
 
 function goToHome() {
     searchType = "";
+    $('#multiresult').attr('hidden', true);
 }
 
 function searchPlayerBar(){
@@ -60,8 +61,7 @@ function searchByPlayer(user) {
 
         if(data.length > 1){
 
-            console.log(data.length);
-            console.log(data);
+            searchMultyResultView(data, data.length, "player");
 
         }else if(data.length === 1){
 
@@ -90,8 +90,7 @@ function searchByGang(gang) {
 
         if(data.length > 1){
 
-            console.log(data.length);
-            console.log(data);
+            searchMultyResultView(data, data.length, "gang");
 
         }else if(data.length === 1){
 
@@ -109,7 +108,38 @@ function searchByGang(gang) {
 
 }
 
+function searchMultyResultView(searchResult, numbers, searchFor) {
 
+    for (var i = 0; i < numbers; i++) {
+
+        console.log(searchResult[i]);
+
+        $('#multiresult').removeAttr('hidden');
+
+        var playerid = searchResult[i].playerid;
+
+        var element = $('<a href="#" data-id="'+ playerid +'" id="element'+ playerid +'" class="list-group-item list-group-item-action flex-column align-items-start">\n' +
+            '                            <div class="d-flex w-100 justify-content-between">\n' +
+            '                                <h5 class="mb-1">'+ searchResult[i].name +'</h5>\n' +
+            '                                <small><i class="fas fa-external-link-alt"></i></small>\n' +
+            '                            </div>\n' +
+            '                            <p class="mb-1">Alias noti: '+ searchResult[i].aliases +' - playerid: ' + searchResult[i].playerid + '</p>\n' +
+            '                        </a>');
+
+
+
+        $('#multiresultappendlist').append(element);
+
+        $('#element' + playerid + '').click(function(){
+            findPlayerByid($(this).data("id"));
+        });
+
+    }
+}
+
+function findPlayerByid(playerid) {
+    console.log(playerid);
+}
 
 
 function goToFactionSelection() {
