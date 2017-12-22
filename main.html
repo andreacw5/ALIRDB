@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DBView</title>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Page favicon -->
+    <link rel="icon" href="http://marketplace.brainwavegrc.com/wp-content/uploads/bw_store_facet_images/bw_extractorsql_icon-900x0.png">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <!-- Other CSS -->
+    <link href="asset/css/style.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/intro.js@2.8.0-alpha.1/introjs.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+
+    <!-- Hotjar Tracking Code for www.alir.eu -->
+    <!--<script>
+        (function (h, o, t, j, a, r) {
+            h.hj = h.hj || function () {
+                (h.hj.q = h.hj.q || []).push(arguments)
+            };
+            h._hjSettings = {hjid: 680245, hjsv: 6};
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script');
+            r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>-->
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <a class="navbar-brand" style="font-size: 150%" href="#guide-top"><i class="fas fa-database"></i> <b style="color: #007BCC">ALIR</b>DB</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#alirguide-index"> <i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#alirguide-index"> <i class="fas fa-home"></i> G</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" style='cursor: not-allowed;'> <i class="fas fa-question-circle"></i> FAQ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://www.alir.eu/"> <i class="fas fa-external-link-alt"></i> Torna al forum</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<main role="main" class="container pagec">
+    <div class="container searchcontainer">
+        <div class="row">
+            <div class="col-sm padbot">
+                <h5>Effettua una ricerca tra...</h5>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <button class="btn btn-block btn-lg btn-primary" id="searchuser">i <span id="alirstatsUser"></span> Giocatori</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="btn-group btn-block padonphone">
+                            <button class="btn btn-block btn-lg btn-primary" id="searchgang">le 90 Gang</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group input-group-lg" id="mainsearchbar" hidden>
+                    <input type="text" class="form-control" placeholder="" aria-label="Ricerca per...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm padbot animated fadein">
+                <div class="card padonphone" id="playersearchhelp">
+                    <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title"><span id="alirstatsUser"></span> Giocatori</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm padbot">
+                <div class="card padonphone" id="groupsearchhelp">
+                    <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title"><span id="alirstatsGroups"></span> Gruppi</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm padbot">
+                <div class="card padonphone" id="factionviewhelp">
+                    <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Fazioni</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm padbot">
+                <div class="card padonphone" id="wantedviewhelp">
+                    <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title"><span id="alirstatsWanted"></span> Ricercati</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <span>Made with <i class="fas fa-heart"></i> by <a href="https://www.alir.eu/profile/3-andreacw/">Andreacw</a></span> <span style="float: right"> <i class="fab fa-creative-commons"></i> 2017 - <a href="https://www.alir.eu/">Altis Life Italia Reloaded</a> - <i class="fab fa-github"></i> <a href="https://github.com/andreacw5/ALIRBook"> GitHub</a></span>
+    </div>
+</footer>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
+<script src="https://cdnjs.cat.net/ajax/libs/defiant.js/1.2.6/defiant.js"></script>
+<script src="asset/js/navigation.js"></script>
+<script src="asset/js/views.js"></script>
+</body>
+</html>
