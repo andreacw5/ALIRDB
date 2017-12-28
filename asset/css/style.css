@@ -36,7 +36,7 @@ h5{
 @media screen and (max-width: 1100px){
 
     .pagec{
-        padding-top: 5%;
+        padding-top: 3%;
     }
 
     .padonphone{
@@ -47,7 +47,7 @@ h5{
 
 @media screen and (min-width: 1100px){
     .pagec{
-        padding-top: 5%;
+        padding-top: 3%;
     }
 }
 

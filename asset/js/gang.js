@@ -38,7 +38,23 @@ function searchByGang(gang) {
             $('#gangview').removeAttr('hidden');
 
             $('#singlegangname').html(data[0].name);
-            $('#gangplayernumber').html(data[0].members.length);
+
+            var gangmemberlength = data[0].members.length;
+
+            if(gangmemberlength > 20){
+                $('#gangplayernumber')
+                    .html(gangmemberlength)
+                    .attr('style',  'color:red');
+            }else if(gangmemberlength >= 17){
+                $('#gangplayernumber')
+                    .html(gangmemberlength)
+                    .attr('style',  'color:yellow');
+            }else{
+                $('#gangplayernumber')
+                    .html(gangmemberlength);
+            }
+
+
 
             for (var i = 0; i < data[0].members.length; i++) {
 
@@ -46,7 +62,7 @@ function searchByGang(gang) {
                 var counter = i + 1;
                 var owner = data[0].owner;
 
-                getGangMembersName(membersid, owner);
+                getGangMembersName(membersid);
 
                 var gangmembers = $('<tr>' +
                     '    <th scope="row">'+ counter +'</th>' +
@@ -75,7 +91,7 @@ function searchByGang(gang) {
  *  @return: text on gangNamePlayerID
  */
 
-function getGangMembersName(playerid, owner) {
+function getGangMembersName(playerid) {
 
     $.ajax({
         url: "http://37.59.102.107:5100/players",
@@ -91,6 +107,7 @@ function getGangMembersName(playerid, owner) {
                 $('#gangName' + playerid).html(data[0].name);
 
             }else{
+                //TODO: Errore in caso non trovo il nome utente
                 $('#gangName' + playerid).html("Utente non trovato").attr('style', 'color: red');
             }
         }
