@@ -75,7 +75,7 @@
 <div class="container">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" style="font-size: 150%" href="" onclick="goToHome()"><i class="fas fa-database"></i> <b
+        <a class="navbar-brand" style="font-size: 150%" data-toggle="tooltip" data-placement="top"  title="Ricarica la pagina" href="" onclick="goToHome()"><i class="fas fa-database"></i> <b
                 style="color: #007BCC">ALIR</b>DB</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
                 aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,23 +84,8 @@
 
         <div class="collapse navbar-collapse" id="navbarsExample09">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown09" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown09">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
+                    <a class="nav-link" href="https://www.alir.eu/"  data-toggle="tooltip" data-placement="top"  title="Torna al forum"> <i class="fas fa-external-link-alt"></i> Torna al forum</a>
                 </li>
             </ul>
         </div>
@@ -108,60 +93,82 @@
 
     <main role="main">
 
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="input-group-btn">
-                    <input type="text" class="form-control" placeholder="Cerca per..." aria-label="Cerca per...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-secondary" type="button" title="Ricerca per utente o GUID" style="cursor: pointer"><i class="fas fa-user"></i></button>
+        <section id="mainsearchpage">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="input-group-btn">
+                        <input type="text" class="form-control" placeholder="Cerca per..." aria-label="Cerca per...">
+                        <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button"  data-toggle="tooltip" data-placement="top"  title="Ricerca per utente o GUID" style="cursor: pointer"><i class="fas fa-user"></i></button>
                     </span>
-                    <span class="input-group-btn">
-                        <button class="btn btn-secondary" type="button" title="Ricerca per gang" style="cursor: pointer"><i class="fas fa-users"></i></button>
+                        <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button"  data-toggle="tooltip" data-placement="top"  title="Ricerca per gang" style="cursor: pointer"><i class="fas fa-users"></i></button>
                     </span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card-group pagec">
-                    <div class="card padonphone  animated fadeInLeft" onclick="searchPlayerBar()" style="cursor:pointer;" title="Ricerca per giocatore">
-                        <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title">4000 Giocatori</h4>
-                        </div>
-                    </div>
-                    <div class="card padonphone  animated fadeInLeft" onclick="searchPlayerBar()" style="cursor:pointer;" title="Ricerca per giocatore">
-                        <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title">55 Gang</h4>
-                        </div>
-                    </div>
-                    <div class="card padonphone  animated fadeInLeft" onclick="searchPlayerBar()" style="cursor:pointer;" title="Ricerca per giocatore">
-                        <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title">20 Agenti</h4>
-                        </div>
-                    </div>
-                    <div class="card padonphone  animated fadeInLeft" onclick="searchPlayerBar()" style="cursor:pointer;" title="Ricerca per giocatore">
-                        <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title">20 Medici</h4>
-                        </div>
-                    </div>
-                    <div class="card padonphone  animated fadeInLeft" onclick="searchPlayerBar()" style="cursor:pointer;" title="Ricerca per giocatore">
-                        <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title">18 Admin</h4>
-                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card-group pagec">
+                        <div class="card padonphone  animated fadeInLeft" onclick="searchPlayerBar()" data-toggle="tooltip" data-placement="top" style="cursor:pointer; border-right: 2px solid #2D3035" title="Ricerca per giocatore">
+                            <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">4000 Giocatori</h4>
+                            </div>
+                        </div>
+                        <div class="card padonphone  animated fadeInLeft" onclick="searchPlayerBar()" data-toggle="tooltip" data-placement="top"  style="cursor:pointer; border-right: 2px solid #2D3035" title="Ricerca per gang">
+                            <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">55 Gang</h4>
+                            </div>
+                        </div>
+                        <div class="card padonphone  animated fadeInLeft" onclick="searchPlayerBar()" data-toggle="tooltip" data-placement="top"  style="cursor:pointer; border-right: 2px solid #2D3035" title="Visualizza gli agenti">
+                            <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">20 Agenti</h4>
+                            </div>
+                        </div>
+                        <div class="card padonphone  animated fadeInLeft" onclick="searchPlayerBar()" data-toggle="tooltip" data-placement="top"  style="cursor:pointer; border-right: 2px solid #2D3035" title="Visualizza i medici">
+                            <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">20 Medici</h4>
+                            </div>
+                        </div>
+                        <div class="card padonphone  animated fadeInLeft" onclick="searchPlayerBar()" data-toggle="tooltip" data-placement="top"  style="cursor:pointer;" title="Visualizza gli admin">
+                            <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">18 Admin</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="gangmultyresult" hidden>
+
+        </section>
+        <section id="gangsearchview" hidden>
+
+        </section>
+        <section id="viewfactionlist" hidden>
+
+        </section>
+        <section id="playermultyresult" hidden>
+
+        </section>
+        <section id="playersearchview" hidden>
+
+        </section>
     </main>
 
     <nav aria-label="breadcrumb" role="navigation" class="pagec">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page">Home</li>
+            <li class="breadcrumb-item active" aria-current="page">
+              <span>Made with <i style="color: firebrick" class="fas fa-heart animated infinite pulse"></i> by <a
+                      href="https://www.alir.eu/profile/3-andreacw/">Andreacw</a></span> - <a href="https://www.alir.eu/">ALIR</a> <i
+                        class="fab fa-creative-commons"></i> - <i
+                        class="fab fa-github"></i> <a href="https://github.com/andreacw5/ALIRBD"> GitHub</a>
+            </li>
         </ol>
     </nav>
 
