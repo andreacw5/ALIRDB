@@ -62,3 +62,7 @@ h5{
 .fa-star{
     color: #ff8433;
 }
+
+.table-dark{
+    background-color: #2D3035 !important;
+}

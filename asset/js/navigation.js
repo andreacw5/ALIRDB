@@ -19,6 +19,8 @@ $(function () {
 function goToHome() {
     searchType = "";
     $('#multiresult').attr('hidden', true);
+    $('#gangview').attr('hidden', true);
+    $('#appendgangmembers').empty();
 
 }
 
@@ -45,6 +47,7 @@ function searchGangBar() {
     $('#searchbutton').click(function () {
         searchId = $('#inputsearch').val();
         searchByGang(searchId);
+        $('#appendgangmembers').empty();
     });
 }
 
@@ -96,9 +99,28 @@ function searchByGang(gang) {
         if(data.length > 1){
 
             searchMultyResultView(data, data.length, "gang");
+            console.log(data);
 
         }else if(data.length === 1){
+            console.log(data);
+            console.log(data[0].members.length);
 
+            $('#gangview').removeAttr('hidden');
+
+            for (var i = 0; i < data[0].members.length; i++) {
+
+                var membersid = data[0].members[i];
+
+                var gangmembers = $('<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">\n' +
+                    '            <div class="d-flex w-100 justify-content-between">\n' +
+                    '                <h5 class="mb-1">Player.name <small style="color: #868e96">(' + membersid +')</small></h5>\n' +
+                    '                <small class="text-muted"><i class="fas fa-external-link-alt"></i></small>\n' +
+                    '            </div>\n' +
+                    '            </a>');
+
+                $('#appendgangmembers').append(gangmembers);
+
+            }
 
         }else{
 
