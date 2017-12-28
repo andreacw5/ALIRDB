@@ -236,10 +236,9 @@
             </div>
         </section>
     </section>
-
     <section id="gangview" hidden>
         <div class="card">
-            <h4 class="card-header" id="singlegangname">Gang.name</h4>
+            <h4 class="card-header"><span id="singlegangname"></span> <small>(<span id="gangplayernumber"></span>/20)</small></h4>
             <div class="card-body" style="padding: 1% !important;">
                 <table class="table table-dark">
                     <thead>
@@ -247,6 +246,7 @@
                         <th style="border-top: none !important;" scope="col">#</th>
                         <th style="border-top: none !important;" scope="col">Nickname</th>
                         <th style="border-top: none !important;" scope="col">Playerid</th>
+                        <th style="border-top: none !important;" scope="col"></th>
                     </tr>
                     </thead>
                     <tbody id="appendgangmembers">
@@ -270,5 +270,6 @@
 <script src="https://cdnjs.cat.net/ajax/libs/defiant.js/1.2.6/defiant.js"></script>
 <script src="asset/js/navigation.js"></script>
 <script src="asset/js/views.js"></script>
+<script src="asset/js/gang.js"></script>
 </body>
 </html>
