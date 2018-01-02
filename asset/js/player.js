@@ -122,7 +122,9 @@ function showUser(data) {
     $('#usercash').html(data[0].cash);
     $('#useralias').html(data[0].aliases);
 
-    // http://steamcommunity.com/profiles/76561198181502479/
+    var linkSteam = "http://steamcommunity.com/profiles/" + data[0].playerid + "/";
+
+    $('#steamLink').attr('href', linkSteam);
 
     // In base al livello donatore inserisco le stelle
     var donorlevel;
@@ -241,6 +243,8 @@ function getUserVehicle(playerid) {
         }
     }).done(function (data) {
 
+        $('#vehiclesize').html(data.length);
+
         if(data.length > 1){
             console.log(data);
 
@@ -352,6 +356,9 @@ function getUserVehicle(playerid) {
                     case 'C_Van_02_vehicle_F':
                         vehicleName = 'Camioncino (Cargo)';
                         break;
+                    case 'C_Van_02_medevac_F':
+                        vehicleName = 'Ambulanza';
+                        break;
                     // Elicotteri
                     case 'C_Heli_Light_01_civil_F':
                         vehicleName = 'MH-900';
@@ -392,6 +399,9 @@ function getUserVehicle(playerid) {
                     case 'B_T_VTOL_01_armed_F':
                         vehicleName = 'V-44 X Blackfish (Armato)';
                         break;
+                    case 'C_Plane_Civil_01_racing_F':
+                        vehicleName = 'Caesar BTT (Corsa)';
+                        break;
                     // Barche
                     case 'C_Rubberboat':
                         vehicleName = 'Gommone';
@@ -419,6 +429,12 @@ function getUserVehicle(playerid) {
                         break;
                     case 'B_SDV_01_F':
                         vehicleName = 'Sommergibile (SDV)';
+                        break;
+                    case 'O_SDV_01_F':
+                        vehicleName = 'Sommergibile (SDV)';
+                        break;
+                    case 'C_Scooter_Transport_01_F':
+                        vehicleName = "Moto d'acqua";
                         break;
                     default:
                         vehicleName = data[i].classname;

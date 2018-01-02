@@ -116,7 +116,6 @@ function showGang(data) {
             '    <th scope="row">' + counter + '</th>' +
             '    <td id="gangName' + membersid + '" ></td>' +
             '    <td>' + membersid + '</td>' +
-            '    <td><i class="fas fa-external-link-alt"></i></td>' +
             '</tr>');
 
         $('#appendgangmembers').append(gangmembers);

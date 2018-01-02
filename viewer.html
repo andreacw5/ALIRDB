@@ -79,31 +79,31 @@
                         <div class="card padonphone  animated fadeInLeft cardstatborder"  data-toggle="tooltip" data-placement="top" title="Ricerca per giocatore">
                             <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
                             <div class="card-body">
-                                <h4 class="card-title">4000 Giocatori</h4>
+                                <h4 class="card-title"><span id="playerCounter"></span> Giocatori</h4>
                             </div>
                         </div>
                         <div class="card padonphone  animated fadeInLeft cardstatborder"  data-toggle="tooltip" data-placement="top" title="Ricerca per gang">
                             <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
                             <div class="card-body">
-                                <h4 class="card-title">55 Gang</h4>
+                                <h4 class="card-title"><span id="gangCounter"></span> Gang</h4>
                             </div>
                         </div>
-                        <div class="card padonphone  animated fadeInLeft cardstatborder"  data-toggle="tooltip" data-placement="top" title="Visualizza gli agenti">
+                        <div class="card padonphone  animated fadeInLeft cardstatborder"  data-toggle="tooltip" data-placement="top" title="Visualizza tabella agenti">
                             <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
                             <div class="card-body">
-                                <h4 class="card-title">20 Agenti</h4>
+                                <h4 class="card-title">Agenti</h4>
                             </div>
                         </div>
-                        <div class="card padonphone  animated fadeInLeft cardstatborder"  data-toggle="tooltip" data-placement="top" title="Visualizza i medici">
+                        <div class="card padonphone  animated fadeInLeft cardstatborder"  data-toggle="tooltip" data-placement="top" title="Visualizza tabella medici">
                             <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
                             <div class="card-body">
-                                <h4 class="card-title">20 Medici</h4>
+                                <h4 class="card-title">Medici</h4>
                             </div>
                         </div>
-                        <div class="card padonphone  animated fadeInLeft"  data-toggle="tooltip" data-placement="top"  style="cursor:pointer;" title="Visualizza gli admin">
+                        <div class="card padonphone  animated fadeInLeft"  data-toggle="tooltip" data-placement="top"  style="cursor:pointer;" title="Elenco staff">
                             <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
                             <div class="card-body">
-                                <h4 class="card-title">18 Admin</h4>
+                                <h4 class="card-title"><span id="adminCounter"></span> Admin</h4>
                             </div>
                         </div>
                     </div>
@@ -126,7 +126,6 @@
                             <th style="border-top: none !important;" scope="col">#</th>
                             <th style="border-top: none !important;" scope="col">Nickname</th>
                             <th style="border-top: none !important;" scope="col">Playerid</th>
-                            <th style="border-top: none !important;" scope="col"></th>
                         </tr>
                         </thead>
                         <tbody id="appendgangmembers">
@@ -139,7 +138,7 @@
 
         </section>
         <section id="playermultyresult" hidden>
-            <h4>Ho trovato <span id="resultsize"></span> risultati: <small>(Limitatore di ricerca settato a 100)</small></h4>
+            <h4>Ho trovato <span id="resultsize"></span> risultati: <small>(Max 100)</small></h4>
             <div class="list-group" id="listUserAppendElement">
 
             </div>
@@ -219,6 +218,7 @@
                 </div>
             </section>
             <section id="uservehiclepanel" hidden>
+                <h4>Possiede <span id="vehiclesize"></span> veicoli:</h4>
                 <div class="row" id="uservehicleappender"></div>
             </section>
         </section>

@@ -48,6 +48,14 @@ $(function () {
 });
 
 /**
+ *  Lenght dei db esterni
+ */
+
+function statisticOnLoad() {
+
+}
+
+/**
  *  Funzioni per la navigazione tra le sezioni
  */
 
