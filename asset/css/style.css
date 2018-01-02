@@ -109,3 +109,10 @@ h5{
 .cardstatborder{
     border-right: 2px solid #2D3035
 }
+
+.modal-content {
+    background-color: #2D3035;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    color: white;
+}

@@ -53,7 +53,46 @@ $(function () {
 
 function statisticOnLoad() {
 
+    $.ajax({
+        url: playerDatabase,
+        type: 'GET',
+        dataType: "json",
+        timeout: 1500
+    }).done(function (data) {
+        $('#playerCounter').html(data.length)
+    });
+
+    $.ajax({
+        url: gangDatabase,
+        type: 'GET',
+        dataType: "json",
+        timeout: 1500
+    }).done(function (data) {
+        $('#gangCounter').html(data.length)
+    });
+
+    $.ajax({
+        url: vehicleDatabase,
+        type: 'GET',
+        dataType: "json",
+        timeout: 1500
+    }).done(function (data) {
+        $('#vehicleCounter').html(data.length)
+    });
+
+    $.ajax({
+        url: wantedDatabase,
+        type: 'GET',
+        dataType: "json",
+        timeout: 1500
+    }).done(function (data) {
+        $('#wantedCounter').html(data.length)
+    });
+
+    $('#adminCounter').html("15");
+
 }
+statisticOnLoad();
 
 /**
  *  Funzioni per la navigazione tra le sezioni
