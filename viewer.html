@@ -76,25 +76,25 @@
             <div class="row statsdiv">
                 <div class="col-lg-12">
                     <div class="card-group pagec">
-                        <div class="card padonphone  animated fadeInLeft"  data-toggle="tooltip" data-placement="top" style="cursor:pointer; border-right: 2px solid #2D3035" title="Ricerca per giocatore">
+                        <div class="card padonphone  animated fadeInLeft cardstatborder"  data-toggle="tooltip" data-placement="top" title="Ricerca per giocatore">
                             <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title">4000 Giocatori</h4>
                             </div>
                         </div>
-                        <div class="card padonphone  animated fadeInLeft"  data-toggle="tooltip" data-placement="top"  style="cursor:pointer; border-right: 2px solid #2D3035" title="Ricerca per gang">
+                        <div class="card padonphone  animated fadeInLeft cardstatborder"  data-toggle="tooltip" data-placement="top" title="Ricerca per gang">
                             <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title">55 Gang</h4>
                             </div>
                         </div>
-                        <div class="card padonphone  animated fadeInLeft"  data-toggle="tooltip" data-placement="top"  style="cursor:pointer; border-right: 2px solid #2D3035" title="Visualizza gli agenti">
+                        <div class="card padonphone  animated fadeInLeft cardstatborder"  data-toggle="tooltip" data-placement="top" title="Visualizza gli agenti">
                             <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title">20 Agenti</h4>
                             </div>
                         </div>
-                        <div class="card padonphone  animated fadeInLeft"  data-toggle="tooltip" data-placement="top"  style="cursor:pointer; border-right: 2px solid #2D3035" title="Visualizza i medici">
+                        <div class="card padonphone  animated fadeInLeft cardstatborder"  data-toggle="tooltip" data-placement="top" title="Visualizza i medici">
                             <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title">20 Medici</h4>
@@ -219,20 +219,33 @@
                 </div>
             </section>
             <section id="uservehiclepanel" hidden>
-                <div class="row" id="uservehicleappender">
-                    <div class="col padbot">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title"><i class="fa fa-car"></i> Offroad</h4>
-                                <h6 class="card-subtitle mb-2 text-muted">Veicolo civile, targato 390051 (colore 0)</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="row" id="uservehicleappender"></div>
             </section>
         </section>
         <section id="noresult" hidden>
-            <h4>Nessun risultato</h4>
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Nessun risultato</h1>
+                    <p class="lead">Spiacente, con la ricerca da te effettuata non ho trovato corrispondenze!</p>
+                    <p class="lead">Torna alla pagina principale e prova con altri elementi!</p>
+                </div>
+            </div>
+        </section>
+        <section id="errorServer" hidden>
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">500 - ERRORE</h1>
+                    <p class="lead">Si è verificato un'errore generico al server di ALIR:DB! Ricarica la pagina!</p>
+                </div>
+            </div>
+        </section>
+        <section id="errorFind" hidden>
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">400 - ERRORE</h1>
+                    <p class="lead">Si è verificato un'errore generico ad ALIR:DB! Ricarica la pagina!</p>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -259,9 +272,9 @@
         crossorigin="anonymous"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
 <script src="https://cdnjs.cat.net/ajax/libs/defiant.js/1.2.6/defiant.js"></script>
+<!--<script src="asset/js/minified/alirdb.min.js"></script>-->
 <script src="asset/js/navigation.js"></script>
 <script src="asset/js/player.js"></script>
 <script src="asset/js/gang.js"></script>
-<script src="asset/js/vehicle.js"></script>
 </body>
 </html>

@@ -122,6 +122,8 @@ function showUser(data) {
     $('#usercash').html(data[0].cash);
     $('#useralias').html(data[0].aliases);
 
+    // http://steamcommunity.com/profiles/76561198181502479/
+
     // In base al livello donatore inserisco le stelle
     var donorlevel;
 
@@ -216,5 +218,255 @@ function showUser(data) {
     $('#usermedlevel').html(mediclevelname);
 
     getGangName(data[0].playerid);
+
+    getUserVehicle(data[0].playerid);
+
+}
+
+/**
+ *  Con il playerId dell'utente creo la lista dei mezzi
+ *  @param: playerid
+ *  @return: gangShow
+ */
+
+function getUserVehicle(playerid) {
+
+    $.ajax({
+        url: vehicleDatabase,
+        type: 'GET',
+        timeout: 1500,
+        contentType: 'json',
+        data: {
+            q: playerid
+        }
+    }).done(function (data) {
+
+        if(data.length > 1){
+            console.log(data);
+
+            for (var i = 0; i < data.length; i++) {
+
+                var vehicleName;
+                var vehicleType;
+                var vehicleSide = data[i].side;
+                var vehiclePlate = data[i].plate;
+                var vehicleColor = data[i].color;
+
+                switch (data[i].classname) {
+                    // Auto
+                    case 'B_Quadbike_01_F':
+                        vehicleName = 'Quad';
+                        break;
+                    case 'C_Offroad_01_F':
+                        vehicleName = 'Offroad';
+                        break;
+                    case 'C_Offroad_01_repair_F':
+                        vehicleName = 'Offroad (Ripara)';
+                        break;
+                    case 'C_Offroad_02_unarmed_F':
+                        vehicleName = 'Offroad (Mimetico)';
+                        break;
+                    case 'O_G_Offroad_01_F':
+                        vehicleName = 'Offroad (Mimetico)';
+                        break;
+                    case 'C_SUV_01_F':
+                        vehicleName = 'Suv';
+                        break;
+                    case 'C_Hatchback_01_F':
+                        vehicleName = 'Hatchback';
+                        break;
+                    case 'C_Hatchback_01_sport_F':
+                        vehicleName = 'Hatchback (Sport)';
+                        break;
+                    case 'O_MRAP_02_F':
+                        vehicleName = 'Ifrit';
+                        break;
+                    case 'B_MRAP_01_F':
+                        vehicleName = 'Hunter';
+                        break;
+                    case 'O_T_LSV_02_unarmed_black_F':
+                        vehicleName = 'Quilin (Nero)';
+                        break;
+                    case 'B_LSV_01_unarmed_black_F':
+                        vehicleName = 'Prowler (Nero)';
+                        break;
+                    case 'I_G_Van_01_transport_F':
+                        vehicleName = 'Furgone (Cassone)';
+                        break;
+                    // Zamak
+                    case 'O_Truck_02_transport_F':
+                        vehicleName = 'Zamak (Trasporto)';
+                        break;
+                    case 'O_Truck_02_covered_F':
+                        vehicleName = 'Zamak (Telonato)';
+                        break;
+                    case 'I_Truck_02_covered_F':
+                        vehicleName = 'Zamak (Telonato)';
+                        break;
+                    case 'O_Truck_02_fuel_F':
+                        vehicleName = 'Zamak (Carburante)';
+                        break;
+                    // HEMTT
+                    case 'B_Truck_01_transport_F':
+                        vehicleName = 'HEMTT (Trasporto)';
+                        break;
+                    case 'B_Truck_01_covered_F':
+                        vehicleName = 'HEMTT (Telonato)';
+                        break;
+                    case 'B_Truck_01_box_F':
+                        vehicleName = 'HEMTT (Cassone)';
+                        break;
+                    case 'B_Truck_01_fuel_F':
+                        vehicleName = 'HEMTT (Carburante)';
+                        break;
+                    case 'B_Truck_01_mover_F':
+                        vehicleName = 'HEMTT (Solo cabina)';
+                        break;
+                    // Camioncino
+                    case 'C_Van_01_box_F':
+                        vehicleName = 'Furgone (Cassone)';
+                        break;
+                    case 'C_Van_01_fuel_F':
+                        vehicleName = 'Furgone (Carburante)';
+                        break;
+                    // Tempest
+                    case 'O_T_Truck_03_covered_ghex_F':
+                        vehicleName = 'Tempest Apex (Telonato)';
+                        break;
+                    case 'O_Truck_03_transport_F':
+                        vehicleName = 'Tempest (Trasporto)';
+                        break;
+                    case 'O_Truck_03_fuel_F':
+                        vehicleName = 'Tempest (Carburante)';
+                        break;
+                    case 'O_Truck_03_covered_F':
+                        vehicleName = 'Tempest (Telonato)';
+                        break;
+                    // Altro
+                    case 'C_Kart_01_Fuel_F':
+                        vehicleName = 'Kart';
+                        break;
+                    case 'C_Van_02_transport_F':
+                        vehicleName = 'Camioncino (Trasporto)';
+                        break;
+                    case 'C_Van_02_vehicle_F':
+                        vehicleName = 'Camioncino (Cargo)';
+                        break;
+                    // Elicotteri
+                    case 'C_Heli_Light_01_civil_F':
+                        vehicleName = 'MH-900';
+                        break;
+                    case 'B_Heli_Light_01_F':
+                        vehicleName = 'Hummingbird';
+                        break;
+                    case 'B_Heli_Transport_01_F':
+                        vehicleName = 'Ghosthawk';
+                        break;
+                    case 'O_Heli_Transport_04_F':
+                        vehicleName = 'Mi-290 Taru';
+                        break;
+                    case 'O_Heli_Transport_04_medevac_F':
+                        vehicleName = 'Mi-290 Taru (Medico) ';
+                        break;
+                    case 'B_Heli_Transport_03_unarmed_F':
+                        vehicleName = 'Huron';
+                        break;
+                    case 'B_Heli_Light_01_stripped_F':
+                        vehicleName = 'Hummingbird (Ricettato)';
+                        break;
+                    case 'O_Heli_Light_02_unarmed_F':
+                        vehicleName = 'PO-30 Orca (Disarmata)';
+                        break;
+                    case 'I_Heli_Transport_02_F':
+                        vehicleName = 'AW101 Mohawk (Merlin)';
+                        break;
+                    case 'I_Heli_light_03_unarmed_F':
+                        vehicleName = 'WY-55 Hellcat';
+                        break;
+                    case 'B_T_VTOL_01_infantry_F':
+                        vehicleName = 'V-44 X Blackfish (Fanteria)';
+                        break;
+                    case 'B_T_VTOL_01_vehicle_F':
+                        vehicleName = 'V-44 X Blackfish (Veicoli)';
+                        break;
+                    case 'B_T_VTOL_01_armed_F':
+                        vehicleName = 'V-44 X Blackfish (Armato)';
+                        break;
+                    // Barche
+                    case 'C_Rubberboat':
+                        vehicleName = 'Gommone';
+                        break;
+                    case 'B_Boat_Transport_01_F':
+                        vehicleName = 'Gommone';
+                        break;
+                    case 'O_Lifeboat':
+                        vehicleName = 'Gommone da salvataggio';
+                        break;
+                    case 'O_T_Boat_Transport_01_F':
+                        vehicleName = 'Gommone';
+                        break;
+                    case 'B_Boat_Armed_01_minigun_F':
+                        vehicleName = 'Barca armata (Minigun)';
+                        break;
+                    case 'C_Boat_Civil_01_F':
+                        vehicleName = 'Motoscafo';
+                        break;
+                    case 'C_Boat_Civil_01_police_F':
+                        vehicleName = 'Motoscafo (Polizia)';
+                        break;
+                    case 'C_Boat_Civil_01_rescue_F':
+                        vehicleName = 'Motoscafo (Soccorso)';
+                        break;
+                    case 'B_SDV_01_F':
+                        vehicleName = 'Sommergibile (SDV)';
+                        break;
+                    default:
+                        vehicleName = data[i].classname;
+                }
+
+                var iconcolor;
+                var sideText;
+
+                if(vehicleSide === "cop"){
+                    iconcolor = "#4286f4";
+                    sideText = "Veicolo della polizia";
+                }else if(vehicleSide === "med"){
+                    iconcolor = "#d8a011";
+                    sideText = "Veicolo medico";
+                }else{
+                    iconcolor = "#ffffff";
+                    sideText = "Veicolo civile"
+                }
+
+                if(data[i].type === "Car"){
+                    vehicleType = '<i class="fas fa-car" style="color: ' + iconcolor + ';"></i>';
+                }else if(data[i].type === "Air"){
+                    vehicleType = '<i class="fas fa-plane" style="color: ' + iconcolor + ';"></i>';
+                }else{
+                    vehicleType = '<i class="fas fa-ship" style="color: ' + iconcolor + ';"></i>';
+                }
+
+
+                var vehicle = $('<div class="col-12 padbot">' +
+                    '                        <div class="card">' +
+                    '                            <div class="card-body">' +
+                    '                                <h4 class="card-title">'+ vehicleType + ' ' + vehicleName +'</h4>' +
+                    '                                <h6 class="card-subtitle mb-2 text-muted">' + sideText + ', targato '+ vehiclePlate +' (colore '+vehicleColor+')</h6>' +
+                    '                            </div>' +
+                    '                        </div>' +
+                    '                    </div>');
+                
+
+                $('#uservehicleappender').append(vehicle);
+
+            }
+
+        }else{
+            console.log("xdf")
+        }
+
+    }).fail(function () {
+
+    });
 
 }

@@ -38,6 +38,9 @@ var searchLimiter = 100;
 
 var playerDatabase = "http://37.59.102.107:5100/players";
 var gangDatabase = "http://37.59.102.107:5200/gangs";
+var vehicleDatabase = "http://37.59.102.107:5300/vehicles";
+var wantedDatabase = "http://37.59.102.107:5400/wanted";
+var userDatabase = "http://37.59.102.107:5500/users";
 
 // Abilito i tooltip ovunque
 $(function () {
@@ -54,6 +57,7 @@ function goToHome() {
     $('#mainsearchpage').removeAttr('hidden');
     $('#listUserAppendElement').empty();
     $('#appendgangmembers').empty();
+    $('#uservehicleappender').empty();
 
 }
 
@@ -67,7 +71,6 @@ function hideOpenWindow() {
 
 function hideAllInfoPanel() {
     $('#userinfopanel, #userlicensepanel, #uservehiclepanel').hide().attr('hidden', true);
-    console.clear();
 }
 
 function showUserInfo() {

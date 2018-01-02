@@ -105,3 +105,8 @@ h5{
 .table-dark{
     background-color: #2D3035 !important;
 }
+
+.cardstatborder{
+    cursor:pointer;
+    border-right: 2px solid #2D3035
+}

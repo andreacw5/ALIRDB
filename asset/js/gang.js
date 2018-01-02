@@ -57,15 +57,14 @@ function searchByGang(gang) {
         if (data.length > 1) {
 
             console.log(data);
+            showGangList(data);
 
         } else if (data.length === 1) {
-
-            console.log(data);
 
             showGang(data);
 
         } else {
-            console.log("Nessun risultato");
+            $('#noresult').removeAttr('hidden');
         }
 
     }).fail(function () {
@@ -185,5 +184,15 @@ function getGangName(playerid) {
         }
 
     });
+
+}
+
+/**
+ *  Compongo la lista delle gang trovate
+ *  @param: data (Array)
+ *  @return: Gang List page
+ */
+
+function showGangList(data) {
 
 }
