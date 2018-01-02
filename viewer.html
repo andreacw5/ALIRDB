@@ -358,43 +358,60 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" style="color: white" id="helpModals">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                <h5 class="modal-title" style="color: white" id="helpModals"><i class="fas fa-info"></i> Pagina di aiuto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="cursor: pointer; font-style: normal">
+                    <span aria-hidden="true"><i style="color: white;" class="fas fa-times"></i></span>
                 </button>
             </div>
             <div class="modal-body">
-                Questo applicativo online ti permette di avere sempre sotto mano le tue statistiche, i tuoi veicoli e le tue finanze.
-                Potrai sapere in che gang ti trovi ed i nomi dei tuoi compagni, visionare i loro conti, sapere se hanno dei mezzi e quali.
-                Il tutto per organizzare al meglio il tuo gruppo e sapere se vi sono bug senza necessitare dello staff!
+                <b>Introduzione</b>
+                <p>
+                    Questo applicativo online ti permette di avere sempre sotto mano le tue statistiche, i tuoi veicoli e le tue finanze.
+                    Potrai sapere in che gang ti trovi ed i nomi dei tuoi compagni, visionare i loro conti, sapere se hanno dei mezzi e quali.
+                </p>
 
-                La pratica interfaccia all'avvio ti permette di scegliere l'attività da svolgere:
+                <b>Ricerca Player</b>
+                <p>
+                    La ricerca player consente di trovare un'utente all'interno del database tramite qualsiasi dato dell'utente, sia esso playerId, alias usati o nominativo attuale, se il risultato trovato è più di uno,
+                    otterrai la lista con al massimo 100 nominativi. Questa funzione fornisce svariate informazioni divise in menù:
 
-                Ricerca Player: La ricerca player consente di trovare un'utente all'interno del database tramite nome o playerid e, se il risultato trovato è più di uno,
-                otterrai la lista con al massimo 20 nominativi. Questa funzione fornisce svariate informazioni divise in menù:
+                    <ul>
+                        <li><b>Informazioni</b>: tutte le informazioni sull'utente, quali patrimonio, informazioni su whitelist e gang associata, statistiche ed alias;</li>
+                        <li><b>Veicoli</b>: verranno mostrati i veicoli, la loro tipologia ed il loro nome con associazione alla fazione di appartenenza (blu: polizia, giallo: aca, arancione: medici, bianco: civili);</li>
+                        <li><b>Licenze</b>: Prossimamente disponibile la visualizzazione delle licenze possedute.</li>
+                        <li><b>Steam</b>: Link al profilo steam dell'utente.</li>
+                        <li><b>Forum</b>: Se configurato, link al profilo sul forum dell'utente.</li>
+                    </ul>
+                </p>
 
-                Informazioni: tutte le informazioni sull'utente, quali patrimonio, informazioni su whitelist e gang associata, statistiche ed alias;
-                Veicoli: verranno mostrati i veicoli, la loro tipologia ed il loro nome con associazione alla fazione di appartenenza (blu: polizia, giallo: aca, arancione: medici, bianco: civili);
-                Licenze: verranno mostrate le licenze possedute dall'utente (solo da civile), in base alla categoria associate ad un'icona (patenti, risorse, altro);
-                Gang: tutte le informazioni sulla gang, con link per visualizzare i membri della stessa.
+                <b>Ricerca gruppi</b>
 
-                Ricerca gruppi [Funzione in beta]: Fornendo il nominativo della gang è possibile vedere i suoi componenti, il proprietario ed i conteggi sul massimale,
-                in caso di più di 20 membri verrà mostrata un'allerta per avvisare la violazione del regolamento!
+                <p>
+                    Fornendo il nominativo della gang è possibile vedere i suoi componenti, il proprietario ed i conteggi sul massimale,
+                    in caso di più di 20 membri verrà mostrata un'allerta per avvisare la violazione del regolamento!
+                </p>
 
-                Elenco agenti: Ottieni l'elenco degli agenti in servizio ed il loro livello di whitelist, ricorda che gli admin non sono mai mostrati!
+                <b>Elenco agenti</b>
+                <p>
+                    Ottieni l'elenco degli agenti in servizio ed il loro livello di whitelist, ricorda che gli admin non sono mai mostrati!
+                </p>
 
-                Elenco medici: Ottieni l'elenco dei medici in servizio ed il loro livello di whitelist, ricorda che gli admin non sono mai mostrati!
+                <b>Elenco medici</b>
+                <p>
+                    Ottieni l'elenco dei medici in servizio ed il loro livello di whitelist, ricorda che gli admin non sono mai mostrati!
+                </p>
 
-                Elenco meccanici: Ottieni l'elenco dei meccanici in servizio ed il loro livello di whitelist, ricorda che gli admin non sono mai mostrati!
+                <b>Note ulteriori sul funzionamento</b>
+                <p>
+                    Al fine di non creare vulnerabilità sul server di gioco il database viene trasferito su un server esterno da li esposto al server del forum, questa procedura viene effettuata automaticamente ogni 30 minuti con scatti random in modo da non permettere vulnerabilità nel trasferimento.
+                </p>
 
-                Battleye Ban checker: Ci appoggiamo ad un servizio terzo (https://bans.peips.dk) per monitorare i global ban del Battleye associati all'account steam dell'utente!
-                Verrà visualizzato uno scudo verde in caso l'utente non abbia ban a suo carico e rosso nel caso contrario.
+                <b>Accessi all'applicativo</b>
+                <p>
+                    L'accesso a questo applicativo è esclusivo per i donatori, superdonatori, investitori, membri di fazioni ufficiali ed allo staff.
+                    Chi non fa parte di questi gruppi non potrà accedervi!!
+                </p>
 
-                Note ulteriori sul funzionamento: al fine di prevenire eventuali vulnerabilità sul server di gioco tutto il sistema è hostato separatamente in un database specifico,
-                pertanto la sincronizzazione non è costante ma verrà effettuata manualmente ogni 3-6gg.
-
-                L'accesso a questo applicativo è esclusivo per i donatori, superdonatori, investitori, membri di fazioni ufficiali ed allo staff.
-                Chi non fa parte di questi gruppi non potrà accedervi!!
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>

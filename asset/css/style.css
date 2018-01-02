@@ -116,3 +116,7 @@ h5{
     border: 1px solid rgba(0,0,0,.2);
     color: white;
 }
+
+.modal-body b{
+    color: #007BCC;
+}
