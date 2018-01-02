@@ -32,10 +32,12 @@
 var searchType = "";
 var searchId = "";
 var searchData;
+var searchLimiter = 100;
 
 // Indirizzi ip per query GET
 
 var playerDatabase = "http://37.59.102.107:5100/players";
+var gangDatabase = "http://37.59.102.107:5200/gangs";
 
 // Abilito i tooltip ovunque
 $(function () {
@@ -51,6 +53,7 @@ function goToHome() {
     hideOpenWindow();
     $('#mainsearchpage').removeAttr('hidden');
     $('#listUserAppendElement').empty();
+    $('#appendgangmembers').empty();
 
 }
 

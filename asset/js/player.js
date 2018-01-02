@@ -67,9 +67,18 @@ function searchByPlayer(playerid) {
 function showUserList(data) {
 
     $('#playermultyresult').removeAttr('hidden');
-    $('#resultsize').html(data.length);
 
-    for (var i = 0; i < data.length; i++) {
+    var searchN;
+
+    if(data.length > searchLimiter){
+        searchN = searchLimiter;
+        $('#resultsize').html(searchLimiter);
+    }else{
+        searchN = data.length;
+        $('#resultsize').html(data.length);
+    }
+
+    for (var i = 0; i < searchN; i++) {
 
         var userName = data[i].name;
         var playerId = data[i].playerid;
@@ -87,7 +96,7 @@ function showUserList(data) {
 
     }
 
-    for (var x = 0; x < data.length; x++) {
+    for (var x = 0; x < searchN; x++) {
 
         var playerId2 = data[x].playerid;
 
@@ -205,5 +214,7 @@ function showUser(data) {
     }
 
     $('#usermedlevel').html(mediclevelname);
+
+    getGangName(data[0].playerid);
 
 }

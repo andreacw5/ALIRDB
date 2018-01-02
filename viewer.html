@@ -68,7 +68,7 @@
                         <button class="btn btn-secondary" type="button"  data-toggle="tooltip" data-placement="top"  title="Ricerca per utente o GUID" onclick="searchByPlayer();" style="cursor: pointer"><i class="fas fa-user"></i></button>
                     </span>
                         <span class="input-group-btn">
-                        <button class="btn btn-secondary" type="button"  data-toggle="tooltip" data-placement="top"  title="Ricerca per gang" style="cursor: pointer"><i class="fas fa-users"></i></button>
+                        <button class="btn btn-secondary" type="button"  data-toggle="tooltip" data-placement="top"  title="Ricerca per gang" onclick="searchByGang();" style="cursor: pointer"><i class="fas fa-users"></i></button>
                     </span>
                     </div>
                 </div>
@@ -118,9 +118,6 @@
                 <h4 class="card-header">
                     <i class="fas fa-users"></i> <span id="singlegangname"></span>
                     <small>(<span id="gangplayernumber"></span>/20)</small>
-                    <button type="button" class="close">
-                        <span><i style="color: white; cursor: pointer !important;" class="fas fa-times"></i></span>
-                    </button>
                 </h4>
                 <div class="card-body" style="padding: 1% !important;">
                     <table class="table table-dark">
@@ -196,7 +193,7 @@
                                     <h6 class="card-subtitle mb-2 text-muted">Le associazioni dell'utente</h6>
                                 </div>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Gang: <span class="pull-right"><span
+                                    <li class="list-group-item">Gang: <span id="usergangname" class="pull-right"><span
                                             id="usergangon"><i class="fas fa-sync-alt fa-spin"></i></span></span></li>
                                     <li class="list-group-item">Polizia: <span class="pull-right"><span id="usercoplevel">Ispettore</span></span>
                                     </li>
