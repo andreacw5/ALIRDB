@@ -3,11 +3,14 @@
  *  @author: Andreacw
  */
 
-function searchByPlayer() {
+function searchByPlayer(playerid) {
+
+    // Solo in caso non viene passato l'id uso il campo input per la ricerca
+    if(!playerid){
+        playerid = $('#searchinput').val();
+    }
 
     $('#mainsearchpage').attr('hidden',true);
-
-    var user = $('#searchinput').val();
 
     $.ajax({
         url: playerDatabase,
@@ -15,24 +18,16 @@ function searchByPlayer() {
         timeout: 1500,
         contentType: 'json',
         data: {
-            q: user
+            q: playerid
         }
     }).done(function (data) {
 
         if(data.length > 1){
-
-            console.log(data);
-            $('#playermultyresult').removeAttr('hidden');
-
+            showUserList(data);
         }else if(data.length === 1){
-
-            console.log(data);
+            $('#playermultyresult').attr('hidden', true);
             showUser(data);
-
         }else{
-
-            console.log("no result");
-
             $('#noresult').removeAttr('hidden');
         }
 
@@ -40,6 +35,40 @@ function searchByPlayer() {
 
     });
 
+
+}
+
+function showUserList(data) {
+
+    $('#playermultyresult').removeAttr('hidden');
+    $('#resultsize').html(data.length);
+
+    for (var i = 0; i < data.length; i++) {
+
+        var userName = data[i].name;
+        var playerId = data[i].playerid;
+        var playerAlias = data[i].aliases;
+
+        var listElement = $('<a style="cursor:pointer;" id="' + playerId + '" data-id="' + playerId + '" class="list-group-item list-group-item-action flex-column align-items-start">' +
+            '    <div class="d-flex w-100 justify-content-between">' +
+            '      <h5 class="mb-1">' + userName + '</h5>' +
+            '      <small><i class="fas fa-external-link-alt"></i></small>' +
+            '    </div>' +
+            '    <small>Playerid: ' + playerId + ' - Alias: ' + playerAlias + '</small>' +
+            '  </a>');
+
+        $('#listUserAppendElement').append(listElement);
+
+    }
+
+    for (var x = 0; x < data.length; x++) {
+
+        var playerId2 = data[x].playerid;
+
+        $('#' + playerId2).on('click', function () {
+           searchByPlayer($(this).data("id"));
+        });
+    }
 
 }
 
@@ -81,7 +110,7 @@ function showUser(data) {
             donorlevel = $('<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>');
             break;
         default:
-            donorlevel = "Nessuno";
+            donorlevel = " Nessuno";
     }
 
     $('#userdonorlevel').html(donorlevel);
@@ -121,7 +150,7 @@ function showUser(data) {
             copnamelevel = " Questore - Livello 10";
             break;
         default:
-            copnamelevel = " Nessuno";
+            copnamelevel = " Non è un'agente!";
     }
 
     $('#usercoplevel').html(copnamelevel);
@@ -146,7 +175,7 @@ function showUser(data) {
             mediclevelname = " Medico - Livello 5";
             break;
         default:
-            mediclevelname = " Nessuno";
+            mediclevelname = " Non è un medico!";
     }
 
     $('#usermedlevel').html(mediclevelname);
