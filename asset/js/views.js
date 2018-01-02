@@ -1,4 +1,0 @@
-/**
- *  Views js
- *  @author: Andreacw
- */
