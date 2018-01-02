@@ -116,8 +116,9 @@ function showGang(data) {
 
         var gangmembers = $('<tr>' +
             '    <th scope="row">' + counter + '</th>' +
-            '    <td id="gangName' + membersid + '" ></td>' +
-            '    <td>' + membersid + '</td>' +
+            '    <td id="user' + membersid + '" ></td>' +
+            '    <td class="statsdiv">' + membersid + '</td>' +
+            '    <td title="Visualizza dettagli utente"  data-toggle="tooltip" data-placement="top" style="color: #007BCC;cursor:pointer;"><i class="fas fa-external-link-alt"></i></td>' +
             '</tr>');
 
         $('#appendgangmembers').append(gangmembers);
@@ -144,9 +145,9 @@ function getGangMembersName(playerid, owner) {
     }).done(function (data) {
             if (data[0].name) {
                 if (data[0].playerid === owner) {
-                    $('#gangName' + playerid).html(data[0].name + "  (Leader)").css("color", "orange").attr('title', 'Questo utente è il capo della gang');
+                    $('#user' + playerid).html(data[0].name + "  (Leader)").css("color", "orange").attr('title', 'Questo utente è il capo della gang');
                 } else {
-                    $('#gangName' + playerid).html(data[0].name);
+                    $('#user' + playerid).html(data[0].name);
                 }
 
             } else {

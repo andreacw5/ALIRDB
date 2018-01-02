@@ -246,7 +246,6 @@ function getUserVehicle(playerid) {
         $('#vehiclesize').html(data.length);
 
         if(data.length > 1){
-            console.log(data);
 
             for (var i = 0; i < data.length; i++) {
 
