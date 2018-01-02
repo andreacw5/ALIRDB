@@ -66,6 +66,7 @@ function goToHome() {
     $('#listUserAppendElement').empty();
     $('#appendgangmembers').empty();
     $('#uservehicleappender').empty();
+    console.clear();
 
 }
 

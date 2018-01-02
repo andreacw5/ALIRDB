@@ -76,7 +76,7 @@
             <div class="row statsdiv">
                 <div class="col-lg-12">
                     <div class="card-group pagec">
-                        <div class="card padonphone  animated fadeInLeft cardstatborder"  data-toggle="tooltip" data-placement="top" title="Ricerca per giocatore">
+                        <div class="card padonphone  animated fadeInLeft cardstatborder" data-toggle="tooltip" data-placement="top" title="Ricerca per giocatore">
                             <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title"><span id="playerCounter"></span> Giocatori</h4>
@@ -88,13 +88,13 @@
                                 <h4 class="card-title"><span id="gangCounter"></span> Gang</h4>
                             </div>
                         </div>
-                        <div class="card padonphone  animated fadeInLeft cardstatborder"  data-toggle="tooltip" data-placement="top" title="Visualizza tabella agenti">
+                        <div class="card padonphone  animated fadeInLeft cardstatborder" style="cursor:pointer;" data-toggle="tooltip" data-placement="top" title="Visualizza tabella agenti">
                             <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title">Agenti</h4>
                             </div>
                         </div>
-                        <div class="card padonphone  animated fadeInLeft cardstatborder"  data-toggle="tooltip" data-placement="top" title="Visualizza tabella medici">
+                        <div class="card padonphone  animated fadeInLeft cardstatborder" style="cursor:pointer;" data-toggle="tooltip" data-placement="top" title="Visualizza tabella medici">
                             <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
                             <div class="card-body">
                                 <h4 class="card-title">Medici</h4>
@@ -193,7 +193,7 @@
                                     <h6 class="card-subtitle mb-2 text-muted">Le associazioni dell'utente</h6>
                                 </div>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Gang: <span id="usergangname" style="color: #007BCC;cursor:pointer; " class="pull-right"><span
+                                    <li class="list-group-item">Gang: <span id="usergangname" class="pull-right"><span
                                             id="usergangon"><i class="fas fa-sync-alt fa-spin"></i></span></span></li>
                                     <li class="list-group-item">Polizia: <span class="pull-right"><span id="usercoplevel">Ispettore</span></span>
                                     </li>
@@ -219,7 +219,7 @@
                 </div>
             </section>
             <section id="uservehiclepanel" hidden>
-                <h4>Possiede <span id="vehiclesize"></span> veicoli:</h4>
+                <h4 id="vehiclesize"></h4>
                 <div class="row" id="uservehicleappender"></div>
             </section>
         </section>
@@ -228,7 +228,7 @@
                 <div class="container">
                     <h1 class="display-4">Nessun risultato</h1>
                     <p class="lead">Spiacente, con la ricerca da te effettuata non ho trovato corrispondenze!</p>
-                    <p class="lead">Torna alla pagina principale e prova con altri elementi!</p>
+                    <a class="lead" style="color: #007BCC;cursor:pointer;" onclick="goToHome();">Torna alla pagina principale e prova con altri elementi! <i class="fas fa-external-link-alt"></i></a>
                 </div>
             </div>
         </section>

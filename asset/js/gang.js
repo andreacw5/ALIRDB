@@ -26,9 +26,6 @@
 
 /**
  *  Gang.js
- *
- *  Ricerca la gang e ne visualizza i membri in tabella
- *
  *  @author: Andreacw
  */
 
@@ -66,6 +63,7 @@ function searchByGang(gang) {
             showGang(data);
 
         } else {
+            $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage').attr('hidden', true);
             $('#noresult').removeAttr('hidden');
         }
 
@@ -82,6 +80,8 @@ function searchByGang(gang) {
  */
 
 function showGang(data) {
+
+    $('#appendgangmembers').empty();
 
     $('#mainsearchpage').attr('hidden', true);
     $('#gangsearchview').removeAttr('hidden');
@@ -178,7 +178,7 @@ function getGangName(playerid) {
     }).done(function (data) {
 
         if (data.length === 1 ) {
-            $('#usergangname').html(data[0].name).on('click', function () {
+            $('#usergangname').html(data[0].name).attr('style','color: #007BCC;cursor:pointer;').on('click', function () {
                 searchByGang($(this).html());
             });
         } else {

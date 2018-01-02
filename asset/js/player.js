@@ -54,6 +54,7 @@ function searchByPlayer(playerid) {
             $('#playermultyresult').attr('hidden', true);
             showUser(data);
         }else{
+            $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage').attr('hidden', true);
             $('#noresult').removeAttr('hidden');
         }
 
@@ -114,6 +115,8 @@ function showUserList(data) {
 function showUser(data) {
 
     $('#playersearchview').removeAttr('hidden');
+
+    showUserInfo();
 
     // Dati vari
     $('#usernameplace').html(data[0].name);
@@ -243,9 +246,9 @@ function getUserVehicle(playerid) {
         }
     }).done(function (data) {
 
-        $('#vehiclesize').html(data.length);
+        if(data.length > 0){
 
-        if(data.length > 1){
+            $('#vehiclesize').html("Possiede " + data.length + " veicoli:");
 
             for (var i = 0; i < data.length; i++) {
 
@@ -477,7 +480,7 @@ function getUserVehicle(playerid) {
             }
 
         }else{
-            console.log("xdf")
+            $('#vehiclesize').html("Questo utente non possiede veicoli!");
         }
 
     }).fail(function () {
