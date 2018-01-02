@@ -44,6 +44,8 @@ function searchByGang(gang) {
         gang = $('#searchinput').val();
     }
 
+    $('#playersearchview, #playermultyresult, #gangmultyresult, #noresult, #viewfactionlist').attr('hidden', true);
+
     $.ajax({
         url: gangDatabase,
         type: 'GET',
@@ -176,7 +178,7 @@ function getGangName(playerid) {
 
         if (data.length === 1 ) {
             $('#usergangname').html(data[0].name).on('click', function () {
-                searchByGang($(this).data("id"));
+                searchByGang($(this).html());
             });
         } else {
             $('#usergangname').html(" Nessuna");
