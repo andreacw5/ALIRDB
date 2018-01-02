@@ -7,6 +7,10 @@ var searchType = "";
 var searchId = "";
 var searchData;
 
+// Indirizzi ip per query GET
+
+var playerDatabase = "http://37.59.102.107:5100/players";
+
 // Abilito i tooltip ovunque
 $(function () {
     $('[data-toggle="tooltip"]').tooltip();
@@ -18,77 +22,22 @@ $(function () {
 
 function goToHome() {
     searchType = "";
-    $('#multiresult').attr('hidden', true);
-    $('#gangview').attr('hidden', true);
+    hideOpenWindow();
+    $('#mainsearchpage').removeAttr('hidden');
     $('#appendgangmembers').empty();
 
 }
 
-function searchPlayerBar(){
-    $('.searchselection').attr('hidden',true).hide();
-    $('#mainsearchbar').removeAttr('hidden').show();
-    $('#inputsearch')
-        .attr('placeholder','Ricerca per giocatore o GUID')
-        .val('');
-    searchType = "player";
-    $('#searchbutton').click(function () {
-        searchId = $('#inputsearch').val();
-        searchByPlayer(searchId);
-    });
+function hideOpenWindow() {
+    $('#playersearchview').attr('hidden', true);
+    $('#playermultyresult').attr('hidden', true);
+    $('#gangsearchview').attr('hidden', true);
+    $('#gangmultyresult').attr('hidden', true);
+    $('#noresult').attr('hidden', true);
+    $('#viewfactionlist').attr('hidden', true);
 }
 
-function searchGangBar() {
-    $('.searchselection').attr('hidden', true);
-    $('#mainsearchbar').removeAttr('hidden');
-    $('#inputsearch')
-        .attr('placeholder', 'Ricerca per gang')
-        .val('');
-    searchType = "gang";
-    $('#searchbutton').click(function () {
-        searchId = $('#inputsearch').val();
-        searchByGang(searchId);
-        $('#appendgangmembers').empty();
-    });
-}
 
-/**
- *  Eseguo la ricerca per utente
- */
-
-function searchByPlayer(user) {
-
-    cleanSearchValue();
-
-    $.ajax({
-        url: "http://37.59.102.107:5100/players?q="+ user +"&format=json",
-        type: 'GET',
-        timeout: 1500
-    }).done(function (data) {
-
-        if(data.length > 1){
-
-            searchMultyResultView(data, data.length, "giocatori");
-
-        }else if(data.length === 1){
-
-            findPlayerByid(data.playerid, data);
-
-        }else{
-
-            console.log("no result");
-
-        }
-
-    }).fail(function () {
-
-    });
-
-
-}
-
-function cleanSearchValue() {
-    $('#searchtitle').text('').attr('hidden', true);
-}
 
 function searchMultyResultView(searchResult, numbers, searchFor) {
 

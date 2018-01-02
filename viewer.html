@@ -37,45 +37,11 @@
         })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
     </script>-->
 </head>
-<style>
-    body {
-        padding-bottom: 20px;
-    }
-
-    .navbar {
-        margin-top: 7%;
-        margin-bottom: 3%;
-        border-radius: 3px;
-    }
-
-    .container {
-        width: 100%;
-        padding-right: 15px;
-        padding-left: 15px;
-        margin-right: auto;
-        margin-left: auto;
-    }
-
-    .jumbotron {
-        background-color: #2D3035;
-        color: #ffffff;
-        border-color: #303338;
-        border-radius: 3px !important;
-    }
-
-    .breadcrumb {
-        background-color: #2D3035;
-        color: #ffffff;
-        border-color: #303338;
-        border-radius: 3px !important;
-    }
-
-</style>
 <body>
 <div class="container">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" style="font-size: 150%" data-toggle="tooltip" data-placement="top"  title="Ricarica la pagina" href="" onclick="goToHome()"><i class="fas fa-database"></i> <b
+        <a class="navbar-brand" style="font-size: 150%; cursor:pointer;" data-toggle="tooltip" data-placement="top"  title="Ricarica la pagina" onclick="goToHome()"><i class="fas fa-database"></i> <b
                 style="color: #007BCC">ALIR</b>DB</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
                 aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,9 +63,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="input-group-btn">
-                        <input type="text" class="form-control" placeholder="Cerca per..." aria-label="Cerca per...">
+                        <input type="text" class="form-control" placeholder="Cerca per..." aria-label="Cerca per..." id="searchinput">
                         <span class="input-group-btn">
-                        <button class="btn btn-secondary" type="button"  data-toggle="tooltip" data-placement="top"  title="Ricerca per utente o GUID" style="cursor: pointer"><i class="fas fa-user"></i></button>
+                        <button class="btn btn-secondary" type="button"  data-toggle="tooltip" data-placement="top"  title="Ricerca per utente o GUID" onclick="searchByPlayer();" style="cursor: pointer"><i class="fas fa-user"></i></button>
                     </span>
                         <span class="input-group-btn">
                         <button class="btn btn-secondary" type="button"  data-toggle="tooltip" data-placement="top"  title="Ricerca per gang" style="cursor: pointer"><i class="fas fa-users"></i></button>
@@ -107,7 +73,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row statsdiv">
                 <div class="col-lg-12">
                     <div class="card-group pagec">
                         <div class="card padonphone  animated fadeInLeft" onclick="searchPlayerBar()" data-toggle="tooltip" data-placement="top" style="cursor:pointer; border-right: 2px solid #2D3035" title="Ricerca per giocatore">
@@ -154,14 +120,89 @@
 
         </section>
         <section id="playermultyresult" hidden>
-
+            <h4>Molti risultati</h4>
         </section>
         <section id="playersearchview" hidden>
-
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 padbot">
+                        <h3><span id="usernameplace"></span> <small style="font-size: smaller; color: #44484d;">(<span id="playeridplace"></span>)</small></h3>
+                    </div>
+                    <div class="col-12 padbot">
+                        <nav class="nav nav-pills nav-fill">
+                            <a id="infonav" class="nav-item nav-link active" href="#" onclick="showUserInfo()"
+                               data-toggle="tooltip" data-placement="top" title="Informazioni generali">Informazioni</a>
+                            <!--<a id="licensenav" class="nav-item nav-link disabled"
+                               data-toggle="tooltip" data-placement="top" title="Coming soon">Licenze</a>-->
+                            <a id="vehiclenav" class="nav-item nav-link" href="#" onclick="showUserVehicle()"
+                               data-toggle="tooltip" data-placement="top" title="Veicoli nel garage">Veicoli</a>
+                            <a class="nav-item nav-link" id="steamLink" data-toggle="tooltip" data-placement="top"
+                               title="Link all'account Steam" target="_blank">Steam</a>
+                            <a class="nav-item nav-link" id="forumLink" hidden href="#" data-toggle="tooltip" data-placement="top"
+                               title="Link al profilo sul forum">Account</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <section id="userinfopanel">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm padbot">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Patrimonio</h4>
+                                    <h6 class="card-subtitle mb-2 text-muted">Le informazioni finanziarie</h6>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Fondo bancario: <span class="pull-right"><span
+                                            id="userbankacc"></span> €</span></li>
+                                    <li class="list-group-item">Contanti: <span class="pull-right"><span
+                                            id="usercash"></span> €</span></li>
+                                    <li class="list-group-item">Livello donatore: <span class="pull-right"><span
+                                            id="userdonorlevel"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i></span></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm padbot">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Gruppi</h4>
+                                    <h6 class="card-subtitle mb-2 text-muted">Le associazioni dell'utente</h6>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Gang: <span class="pull-right"><span
+                                            id="usergangon"><i class="fas fa-sync-alt fa-spin"></i></span></span></li>
+                                    <li class="list-group-item">Polizia: <span class="pull-right"><span id="usercoplevel">Ispettore</span></span>
+                                    </li>
+                                    <li class="list-group-item">Medici: <span class="pull-right"><span id="usermedlevel">Medico di Livello 4°</span></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 padbot">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Alias</h4>
+                                    <h6 class="card-subtitle mb-2 text-muted">Il nome utilizzato in precedenza dall'utente</h6>
+                                </div>
+                                <ul class="list-group list-group-flush" id="useraliasappend">
+                                    <li class="list-group-item" id="useralias">Nessuno conosciuto</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section id="noresult" hidden>
+            <h4>Nessun risultato</h4>
         </section>
     </main>
 
-    <nav aria-label="breadcrumb" role="navigation" class="pagec">
+    <nav aria-label="breadcrumb" role="navigation" class="pagec statsdiv">
         <ol class="breadcrumb">
             <li class="breadcrumb-item active" aria-current="page">
               <span>Made with <i style="color: firebrick" class="fas fa-heart animated infinite pulse"></i> by <a
@@ -186,6 +227,7 @@
 <script src="https://cdnjs.cat.net/ajax/libs/defiant.js/1.2.6/defiant.js"></script>
 <script src="asset/js/navigation.js"></script>
 <script src="asset/js/views.js"></script>
+<script src="asset/js/player.js"></script>
 <script src="asset/js/gang.js"></script>
 </body>
 </html>
