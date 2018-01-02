@@ -176,12 +176,12 @@ function getGangName(playerid) {
         timeout: 1500
     }).done(function (data) {
 
-        if (data[0].name) {
+        if (data.length === 1 ) {
             $('#usergangname').html(data[0].name).on('click', function () {
                 searchByGang($(this).data("id"));
             });
         } else {
-            $('#usergangname').html('dsf');
+            $('#usergangname').html(" Nessuna");
         }
 
     });
