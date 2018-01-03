@@ -87,10 +87,10 @@
                 <div class="row">
                     <div class="col">
                         <div>
-                            <button type="button" class="btn btn-secondary btn-lg btn-block" style="cursor: pointer"><i
+                            <button onclick="showFactionList('cop');" type="button" class="btn btn-secondary btn-lg btn-block" style="cursor: pointer"><i
                                     class="fas fa-gavel"></i> Elenco agenti
                             </button>
-                            <button type="button" class="btn btn-secondary btn-lg btn-block" style="cursor: pointer"><i
+                            <button onclick="showFactionList('med');" type="button" class="btn btn-secondary btn-lg btn-block" style="cursor: pointer"><i
                                     class="fas fa-user-md"></i> Elenco medici
                             </button>
 
@@ -210,7 +210,27 @@
             </div>
         </section>
         <section id="viewfactionlist" hidden>
-
+            <div class="card">
+                <h4 class="card-header">
+                    <i class="fas fa-users"></i> <span id="factionName"></span>
+                    <small><span id="factionCounter"></span></small>
+                </h4>
+                <div class="card-body" style="padding: 1% !important;">
+                    <table class="table table-dark">
+                        <thead>
+                        <tr>
+                            <th style="border-top: none !important;" scope="col">#</th>
+                            <th style="border-top: none !important;" scope="col">Nickname</th>
+                            <th style="border-top: none !important; text-align: center !important;" class="statsdiv" scope="col">Divisione</th>
+                            <th style="border-top: none !important; text-align: center !important;"  class="statsdiv" scope="col">Grado</th>
+                            <th style="border-top: none !important;" scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody id="appendFactionsMembers">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </section>
         <section id="playermultyresult" hidden>
             <h4>Ho trovato <span id="resultsize"></span> risultati:
@@ -275,10 +295,10 @@
                                     <li class="list-group-item">Gang: <span id="usergangname" class="pull-right"><span
                                             id="usergangon"><i class="fas fa-sync-alt fa-spin"></i></span></span></li>
                                     <li class="list-group-item">Polizia: <span class="pull-right"><span
-                                            id="usercoplevel">Ispettore</span></span>
+                                            id="usercoplevel"></span></span>
                                     </li>
                                     <li class="list-group-item">Medici: <span class="pull-right"><span
-                                            id="usermedlevel">Medico di Livello 4°</span></span>
+                                            id="usermedlevel"></span></span>
                                     </li>
                                 </ul>
                             </div>
@@ -293,7 +313,7 @@
                                         dall'utente</h6>
                                 </div>
                                 <ul class="list-group list-group-flush" id="useraliasappend">
-                                    <li class="list-group-item" id="useralias">Nessuno conosciuto</li>
+                                    <li class="list-group-item" id="useralias"></li>
                                 </ul>
                             </div>
                         </div>

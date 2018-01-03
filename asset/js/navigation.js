@@ -102,10 +102,7 @@ function goToHome() {
     searchType = "";
     hideOpenWindow();
     $('#mainsearchpage').removeAttr('hidden');
-    $('#listUserAppendElement').empty();
-    $('#appendgangmembers').empty();
-    $('#uservehicleappender').empty();
-    $('#listGangAppendElement').empty();
+    $('#listUserAppendElement, #appendgangmembers, #uservehicleappender, #listGangAppendElement, #appendFactionsMembers').empty();
     console.clear();
 
 }
