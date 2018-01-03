@@ -116,11 +116,21 @@ function showGang(data) {
             '    <th scope="row">' + counter + '</th>' +
             '    <td id="user' + membersid + '" ></td>' +
             '    <td class="statsdiv">' + membersid + '</td>' +
-            '    <td title="Visualizza dettagli utente"  data-toggle="tooltip" data-placement="top" style="color: #007BCC;cursor:pointer;"><i class="fas fa-external-link-alt"></i></td>' +
+            '    <td title="Visualizza dettagli utente"  data-toggle="tooltip" id="'+data[0].members[i]+'" data-id="'+data[0].members[i]+'" data-placement="top" style="color: #007BCC;cursor:pointer;"><i class="fas fa-external-link-alt"></i></td>' +
             '</tr>');
 
         $('#appendgangmembers').append(gangmembers);
 
+    }
+
+    for (var x = 0; x < data[0].members.length; x++) {
+
+        var membersid2 = data[0].members[x];
+        console.log(membersid2);
+
+        $('#' + membersid2).on('click', function () {
+            searchByPlayer($(this).data("id"));
+        });
     }
 }
 

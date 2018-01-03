@@ -51,7 +51,7 @@ function searchByPlayer(playerid) {
         if(data.length > 1){
             showUserList(data);
         }else if(data.length === 1){
-            $('#playermultyresult').attr('hidden', true);
+            $('#playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #noresult').attr('hidden', true);
             showUser(data);
         }else{
             $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage').attr('hidden', true);
