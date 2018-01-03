@@ -190,7 +190,7 @@ function getGangName(playerid) {
                 searchByGang($(this).html());
             });
         } else {
-            $('#usergangname').html(" Nessuna");
+            $('#usergangname').html(" Nessuna").removeAttr('style').off('click').attr('title','Questo utente non è in nessuna gang');
         }
 
     });
