@@ -112,32 +112,34 @@ function hideOpenWindow() {
  */
 
 function hideAllInfoPanel() {
-    $('#userinfopanel, #userlicensepanel, #uservehiclepanel').hide().attr('hidden', true);
+    $('#userinfopanel, #userlicensepanel, #uservehiclepanel, #userwantedpanel').hide().attr('hidden', true);
 }
 
 function showUserInfo() {
     hideAllInfoPanel();
     $('#userinfopanel').show(300).removeAttr('hidden');
     $('#infonav').addClass('active');
-    $('#licensenav, #groupsnav, #vehiclenav').attr('class', 'nav-item nav-link');
+    $('#licensenav, #groupsnav, #vehiclenav, #userwantedpanel').attr('class', 'nav-item nav-link');
 }
 
-function showUserLicense() {
+/*function showUserLicense() {
     hideAllInfoPanel();
     $('#userlicensepanel').show(300).removeAttr('hidden');
     $('#licensenav').addClass('active');
     $('#infonav, #groupsnav, #vehiclenav').attr('class', 'nav-item nav-link');
+}*/
+
+function showUserWanted() {
+    hideAllInfoPanel();
+    $('#userwantedpanel').show(300).removeAttr('hidden');
+    $('#infonav').addClass('active');
+    $('#licensenav, #groupsnav, #vehiclenav, #userinfopanel').attr('class', 'nav-item nav-link');
 }
 
 function showUserVehicle() {
     hideAllInfoPanel();
     $('#uservehiclepanel').show(300).removeAttr('hidden');
     $('#vehiclenav').addClass('active');
-    $('#infonav, #groupsnav, #licensenav').attr('class', 'nav-item nav-link');
-}
-
-function showUserGang() {
-    hideAllInfoPanel();
-    $('#infonav, #groupsnav, #licensenav, #vehiclenav').attr('class', 'nav-item nav-link');
+    $('#infonav, #groupsnav, #licensenav, #userwantedpanel').attr('class', 'nav-item nav-link');
 }
 
