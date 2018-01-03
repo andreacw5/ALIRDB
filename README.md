@@ -1,2 +1,58 @@
 # ALIRBD
-Pagina di visuallizzazione del database del server ALIR (Altis Life Italia Reloaded)
+
+Il repo contiene tutto il codice relativo alla pagina di visualizzazione del database di ALIR, disponibile sul sito ([link](https://www.alir.eu/db/dbviewer/)).
+
+L'applicazione è creata per permettere un monitoraggio costante sia da parte degli utenti, sia da parte dell'amministrazione che in pochi secondi anche senza disponibilità di database alla mano possono controllare un'utente o una gang tranquillamente dal proprio browser, da qualunque dispositivo.
+
+L'applicativo è stato testato su **Firefox Quantum 57.0.3 (64 bit)**.
+
+### Pagina principale
+
+![Homepage](https://i.imgur.com/jdbY8iD.png?1)
+
+Al fine di avere tutto sotto mano, dalla pagina principale è possibile effettuare ricerche sia nella tabella **players** sia nella tabella **gangs**. 
+
+*Ricerca per giocatori*
+È possibile ricercare gli utenti per ogni parametro disponibile e salvato, sia esso il nome, l'alias di gioco o il playerid dello stesso.
+Se riscontra una corrispondenza sarà possibile visualizzarne i dati direttamente, altrimenti verrà visualizzata la lista con i risultati simili alla ricerca effettuata, in questo modo sarà possibile cercare un'utente anche senza conoscerne il vero nome o l'ultimo usato.
+
+Esempio: Io mi chiamo **Cola** molto spesso in gioco ma l'ultima volta ho giocato come **Elettrodo**, ricercando **Cola** troverà multiple corrispondenze tra cui **Elettrodo** che tra gli alias (gli ultimi nomi usati) conterrà **Cola**!
+
+*Ricerca per gruppi*
+Come per gli utenti, sarà possibile ricercare le gang sia con il loro nome, sia con il playerId di un suo componente. 
+
+### Visualizzazione utente
+
+![userview](https://i.imgur.com/jdbY8iD.png?1)
+
+Nella visualizzazione utente sarà possibile visualizzare i seguenti valori:
+
+* Fondo bancario
+* Contanti
+* Livello donatore
+* Gang
+* Livello Polizia
+* Livello Medici
+* Alias usati
+* I veicoli dell'utente (Civili, medici e cop)
+* Link all'account steam
+* Link all'account del forum [ALIR](https://www.alir.eu/) (Se configurato sul forum)
+* I capi di accusa dell'utente (Se disponibili)
+* *Le licenze dell'utente* (**IN FUTURO!**)
+
+### Visualizzazione gang
+
+![gangview](https://i.imgur.com/jdbY8iD.png?1)
+
+Nella visualizzazione gang sarà possibile visualizzare i seguenti valori:
+
+* Il totale dei membri (Con avviso in caso si raggiunga il limite imposto)
+* Il capo della gang
+* I membri della stessa (Visualizzandone il nome ed il playerid)
+
+*Nel caso sia ripetuto un membro nella gang 2 volte solo il primo verrà visualizzato con il nome, il secondo mostrerà solo il playerid facilitando la rimozione di player buggati*
+
+### Visualizzazione liste di fazione
+
+![factionview](https://i.imgur.com/jdbY8iD.png?1)
+
