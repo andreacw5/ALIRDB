@@ -57,7 +57,7 @@ function statisticOnLoad() {
         url: playerDatabase,
         type: 'GET',
         dataType: "json",
-        timeout: 1500
+        timeout: 5000
     }).done(function (data) {
         $('#playerCounter').html(data.length)
     });
@@ -66,7 +66,7 @@ function statisticOnLoad() {
         url: gangDatabase,
         type: 'GET',
         dataType: "json",
-        timeout: 1500
+        timeout: 5000
     }).done(function (data) {
         $('#gangCounter').html(data.length)
     });
@@ -75,7 +75,7 @@ function statisticOnLoad() {
         url: vehicleDatabase,
         type: 'GET',
         dataType: "json",
-        timeout: 1500
+        timeout: 5000
     }).done(function (data) {
         $('#vehicleCounter').html(data.length)
     });
@@ -84,7 +84,7 @@ function statisticOnLoad() {
         url: wantedDatabase,
         type: 'GET',
         dataType: "json",
-        timeout: 1500
+        timeout: 5000
     }).done(function (data) {
         $('#wantedCounter').html(data.length)
     });

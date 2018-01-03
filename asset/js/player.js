@@ -41,7 +41,7 @@ function searchByPlayer(playerid) {
     $.ajax({
         url: playerDatabase,
         type: 'GET',
-        timeout: 1500,
+        timeout: 5000,
         contentType: 'json',
         data: {
             q: playerid
@@ -240,7 +240,7 @@ function getUserVehicle(playerid) {
     $.ajax({
         url: vehicleDatabase,
         type: 'GET',
-        timeout: 1500,
+        timeout: 5000,
         contentType: 'json',
         data: {
             q: playerid
@@ -504,7 +504,7 @@ function showFactionList(type) {
         url: playerDatabase,
         type: 'GET',
         dataType: "json",
-        timeout: 1500
+        timeout: 5000
     }).done(function (data) {
 
         var counterm = 1;

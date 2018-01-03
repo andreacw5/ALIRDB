@@ -50,7 +50,7 @@ function searchByGang(gang) {
             q: gang
         },
         dataType: "json",
-        timeout: 1500
+        timeout: 5000
     }).done(function (data) {
 
         if (data.length > 1) {
@@ -149,7 +149,7 @@ function getGangMembersName(playerid, owner) {
             q: playerid
         },
         dataType: "json",
-        timeout: 1500
+        timeout: 5000
     }).done(function (data) {
             if (data[0].name) {
                 if (data[0].playerid === owner) {
@@ -182,7 +182,7 @@ function getGangName(playerid) {
             q: playerid
         },
         dataType: "json",
-        timeout: 1500
+        timeout: 5000
     }).done(function (data) {
 
         if (data.length === 1 ) {
