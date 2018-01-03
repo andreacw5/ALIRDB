@@ -120,3 +120,8 @@ h5{
 .modal-body b{
     color: #007BCC;
 }
+
+.list-group-item-action:focus, .list-group-item-action:hover {
+    color: #c2d4e1;
+    background-color: #4c5156;
+}
