@@ -89,7 +89,7 @@ function statisticOnLoad() {
         $('#wantedCounter').html(data.length)
     });
 
-    $('#adminCounter').html("15");
+    $('#adminCounter').html("11");
 
 }
 statisticOnLoad();
@@ -105,6 +105,7 @@ function goToHome() {
     $('#listUserAppendElement').empty();
     $('#appendgangmembers').empty();
     $('#uservehicleappender').empty();
+    $('#listGangAppendElement').empty();
     console.clear();
 
 }

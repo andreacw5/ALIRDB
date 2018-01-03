@@ -59,7 +59,8 @@ function searchByPlayer(playerid) {
         }
 
     }).fail(function () {
-
+        // TODO: Gestire a video l'eccezione
+        console.log('fail');
     });
 
 

@@ -54,20 +54,18 @@ function searchByGang(gang) {
     }).done(function (data) {
 
         if (data.length > 1) {
-
-            console.log(data);
+            $('#mainsearchpage').attr('hidden', true);
             showGangList(data);
-
         } else if (data.length === 1) {
-
+            $('#gangmultyresult').attr('hidden', true);
             showGang(data);
-
         } else {
             $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage').attr('hidden', true);
             $('#noresult').removeAttr('hidden');
         }
 
     }).fail(function () {
+        // TODO: Gestire a video l'eccezione
         console.log('fail');
     });
 
@@ -196,5 +194,38 @@ function getGangName(playerid) {
  */
 
 function showGangList(data) {
+
+    console.log(data);
+
+    $('#gangmultyresult').removeAttr('hidden');
+
+    $('#gangresultsize').html(data.length);
+
+    for (var i = 0; i < data.length; i++) {
+
+        var gangName = data[i].name;
+        var ownerId = data[i].owner;
+        var memberSize = data[i].members.length;
+
+        var listElement = $('<a style="cursor:pointer;" id="' + ownerId + '" data-id="' + ownerId + '" class="list-group-item list-group-item-action flex-column align-items-start">' +
+            '    <div class="d-flex w-100 justify-content-between">' +
+            '      <h5 class="mb-1">' + gangName + '</h5>' +
+            '      <small><i class="fas fa-external-link-alt"></i></small>' +
+            '    </div>' +
+            '    <small>Dimensioni: ' + memberSize + '/20 - Proprietario: ' + ownerId + '</small>' +
+            '  </a>');
+
+        $('#listGangAppendElement').append(listElement);
+
+    }
+
+    for (var x = 0; x < data.length; x++) {
+
+        var ownerId2 = data[x].owner;
+
+        $('#' + ownerId2).on('click', function () {
+            searchByGang($(this).data("id"));
+        });
+    }
 
 }
