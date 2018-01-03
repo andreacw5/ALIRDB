@@ -65,8 +65,9 @@ function searchByGang(gang) {
         }
 
     }).fail(function () {
-        // TODO: Gestire a video l'eccezione
-        console.log('fail');
+        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage').attr('hidden', true);
+        $('#errorServer').removeAttr('hidden');
+        $('#modulename').html("gang");
     });
 
 }
@@ -126,7 +127,6 @@ function showGang(data) {
     for (var x = 0; x < data[0].members.length; x++) {
 
         var membersid2 = data[0].members[x];
-        console.log(membersid2);
 
         $('#' + membersid2).on('click', function () {
             searchByPlayer($(this).data("id"));
@@ -163,7 +163,11 @@ function getGangMembersName(playerid, owner) {
                 $('#gangName' + playerid).html("Utente non trovato").attr('style', 'color: red');
             }
         }
-    );
+    ).fail(function () {
+        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage').attr('hidden', true);
+        $('#errorServer').removeAttr('hidden');
+        $('#modulename').html("player");
+    });
 
 }
 
@@ -193,6 +197,10 @@ function getGangName(playerid) {
             $('#usergangname').html(" Nessuna").removeAttr('style').off('click').attr('title','Questo utente non è in nessuna gang');
         }
 
+    }).fail(function () {
+        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage').attr('hidden', true);
+        $('#errorServer').removeAttr('hidden');
+        $('#modulename').html("gang");
     });
 
 }
@@ -204,8 +212,6 @@ function getGangName(playerid) {
  */
 
 function showGangList(data) {
-
-    console.log(data);
 
     $('#gangmultyresult').removeAttr('hidden');
 

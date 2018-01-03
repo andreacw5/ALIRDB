@@ -328,7 +328,7 @@
         <section id="noresult" hidden>
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
-                    <h1 class="display-4">Nessun risultato</h1>
+                    <h1 class="display-4" style="color: #3D6594">Nessun risultato (404)</h1>
                     <p class="lead">Spiacente, con la ricerca da te effettuata non ho trovato corrispondenze!</p>
                     <a class="lead" style="color: #007BCC;cursor:pointer;" onclick="goToHome();">Torna alla pagina
                         principale e prova con altri elementi! <i class="fas fa-external-link-alt"></i></a>
@@ -338,8 +338,10 @@
         <section id="errorServer" hidden>
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
-                    <h1 class="display-4">500 - ERRORE</h1>
-                    <p class="lead">Si è verificato un'errore generico al server di ALIR:DB! Ricarica la pagina!</p>
+                    <h1 class="display-4" style="color: red; text-align: center">ERRORE 500</h1>
+                    <br>
+                    <p class="lead">Il modulo <span id="modulename"></span> non risponde!</p>
+                    <p>Riprova più tardi!</p>
                 </div>
             </div>
         </section>
@@ -456,7 +458,7 @@
         crossorigin="anonymous"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
 <script src="https://cdnjs.cat.net/ajax/libs/defiant.js/1.2.6/defiant.js"></script>
-<!--<script src="asset/js/minified/alirdb.min.js"></script>-->
+<!--<script src="asset/js/alirdb.min.js"></script>-->
 <script src="asset/js/navigation.js"></script>
 <script src="asset/js/player.js"></script>
 <script src="asset/js/gang.js"></script>

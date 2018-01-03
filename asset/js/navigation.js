@@ -29,9 +29,6 @@
  *  @author: Andreacw
  */
 
-var searchType = "";
-var searchId = "";
-var searchData;
 var searchLimiter = 100;
 
 // Indirizzi ip per query GET
@@ -99,7 +96,6 @@ statisticOnLoad();
  */
 
 function goToHome() {
-    searchType = "";
     hideOpenWindow();
     $('#mainsearchpage').removeAttr('hidden');
     $('#listUserAppendElement, #appendgangmembers, #uservehicleappender, #listGangAppendElement, #appendFactionsMembers').empty();
@@ -108,7 +104,7 @@ function goToHome() {
 }
 
 function hideOpenWindow() {
-    $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #noresult, #viewfactionlist').attr('hidden', true);
+    $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #noresult, #viewfactionlist, #errorServer').attr('hidden', true);
 }
 
 /**

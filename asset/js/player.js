@@ -59,8 +59,9 @@ function searchByPlayer(playerid) {
         }
 
     }).fail(function () {
-        // TODO: Gestire a video l'eccezione
-        console.log('fail');
+        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage').attr('hidden', true);
+        $('#errorServer').removeAttr('hidden');
+        $('#modulename').html("player");
     });
 
 
@@ -485,7 +486,9 @@ function getUserVehicle(playerid) {
         }
 
     }).fail(function () {
-
+        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage').attr('hidden', true);
+        $('#errorServer').removeAttr('hidden');
+        $('#modulename').html("vehicle");
     });
 
 }
@@ -593,6 +596,10 @@ function showFactionList(type) {
             }
         }
 
+    }).fail(function () {
+        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage').attr('hidden', true);
+        $('#errorServer').removeAttr('hidden');
+        $('#modulename').html("player");
     });
 }
 
