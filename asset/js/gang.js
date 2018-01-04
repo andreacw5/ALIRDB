@@ -41,7 +41,7 @@ function searchByGang(gang) {
         gang = $('#searchinput').val();
     }
 
-    $('#playersearchview, #playermultyresult, #gangmultyresult, #noresult, #viewfactionlist').attr('hidden', true);
+    $('#playersearchview, #playermultyresult, #gangmultyresult, #noresult, #viewfactionlist, #wantedlist').attr('hidden', true);
 
     $.ajax({
         url: gangDatabase,
@@ -60,12 +60,12 @@ function searchByGang(gang) {
             $('#gangmultyresult').attr('hidden', true);
             showGang(data);
         } else {
-            $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage').attr('hidden', true);
+            $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
             $('#noresult').removeAttr('hidden');
         }
 
     }).fail(function () {
-        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage').attr('hidden', true);
+        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
         $('#errorServer').removeAttr('hidden');
         $('#modulename').html("gang");
     });
@@ -164,7 +164,7 @@ function getGangMembersName(playerid, owner) {
             }
         }
     ).fail(function () {
-        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage').attr('hidden', true);
+        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
         $('#errorServer').removeAttr('hidden');
         $('#modulename').html("player");
     });
@@ -198,7 +198,7 @@ function getGangName(playerid) {
         }
 
     }).fail(function () {
-        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage').attr('hidden', true);
+        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
         $('#errorServer').removeAttr('hidden');
         $('#modulename').html("gang");
     });
