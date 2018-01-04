@@ -37,6 +37,11 @@
 
 function searchByGang(gang) {
 
+    $('#userFinderButton').attr('disabled',true);
+    $('#gangFinderButton').attr('disabled',true);
+    $('#copFinderButton').attr('disabled',true);
+    $('#medFinderButton').attr('disabled',true);
+
     if (!gang) {
         gang = $('#searchinput').val();
     }

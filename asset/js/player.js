@@ -31,6 +31,11 @@
 
 function searchByPlayer(playerid) {
 
+    $('#userFinderButton').attr('disabled',true);
+    $('#gangFinderButton').attr('disabled',true);
+    $('#copFinderButton').attr('disabled',true);
+    $('#medFinderButton').attr('disabled',true);
+
     // Solo in caso non viene passato l'id uso il campo input per la ricerca
     if(!playerid){
         playerid = $('#searchinput').val();
@@ -502,6 +507,11 @@ function getUserVehicle(playerid) {
  */
 
 function showFactionList(type) {
+
+    $('#userFinderButton').attr('disabled',true);
+    $('#gangFinderButton').attr('disabled',true);
+    $('#copFinderButton').attr('disabled',true);
+    $('#medFinderButton').attr('disabled',true);
 
     // TODO: Richiesto Json esposto direttamente con la lista fazioni in modo da non esporre al client la ricerca ed i dati degli utenti.
 
