@@ -61,7 +61,6 @@
     </nav>
 
     <main role="main">
-
         <section id="mainsearchpage">
             <div class="row">
                 <div class="col-lg-12">
@@ -70,12 +69,12 @@
                                id="searchinput">
                         <span class="input-group-btn">
                         <button class="btn btn-secondary" type="button" data-toggle="tooltip" data-placement="top"
-                                title="Ricerca per utente o GUID" onclick="searchByPlayer();" style="cursor: pointer"><i
+                                title="Ricerca per utente o GUID" id="userFinderButton" onclick="searchByPlayer();" style="cursor: pointer"><i
                                 class="fas fa-user"></i></button>
                     </span>
                         <span class="input-group-btn">
                         <button class="btn btn-secondary" type="button" data-toggle="tooltip" data-placement="top"
-                                title="Ricerca per gang" onclick="searchByGang();" style="cursor: pointer"><i
+                                title="Ricerca per gang" id="gangFinderButton" onclick="searchByGang();" style="cursor: pointer"><i
                                 class="fas fa-users"></i></button>
                     </span>
                     </div>
@@ -85,10 +84,10 @@
                 <div class="row">
                     <div class="col">
                         <div>
-                            <button onclick="showFactionList('cop');" type="button" class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center" style="cursor: pointer"><i
+                            <button onclick="showFactionList('cop');" id="copFinderButton" type="button" class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center" style="cursor: pointer"><i
                                     class="fas fa-gavel"></i> <span>Elenco agenti</span> <span></span>
                             </button>
-                            <button onclick="showFactionList('med');" type="button" class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center" style="cursor: pointer"><i
+                            <button onclick="showFactionList('med');" id="medFinderButton" type="button" class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center" style="cursor: pointer"><i
                                     class="fas fa-user-md"></i> <span>Elenco medici</span> <span></span>
                             </button>
                             <!--<button onclick="startWantedMenu();" type="button" class="btn btn-warning btn-lg btn-block d-flex justify-content-between align-items-center" style="cursor: pointer"><i
@@ -284,11 +283,11 @@
                             <!--<a id="licensenav" class="nav-item nav-link disabled"
                                data-toggle="tooltip" data-placement="top" title="Coming soon">Licenze</a>-->
                             <a id="vehiclenav" class="nav-item nav-link" href="#" onclick="showUserVehicle()"
-                               data-toggle="tooltip" data-placement="top" title="Veicoli nel garage"><i class="fas fa-car"></i></a>
-                            <a id="licensenav" class="nav-item nav-link disabled"
-                               data-toggle="tooltip" data-placement="top" title="Licenze non disponibili attualmente"><i class="fas fa-id-badge"></i></a>
+                               data-toggle="tooltip" data-placement="top" title="Veicoli nel garage">Veicoli</a>
+                            <!--<a id="licensenav" class="nav-item nav-link disabled"
+                               data-toggle="tooltip" data-placement="top" title="Licenze non disponibili attualmente"><i class="fas fa-id-badge"></i></a>-->
                             <a id="wantednav" hidden class="nav-item nav-link" href="#" onclick="showUserWanted()"
-                               data-toggle="tooltip" data-placement="top" title="Dati giudiziari"><i class="fas fa-gavel"></i></a>
+                               data-toggle="tooltip" data-placement="top" title="Dati giudiziari">Dati Giudiziari</a>
                             <a class="nav-item nav-link" id="steamLink" data-toggle="tooltip" data-placement="top"
                                title="Link all'account Steam" target="_blank">Steam</a>
                             <a class="nav-item nav-link" id="forumLink" hidden href="#" data-toggle="tooltip"

@@ -100,7 +100,11 @@ function goToHome() {
     hideOpenWindow();
     $('#mainsearchpage').removeAttr('hidden');
     $('#listUserAppendElement, #appendgangmembers, #uservehicleappender, #listGangAppendElement, #appendFactionsMembers, #wantedresultappend, #appendinputationlist').empty();
-    console.clear();
+
+    $('#userFinderButton').removeAttr('disabled');
+    $('#gangFinderButton').removeAttr('disabled');
+    $('#copFinderButton').removeAttr('disabled');
+    $('#medFinderButton').removeAttr('disabled');
 
 }
 
