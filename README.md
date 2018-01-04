@@ -8,8 +8,6 @@ L'applicativo è stato testato su **Firefox Quantum 57.0.3 (64 bit)**.
 
 ### Pagina principale
 
-![Homepage](https://i.imgur.com/jdbY8iD.png?1)
-
 Al fine di avere tutto sotto mano, dalla pagina principale è possibile effettuare ricerche sia nella tabella **players** sia nella tabella **gangs**. 
 
 *Ricerca per giocatori*
@@ -22,8 +20,6 @@ Esempio: Io mi chiamo **Cola** molto spesso in gioco ma l'ultima volta ho giocat
 Come per gli utenti, sarà possibile ricercare le gang sia con il loro nome, sia con il playerId di un suo componente. 
 
 ### Visualizzazione utente
-
-![userview](https://i.imgur.com/jdbY8iD.png?1)
 
 Nella visualizzazione utente sarà possibile visualizzare i seguenti valori:
 
@@ -38,11 +34,8 @@ Nella visualizzazione utente sarà possibile visualizzare i seguenti valori:
 * Link all'account steam
 * Link all'account del forum [ALIR](https://www.alir.eu/) (Se configurato sul forum)
 * I capi di accusa dell'utente (Se disponibili)
-* *Le licenze dell'utente* (**IN FUTURO!**)
 
 ### Visualizzazione gang
-
-![gangview](https://i.imgur.com/jdbY8iD.png?1)
 
 Nella visualizzazione gang sarà possibile visualizzare i seguenti valori:
 
@@ -54,5 +47,15 @@ Nella visualizzazione gang sarà possibile visualizzare i seguenti valori:
 
 ### Visualizzazione liste di fazione
 
-![factionview](https://i.imgur.com/jdbY8iD.png?1)
+Nella visualizzazione delle liste di fazione sarà possibile visualizzare i seguenti valori:
 
+* Il totale dei membri della fazione scelta
+* Il nome dei membri stessi con il link alla visualizzazione in dettaglio degli stessi
+* Il livello all'interno della stessa
+* La divisione di appartenenza (PLK, PdA, Medici)
+
+### Statistiche e dati di riferimento dei valori
+
+Le statistiche visualizzate nella prima pagina permettono di monitorare le dimensioni delle tabelle del nostro server che diventano ogni giorno più grandi <3
+
+I valori vengono raccolti ogni 30 minuti dal database ufficiale del server di ALIR e trasferiti sul server di ALIRDB per l'esposizione tramite API.
