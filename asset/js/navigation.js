@@ -32,12 +32,13 @@
 var searchLimiter = 100;
 
 // Indirizzi ip per query GET
+// È una merda ma aggiungo il cors ulteriore per evitare il blocco http
 
-var playerDatabase = "http://37.59.102.107:5100/players";
-var gangDatabase = "http://37.59.102.107:5200/gangs";
-var vehicleDatabase = "http://37.59.102.107:5300/vehicles";
-var wantedDatabase = "http://37.59.102.107:5400/wanted";
-var userDatabase = "http://37.59.102.107:5500/users";
+var playerDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5100/players";
+var gangDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5200/gangs";
+var vehicleDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5300/vehicles";
+var wantedDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5400/wanted";
+var userDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5500/users";
 
 // Abilito i tooltip ovunque
 $(function () {
@@ -45,7 +46,7 @@ $(function () {
 });
 
 /**
- *  Lenght dei db esterni
+ *  Caricamento delle statistiche nella homepage
  */
 
 function statisticOnLoad() {

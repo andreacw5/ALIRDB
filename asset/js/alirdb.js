@@ -35,8 +35,9 @@
 // @koala-prepend "navigation.js"
 // @koala-append "player.js"
 // @koala-append "gang.js"
+// @koala-append "wanted.js"
 
 // jQuery is ready
 $(function(){
-    // TODO
+    // TODO: Spostare qui la parte dei tooltip
 });
