@@ -99,13 +99,13 @@ statisticOnLoad();
 function goToHome() {
     hideOpenWindow();
     $('#mainsearchpage').removeAttr('hidden');
-    $('#listUserAppendElement, #appendgangmembers, #uservehicleappender, #listGangAppendElement, #appendFactionsMembers').empty();
+    $('#listUserAppendElement, #appendgangmembers, #uservehicleappender, #listGangAppendElement, #appendFactionsMembers, #wantedresultappend, #appendinputationlist').empty();
     console.clear();
 
 }
 
 function hideOpenWindow() {
-    $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #noresult, #viewfactionlist, #errorServer').attr('hidden', true);
+    $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #noresult, #viewfactionlist, #errorServer, #wantednav').attr('hidden', true);
 }
 
 /**
@@ -120,7 +120,7 @@ function showUserInfo() {
     hideAllInfoPanel();
     $('#userinfopanel').show(300).removeAttr('hidden');
     $('#infonav').addClass('active');
-    $('#licensenav, #groupsnav, #vehiclenav, #userwantedpanel').attr('class', 'nav-item nav-link');
+    $('#licensenav, #groupsnav, #vehiclenav, #wantednav').attr('class', 'nav-item nav-link');
 }
 
 /*function showUserLicense() {
@@ -133,14 +133,14 @@ function showUserInfo() {
 function showUserWanted() {
     hideAllInfoPanel();
     $('#userwantedpanel').show(300).removeAttr('hidden');
-    $('#infonav').addClass('active');
-    $('#licensenav, #groupsnav, #vehiclenav, #userinfopanel').attr('class', 'nav-item nav-link');
+    $('#wantednav').addClass('active');
+    $('#licensenav, #groupsnav, #vehiclenav, #infonav').attr('class', 'nav-item nav-link');
 }
 
 function showUserVehicle() {
     hideAllInfoPanel();
     $('#uservehiclepanel').show(300).removeAttr('hidden');
     $('#vehiclenav').addClass('active');
-    $('#infonav, #groupsnav, #licensenav, #userwantedpanel').attr('class', 'nav-item nav-link');
+    $('#infonav, #groupsnav, #licensenav, #wantednav').attr('class', 'nav-item nav-link');
 }
 

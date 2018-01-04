@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>DBView</title>
+    <title>ALIRDB - Database</title>
     <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="ALIR Database Viewer">
+    <meta name="keywords" content="Altis, Italia, ALIR, alir, db">
+    <meta name="author" content="Andreacw">
     <!-- Page favicon -->
-    <link rel="icon"
-          href="http://marketplace.brainwavegrc.com/wp-content/uploads/bw_store_facet_images/bw_extractorsql_icon-900x0.png">
+    <link rel="icon" href="https://i.imgur.com/SSdiFqD.png" type="image/gif"/>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -17,9 +17,7 @@
     <link href="asset/css/style.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
-          integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
-          crossorigin="anonymous">
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
     <!-- Hotjar Tracking Code for www.alir.eu -->
     <!--<script>
@@ -41,7 +39,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" style="font-size: 150%; cursor:pointer;" data-toggle="tooltip" data-placement="top"
-           title="Ricarica la pagina" onclick="goToHome()"><i class="fas fa-database"></i> <b
+           title="Torna alla pagina principale" onclick="goToHome()"><i class="fas fa-database"></i> <b
                 style="color: #007BCC">ALIR</b>DB</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
                 aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,35 +85,37 @@
                 <div class="row">
                     <div class="col">
                         <div>
-                            <button onclick="showFactionList('cop');" type="button" class="btn btn-secondary btn-lg btn-block" style="cursor: pointer"><i
-                                    class="fas fa-gavel"></i> Elenco agenti
+                            <button onclick="showFactionList('cop');" type="button" class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center" style="cursor: pointer"><i
+                                    class="fas fa-gavel"></i> <span>Elenco agenti</span> <span></span>
                             </button>
-                            <button onclick="showFactionList('med');" type="button" class="btn btn-secondary btn-lg btn-block" style="cursor: pointer"><i
-                                    class="fas fa-user-md"></i> Elenco medici
+                            <button onclick="showFactionList('med');" type="button" class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center" style="cursor: pointer"><i
+                                    class="fas fa-user-md"></i> <span>Elenco medici</span> <span></span>
                             </button>
-
+                            <!--<button onclick="startWantedMenu();" type="button" class="btn btn-warning btn-lg btn-block d-flex justify-content-between align-items-center" style="cursor: pointer"><i
+                                    class="fas fa-sign-in-alt"></i> <span>Banca dati ricercati</span> <span></span>
+                            </button>-->
                         </div>
                         <div class="pagec">
                             <div class="card">
                                 <ul class="list-group">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <i class="fas fa-user"></i> Giocatori
+                                        <i class="fas fa-user"></i> <span>Giocatori</span>
                                         <span class="badge badge-primary badge-pill"><span id="playerCounter"><i class="fas fa-sync-alt fa-spin"></i></span></span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <i class="fas fa-users"></i> Gang
+                                        <i class="fas fa-users"></i> <span>Gang</span>
                                         <span class="badge badge-primary badge-pill"><span id="gangCounter"><i class="fas fa-sync-alt fa-spin"></i></span></span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <i class="fas fa-user-times"></i> Ricercati
+                                        <i class="fas fa-user-times"></i> <span>Ricercati</span>
                                         <span class="badge badge-primary badge-pill"><span id="wantedCounter"><i class="fas fa-sync-alt fa-spin"></i></span></span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <i class="fas fa-user-secret"></i> Amministratori
+                                        <i class="fas fa-user-secret"></i> <span>Amministratori</span>
                                         <span class="badge badge-primary badge-pill"><span id="adminCounter"><i class="fas fa-sync-alt fa-spin"></i></span></span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <i class="fas fa-truck"></i> Veicoli
+                                        <i class="fas fa-truck"></i> <span>Veicoli</span>
                                         <span class="badge badge-primary badge-pill"><span id="vehicleCounter"><i class="fas fa-sync-alt fa-spin"></i></span></span>
                                     </li>
                                 </ul>
@@ -181,6 +181,35 @@
                 </div>
             </div>
         </section>
+        <!--<section id="wantedlist" hidden>
+
+            <div class="card mb-3">
+                <div class="card-header d-flex justify-content-between align-items-center"><i
+                        class="fas fa-user-times"></i> <span>Banca dati centrale</span> <span><i class="fas fa-sign-out-alt" style="cursor: pointer" onclick="" data-toggle="tooltip" data-placement="top"
+                                                                                                  title="Esci dalla banca dati"></i></span>
+                </div>
+                <div class="card-body">
+
+                    <h3>Polizia di Altis</h3>
+
+                    <div class="alert alert-success alert-dismissible fade show" id="alertconnectdatawanted" role="alert">
+                        <strong>Connessione riuscita!</strong> Sei connesso con la banca dati della Polizia di Altis.
+                    </div>
+
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="searchwantedform" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" onclick="findByName();" type="button">Cerca</button>
+                        </div>
+                    </div>
+
+                    <div id="wantedplayersearchappend" hidden></div>
+
+                </div>
+            </div>
+
+        </section>-->
         <section id="gangmultyresult" hidden>
             <h4>Ho trovato <span id="gangresultsize"></span> risultati:
             </h4>
@@ -255,7 +284,11 @@
                             <!--<a id="licensenav" class="nav-item nav-link disabled"
                                data-toggle="tooltip" data-placement="top" title="Coming soon">Licenze</a>-->
                             <a id="vehiclenav" class="nav-item nav-link" href="#" onclick="showUserVehicle()"
-                               data-toggle="tooltip" data-placement="top" title="Veicoli nel garage">Veicoli</a>
+                               data-toggle="tooltip" data-placement="top" title="Veicoli nel garage"><i class="fas fa-car"></i></a>
+                            <a id="licensenav" class="nav-item nav-link disabled"
+                               data-toggle="tooltip" data-placement="top" title="Licenze non disponibili attualmente"><i class="fas fa-id-badge"></i></a>
+                            <a id="wantednav" hidden class="nav-item nav-link" href="#" onclick="showUserWanted()"
+                               data-toggle="tooltip" data-placement="top" title="Dati giudiziari"><i class="fas fa-gavel"></i></a>
                             <a class="nav-item nav-link" id="steamLink" data-toggle="tooltip" data-placement="top"
                                title="Link all'account Steam" target="_blank">Steam</a>
                             <a class="nav-item nav-link" id="forumLink" hidden href="#" data-toggle="tooltip"
@@ -320,6 +353,15 @@
                     </div>
                 </div>
             </section>
+            <section id="userwantedpanel" hidden>
+                <div class="jumbotron jumbotron-fluid" id="loadingwanted">
+                    <div class="container">
+                        <h1 class="display-4" style="text-align: center"><i class="fas fa-wifi"></i></h1>
+                        <h4 style="text-align: center">Collegamento alla banca dati della Polizia di Altis...</h4>
+                    </div>
+                </div>
+                <div id="wantedresultappend" hidden></div>
+            </section>
             <section id="uservehiclepanel" hidden>
                 <h4 id="vehiclesize"></h4>
                 <div class="row" id="uservehicleappender"></div>
@@ -355,7 +397,7 @@
         </section>
     </main>
 
-    <nav aria-label="breadcrumb" role="navigation" class="pagec statsdiv">
+    <nav aria-label="breadcrumb" role="navigation" class="pagec">
         <ol class="breadcrumb">
             <li class="breadcrumb-item active" aria-current="page">
               <span>Made with <i style="color: firebrick" class="fas fa-heart animated infinite pulse"></i> by <a
@@ -402,6 +444,7 @@
                         <li><b>Informazioni</b>: tutte le informazioni sull'utente, quali patrimonio, informazioni su whitelist e gang associata, statistiche ed alias;</li>
                         <li><b>Veicoli</b>: verranno mostrati i veicoli, la loro tipologia ed il loro nome con associazione alla fazione di appartenenza (blu: polizia, giallo: aca, arancione: medici, bianco: civili);</li>
                         <li><b>Licenze</b>: Prossimamente disponibile la visualizzazione delle licenze possedute.</li>
+                        <li><b>Fedina penale</b>: Nel caso l'utente sia ricercato sarà possibile visionare la lista delle imputazioni a carico e la taglia a carico.</li>
                         <li><b>Steam</b>: Link al profilo steam dell'utente.</li>
                         <li><b>Forum</b>: Se configurato, link al profilo sul forum dell'utente.</li>
                     </ul>
@@ -456,11 +499,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
         integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
         crossorigin="anonymous"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
-<script src="https://cdnjs.cat.net/ajax/libs/defiant.js/1.2.6/defiant.js"></script>
+<script defer src="https://alir.eu/etero/js/fontawesome5.min.js"></script>
+<!--<script src="https://cdnjs.cat.net/ajax/libs/defiant.js/1.2.6/defiant.js"></script>-->
 <!--<script src="asset/js/alirdb.min.js"></script>-->
 <script src="asset/js/navigation.js"></script>
 <script src="asset/js/player.js"></script>
 <script src="asset/js/gang.js"></script>
+<script src="asset/js/wanted.js"></script>
 </body>
 </html>

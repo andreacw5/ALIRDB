@@ -41,7 +41,7 @@ function searchByPlayer(playerid) {
     $.ajax({
         url: playerDatabase,
         type: 'GET',
-        timeout: 5000,
+        timeout: 6000,
         contentType: 'json',
         data: {
             q: playerid
@@ -51,15 +51,15 @@ function searchByPlayer(playerid) {
         if(data.length > 1){
             showUserList(data);
         }else if(data.length === 1){
-            $('#playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #noresult').attr('hidden', true);
+            $('#playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #noresult, #wantedlist').attr('hidden', true);
             showUser(data);
         }else{
-            $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage').attr('hidden', true);
+            $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
             $('#noresult').removeAttr('hidden');
         }
 
     }).fail(function () {
-        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage').attr('hidden', true);
+        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
         $('#errorServer').removeAttr('hidden');
         $('#modulename').html("player");
     });
@@ -227,6 +227,8 @@ function showUser(data) {
     getGangName(data[0].playerid);
 
     getUserVehicle(data[0].playerid);
+
+    getUserCharges(data[0].playerid);
 
 }
 
@@ -486,7 +488,7 @@ function getUserVehicle(playerid) {
         }
 
     }).fail(function () {
-        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage').attr('hidden', true);
+        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
         $('#errorServer').removeAttr('hidden');
         $('#modulename').html("vehicle");
     });
@@ -534,7 +536,7 @@ function showFactionList(type) {
 
                 if (data[i].adminlevel === '0') {
 
-                    $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #mainsearchpage, #noresult').attr('hidden', true);
+                    $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #mainsearchpage, #noresult, #wantedlist').attr('hidden', true);
                     $('#viewfactionlist').removeAttr('hidden');
                     countotalm = counterm++;
 
@@ -597,65 +599,8 @@ function showFactionList(type) {
         }
 
     }).fail(function () {
-        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage').attr('hidden', true);
+        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
         $('#errorServer').removeAttr('hidden');
         $('#modulename').html("player");
     });
 }
-
-/*
-// --- CODICE DELLA STRADA ---
-{"STR_Crime_1","1000","1"}, // Competizioni illegali
-{"STR_Crime_2","300","2"}, // Guida senza patente
-{"STR_Crime_3","400","3"}, // Guida pericolosa
-{"STR_Crime_4","400","4"},  // Oltre i 10 km/h
-{"STR_Crime_5","1000","5"}, // Oltre i 20 km/h
-{"STR_Crime_6","2000","6"}, // Oltre i 30 km/h
-{"STR_Crime_7","3000","7"}, // Oltre i 40 km/h
-//{"STR_Crime_8","5000","8"}, // Oltre i 60 km/h
-{"STR_Crime_9","90","9"}, // Guida a fari spenti
-{"STR_Crime_10","120","10"}, // Veicolo in divieto di sosta
-// --- CODICE PENALE ---
-{"STR_Crime_11","220","11"}, // Disturbo alla quiete pubblica
-{"STR_Crime_12","500","12"}, // Procurato allarme
-{"STR_Crime_13","500","13"}, // Molestie ad un agente
-//{"STR_Crime_14","1000","14"}, // Tentato suicidio
-{"STR_Crime_15","1500","15"}, // Istigazione al suicidio
-{"STR_Crime_16","2000","16"}, // Istigazione al delinquere
-{"STR_Crime_17","50","17"}, // Offese al pudore
-{"STR_Crime_18","10000","18"}, // Bracconaggio
-{"STR_Crime_19","10000","19"}, // Evasione
-{"STR_Crime_20","5000","20"}, // Complicita' in evasione
-//{"STR_Crime_21","2500","21"}, // Tentato furto di un veicolo
-{"STR_Crime_22","2000","22"}, // Utilizzo/Possesso di esplosivi
-{"STR_Crime_23","4000","23"}, // Rapina
-{"STR_Crime_24","8000","24"}, // Sequestro
-{"STR_Crime_25","5000","25"}, // Tentato sequestro
-//{"STR_Crime_26","7500","26"}, // Possesso di droga
-//{"STR_Crime_27","10000","27"}, // Traffico di droga
-{"STR_Crime_28","4000","28"}, // Furto di beni personali
-{"STR_Crime_29","4000","29"}, // Ricettazione
-{"STR_Crime_30","2500","30"}, // Tentato furto di veicolo civile
-{"STR_Crime_31","5000","31"}, // Furto di veicolo civile
-{"STR_Crime_32","3500","32"}, // Tentato furto di veicolo polizia
-{"STR_Crime_33","6000","33"}, // Furto di veicolo polizia
-{"STR_Crime_34","5000","34"}, // Possesso di arma illegale
-{"STR_Crime_35","7500","35"}, // Possesso di arma illegale aggravato
-{"STR_Crime_36","2500","36"}, // Possesso di equipaggiamento illegale
-{"STR_Crime_37","2000","37"}, // Fuga dalla polizia
-{"STR_Crime_38","5000","38"}, // Omicidio
-{"STR_Crime_39","10000","39"}, //Vendita illegale di armi
-{"STR_Crime_40","2500","40"}, //Uso di armi in citta
-{"STR_Crime_41","4000","41"}, // Estorsione
-{"STR_Crime_42","2500","42"}, // Tentata rapina
-{"STR_Crime_43","1500","43"}, // Complicità in rapina
-{"STR_Crime_44","7500","44"}, // Possesso di droga
-{"STR_Crime_45","1000","45"}, //Uso di stupefacenti
-{"STR_Crime_46","5000","46"}, // Terrorismo
-{"STR_Crime_47","1000","47"}, // Violazione spazio aereo urbano
-{"STR_Crime_48","750","48"}, // Atterraggio senza autorizzazione
-{"STR_Crime_49","1500","49"}, // Prostituzione
-{"STR_Crime_50","50000","50"}, // Tentata evasione
-{"STR_Crime_51","2500","51"}, // Complicità in rapina
-{"STR_Crime_52","700","52"}, // Guida di mezzo non autorizzato
-{"STR_Crime_53","500","53"} // Mancanza di documenti identificativi*/
