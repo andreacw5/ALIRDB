@@ -50,8 +50,6 @@ function getUserCharges(playerid) {
         var fines = data[0][3];
         var chargesSet = data[0][4];
 
-        console.log(charges, fines, chargesSet);
-
         // se è 1 chargesSet il giocatore è ricercato creo quindi l'allerta
         if(chargesSet === 1){
 
