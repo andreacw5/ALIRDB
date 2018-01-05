@@ -42,6 +42,19 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip();
 });
 
+$.fn.extend({
+    animateCss: function (animationName, callback) {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        this.addClass('animated ' + animationName).one(animationEnd, function() {
+            $(this).removeClass('animated ' + animationName);
+            if (callback) {
+                callback();
+            }
+        });
+        return this;
+    }
+});
+
 /**
  *  Caricamento delle statistiche nella homepage
  */
@@ -130,6 +143,7 @@ function showUserInfo() {
     $('#userinfopanel').show(300).removeAttr('hidden');
     $('#infonav').addClass('active');
     $('#licensenav, #groupsnav, #vehiclenav, #wantednav').attr('class', 'nav-item nav-link');
+    $('#userinfopanel').animateCss('bounceInRight');
 }
 
 /*function showUserLicense() {
@@ -146,6 +160,7 @@ function showUserWanted() {
     $('#userwantedpanel').show(300).removeAttr('hidden');
     $('#wantednav').addClass('active');
     $('#licensenav, #groupsnav, #vehiclenav, #infonav').attr('class', 'nav-item nav-link');
+    $('#wantedresultappend').animateCss('bounceInLeft');
 }
 
 function showUserVehicle() {
@@ -154,5 +169,6 @@ function showUserVehicle() {
     $('#uservehiclepanel').show(300).removeAttr('hidden');
     $('#vehiclenav').addClass('active');
     $('#infonav, #groupsnav, #licensenav, #wantednav').attr('class', 'nav-item nav-link');
+    $('#uservehicleappender').animateCss('bounceInLeft');
 }
 
