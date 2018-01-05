@@ -536,6 +536,9 @@ function getUserVehicle(playerid) {
                     case 'C_Kart_01_Fuel_F':
                         vehicleName = 'Kart';
                         break;
+                    case 'C_Kart_01_Red_F':
+                        vehicleName = 'Kart';
+                        break;
                     case 'C_Van_02_transport_F':
                         vehicleName = 'Camioncino (Trasporto)';
                         break;
@@ -587,6 +590,9 @@ function getUserVehicle(playerid) {
                         break;
                     case 'C_Plane_Civil_01_racing_F':
                         vehicleName = 'Caesar BTT (Corsa)';
+                        break;
+                    case 'O_Heli_Transport_04_medevac_black_F':
+                        vehicleName = 'Mi-290 Taru (Medico)';
                         break;
                     // Barche
                     case 'C_Rubberboat':
