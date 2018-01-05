@@ -315,9 +315,6 @@ function showFactionList(type) {
         timeout: 5000
     }).done(function (data) {
 
-        var counterm = 1;
-        var countotalm;
-
         for (var i = 0; i < data.length; i++) {
 
             var side;
@@ -341,7 +338,6 @@ function showFactionList(type) {
 
                     $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #mainsearchpage, #noresult, #wantedlist').attr('hidden', true);
                     $('#viewfactionlist').removeAttr('hidden');
-                    countotalm = counterm++;
 
                     var plkPat = new RegExp('\[PLK\]', 'gi');
                     var name = data[i].name;
@@ -359,8 +355,7 @@ function showFactionList(type) {
                         division = '<i style="color: #f18e38" title="Medico" class="fas fa-medkit"></i>';
                     }
 
-                    var factionsMembers = $('<tr>' +
-                        '    <th scope="row">' + countotalm + '</th>' +
+                    var factionsMembers = $('<tr id="row'+playerid+'">' +
                         '    <td> ' + name +'</td>' +
                         '    <td class="statsdiv" style="text-align: center !important;">' + division + '</td>' +
                         '    <td class="statsdiv" style="text-align: center !important;">' + side + '</td>' +
@@ -368,6 +363,15 @@ function showFactionList(type) {
                         '</tr>');
 
                     $('#appendFactionsMembers').append(factionsMembers);
+
+                    if(type === "med") {
+                        for (var y = 0; y < supportTeamList.length; y++) {
+
+                            if (supportTeamList[y].pid === playerid) {
+                                $('#row' + playerid).remove();
+                            }
+                        }
+                    }
 
 
                 }
