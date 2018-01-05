@@ -91,11 +91,11 @@ function showGang(data) {
 
     var gangmemberlength = data[0].members.length;
 
-    if (gangmemberlength > 20) {
+    if (gangmemberlength > 12) {
         $('#gangplayernumber')
             .html(gangmemberlength)
             .attr('style', 'color:red');
-    } else if (gangmemberlength >= 17) {
+    } else if (gangmemberlength >= 9) {
         $('#gangplayernumber')
             .html(gangmemberlength)
             .attr('style', 'color:yellow');
@@ -228,7 +228,7 @@ function showGangList(data) {
             '      <h5 class="mb-1">' + gangName + '</h5>' +
             '      <small><i class="fas fa-external-link-alt"></i></small>' +
             '    </div>' +
-            '    <small>Dimensioni: ' + memberSize + '/20 - Proprietario: ' + ownerId + '</small>' +
+            '    <small>Dimensioni: ' + memberSize + '/12 - Proprietario: ' + ownerId + '</small>' +
             '  </a>');
 
         $('#listGangAppendElement').append(listElement);
