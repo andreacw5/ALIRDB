@@ -25,11 +25,6 @@
 */
 
 /**
- *  Gang.js
- *  @author: Andreacw
- */
-
-/**
  *  Compongo la tabella membri della gang avendo il nome della stessa
  *  @param: gang
  *  @return: formatted table appended on appendgangmembers
@@ -69,11 +64,11 @@ function searchByGang(gang) {
             $('#noresult').removeAttr('hidden');
         }
 
-    }).fail(function () {
+    })/*.fail(function () {
         $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
         $('#errorServer').removeAttr('hidden');
         $('#modulename').html("gang");
-    });
+    })*/;
 
 }
 
@@ -96,11 +91,11 @@ function showGang(data) {
 
     var gangmemberlength = data[0].members.length;
 
-    if (gangmemberlength > 20) {
+    if (gangmemberlength > 12) {
         $('#gangplayernumber')
             .html(gangmemberlength)
             .attr('style', 'color:red');
-    } else if (gangmemberlength >= 17) {
+    } else if (gangmemberlength >= 9) {
         $('#gangplayernumber')
             .html(gangmemberlength)
             .attr('style', 'color:yellow');
@@ -134,46 +129,10 @@ function showGang(data) {
         var membersid2 = data[0].members[x];
 
         $('#' + membersid2).on('click', function () {
+            loadingScreen();
             searchByPlayer($(this).data("id"));
         });
     }
-}
-
-/**
- *  Sulla base dell'id dell'utente cerco sulla 5100 il nome dello stesso corrispondente
- *  @param: playerid
- *  @return: text on gangNamePlayerID
- */
-
-function getGangMembersName(playerid, owner) {
-
-    $.ajax({
-        url: playerDatabase,
-        type: 'GET',
-        data: {
-            q: playerid
-        },
-        dataType: "json",
-        timeout: 5000
-    }).done(function (data) {
-            if (data[0].name) {
-                if (data[0].playerid === owner) {
-                    $('#user' + playerid).html(data[0].name + "  (Leader)").css("color", "orange").attr('title', 'Questo utente è il capo della gang');
-                } else {
-                    $('#user' + playerid).html(data[0].name);
-                }
-
-            } else {
-                //TODO: Errore in caso non trovo il nome utente
-                $('#gangName' + playerid).html("Utente non trovato").attr('style', 'color: red');
-            }
-        }
-    ).fail(function () {
-        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
-        $('#errorServer').removeAttr('hidden');
-        $('#modulename').html("player");
-    });
-
 }
 
 /**
@@ -196,17 +155,18 @@ function getGangName(playerid) {
 
         if (data.length === 1 ) {
             $('#usergangname').html(data[0].name).attr('style','color: #007BCC;cursor:pointer;').on('click', function () {
+                loadingScreen();
                 searchByGang($(this).html());
             });
         } else {
             $('#usergangname').html(" Nessuna").removeAttr('style').off('click').attr('title','Questo utente non è in nessuna gang');
         }
 
-    }).fail(function () {
+    })/*.fail(function () {
         $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
         $('#errorServer').removeAttr('hidden');
         $('#modulename').html("gang");
-    });
+    })*/;
 
 }
 
@@ -233,7 +193,7 @@ function showGangList(data) {
             '      <h5 class="mb-1">' + gangName + '</h5>' +
             '      <small><i class="fas fa-external-link-alt"></i></small>' +
             '    </div>' +
-            '    <small>Dimensioni: ' + memberSize + '/20 - Proprietario: ' + ownerId + '</small>' +
+            '    <small>Dimensioni: ' + memberSize + '/12 - Proprietario: ' + ownerId + '</small>' +
             '  </a>');
 
         $('#listGangAppendElement').append(listElement);
@@ -245,6 +205,7 @@ function showGangList(data) {
         var ownerId2 = data[x].owner;
 
         $('#' + ownerId2).on('click', function () {
+            loadingScreen();
             searchByGang($(this).data("id"));
         });
     }

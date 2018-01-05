@@ -24,9 +24,39 @@
 *
 */
 
+// Inserisco la lista dei supporter
+var supportTeamList = [
+    {
+        "name": "Condor",
+        "pid": "76561198144454884"
+    },{
+        "name": "Johnny",
+        "pid": "76561198140659293"
+    },{
+        "name": "Waxe",
+        "pid": "76561198028284217"
+    },{
+        "name": "Hydraxon",
+        "pid": "76561198083359176"
+    },{
+        "name": "Garo",
+        "pid": "76561198090255073"
+    },{
+        "name": "Giammy",
+        "pid": "76561198105183086"
+    },{
+        "name": "Sartox",
+        "pid": "76561198093943497"
+    },{
+        "name": "Bonden",
+        "pid": "76561198080431444"
+    }
+];
+
 /**
- *  Player js
- *  @author: Andreacw
+ *  Effettuo la ricerca tra gli utenti in base al playerid fornito
+ *  @param: playerid
+ *  @return: data[i]
  */
 
 function searchByPlayer(playerid) {
@@ -63,14 +93,20 @@ function searchByPlayer(playerid) {
             $('#noresult').removeAttr('hidden');
         }
 
-    }).fail(function () {
+    })/*.fail(function () {
         $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
         $('#errorServer').removeAttr('hidden');
         $('#modulename').html("player");
-    });
+    })*/;
 
 
 }
+
+/**
+ *  In caso di numerosi risultati visualizzo la lista utenti trovati
+ *  @param: data
+ *  @return: playermultyresult
+ */
 
 function showUserList(data) {
 
@@ -109,6 +145,7 @@ function showUserList(data) {
         var playerId2 = data[x].playerid;
 
         $('#' + playerId2).on('click', function () {
+            loadingScreen();
            searchByPlayer($(this).data("id"));
         });
     }
@@ -117,22 +154,42 @@ function showUserList(data) {
 
 /**
  *  In caso di un solo risultato compongo la visualizzazione del giocatore.
+ *  @param: data
+ *  @return: visualizzazione dell'utente
  */
 
 function showUser(data) {
 
-    $('#playersearchview').removeAttr('hidden');
+    $('#uservehicleappender').empty();
 
-    showUserInfo();
+    var playerid = data[0].playerid;
+    var adminlv = data[0].adminlevel;
+
+    // Controllo se l'utente è un membro dello staff
+    if(adminlv === "1" || adminlv === "2" || adminlv === "3" || adminlv === "4" || adminlv === "5"){
+        $('#thisuserisadmin').removeAttr('hidden');
+    }else{
+
+        for (var x = 0; x < supportTeamList.length; x++) {
+
+            if(supportTeamList[x].pid === playerid){
+                $('#thisuserissupporter').removeAttr('hidden');
+                break;
+            }
+        }
+
+    }
+
+    $('#playersearchview').removeAttr('hidden');
 
     // Dati vari
     $('#usernameplace').html(data[0].name);
-    $('#playeridplace').html(data[0].playerid);
+    $('#playeridplace').html(playerid);
     $('#userbankacc').html(data[0].bankacc);
     $('#usercash').html(data[0].cash);
     $('#useralias').html(data[0].aliases);
 
-    var linkSteam = "http://steamcommunity.com/profiles/" + data[0].playerid + "/";
+    var linkSteam = steamProfileUrl + playerid;
 
     $('#steamLink').attr('href', linkSteam);
 
@@ -229,11 +286,169 @@ function showUser(data) {
 
     $('#usermedlevel').html(mediclevelname);
 
-    getGangName(data[0].playerid);
+    getGangName(playerid);
 
-    getUserVehicle(data[0].playerid);
+    getUserVehicle(playerid);
 
-    getUserCharges(data[0].playerid);
+    getUserCharges(playerid);
+
+    showUserInfo();
+
+}
+
+/**
+ *  Tramite il tipo ritorno la visualizzazione e l'elenco della fazione x
+ *  @param: type
+ *  @return: viewfactionlist
+ */
+
+function showFactionList(type) {
+
+    $('#userFinderButton').attr('disabled',true);
+    $('#gangFinderButton').attr('disabled',true);
+    $('#copFinderButton').attr('disabled',true);
+    $('#medFinderButton').attr('disabled',true);
+
+    // TODO: Richiesto Json esposto direttamente con la lista fazioni in modo da non esporre al client la ricerca ed i dati degli utenti.
+
+    $.ajax({
+        url: playerDatabase,
+        type: 'GET',
+        dataType: "json",
+        timeout: 5000
+    }).done(function (data) {
+
+        for (var i = 0; i < data.length; i++) {
+
+            var side;
+
+            var sideCop = data[i].coplevel;
+            var sideMed = data[i].mediclevel;
+
+            if(type === "cop"){
+                $('#factionName').html("Elenco agenti in servizio");
+                side = sideCop;
+            }else if(type === "med"){
+                $('#factionName').html("Elenco medici in servizio");
+                side = sideMed;
+            }else{
+                console.log("Type necessario");
+            }
+
+            if (!(side === '0' || side === undefined)) {
+
+                if (data[i].adminlevel === '0') {
+
+                    $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #mainsearchpage, #noresult, #wantedlist').attr('hidden', true);
+                    $('#viewfactionlist').removeAttr('hidden');
+
+                    var plkPat = new RegExp('\[PLK\]', 'gi');
+                    var name = data[i].name;
+                    var playerid = data[i].playerid;
+                    var division;
+
+                    // cerco i membri della plk dalla tag (sperando ci sia)
+                    var cir = name.search(plkPat);
+
+                    if(cir === 1 && type === "cop"){
+                        division = '<i style="color: #759bc9" title="Polizia Locale" class="fas fa-building"></i>';
+                    }else if(type === "cop"){
+                        division = '<i style="color: #3D6594" title="Polizia di Stato" class="fas fa-balance-scale"></i>';
+                    }else{
+                        division = '<i style="color: #f18e38" title="Medico" class="fas fa-medkit"></i>';
+                    }
+
+                    var factionsMembers = $('<tr id="row'+playerid+'">' +
+                        '    <td> ' + name +'</td>' +
+                        '    <td class="statsdiv" style="text-align: center !important;">' + division + '</td>' +
+                        '    <td class="statsdiv" style="text-align: center !important;">' + side + '</td>' +
+                        '    <td title="Visualizza dettagli utente"  data-toggle="tooltip" id="'+playerid+'" data-id="'+playerid+'" data-placement="top" style="color: #007BCC;cursor:pointer;"><i class="fas fa-external-link-alt"></i></td>' +
+                        '</tr>');
+
+                    $('#appendFactionsMembers').append(factionsMembers);
+
+                    if(type === "med") {
+                        for (var y = 0; y < supportTeamList.length; y++) {
+
+                            if (supportTeamList[y].pid === playerid) {
+                                $('#row' + playerid).remove();
+                            }
+                        }
+                    }
+
+
+                }
+
+            }
+
+        }
+
+        $('#factionCounter').html($('#appendFactionsMembers tr').length);
+
+        for (var x = 0; x < data.length; x++) {
+
+            if(type === "cop"){
+                side = data[x].coplevel;
+            }else{
+                side = data[x].mediclevel;
+            }
+
+
+            if (!(side === '0' || side === undefined)) {
+
+                if (data[x].adminlevel === '0') {
+
+                    var membersid2 = data[x].playerid;
+
+                    $('#' + membersid2).on('click', function () {
+                        loadingScreen();
+                        searchByPlayer($(this).data("id"));
+                    });
+
+                }
+            }
+        }
+
+    })/*.fail(function () {
+        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
+        $('#errorServer').removeAttr('hidden');
+        $('#modulename').html("player");
+    })*/;
+}
+
+/**
+ *  Sulla base dell'id dell'utente cerco sulla 5100 il nome dello stesso corrispondente
+ *  @param: playerid
+ *  @return: text on gangNamePlayerID
+ */
+
+function getGangMembersName(playerid, owner) {
+
+    $.ajax({
+        url: playerDatabase,
+        type: 'GET',
+        data: {
+            q: playerid
+        },
+        dataType: "json",
+        timeout: 5000
+    }).done(function (data) {
+
+        if(data.length === 0){
+            $('#user' + playerid).html("Utente non trovato").attr('style', 'color: red');
+        }else{
+            if (data[0].playerid === owner) {
+                $('#user' + playerid).html(data[0].name + "  (Leader)").css("color", "orange").attr('title', 'Questo utente è il capo della gang');
+            } else {
+                $('#user' + playerid).html(data[0].name);
+            }
+        }
+
+    })/*.fail(function () {
+        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
+        $('#errorServer').removeAttr('hidden');
+        $('#modulename').html("player");
+    })*/;
 
 }
 
@@ -361,6 +576,9 @@ function getUserVehicle(playerid) {
                     case 'C_Kart_01_Fuel_F':
                         vehicleName = 'Kart';
                         break;
+                    case 'C_Kart_01_Red_F':
+                        vehicleName = 'Kart';
+                        break;
                     case 'C_Van_02_transport_F':
                         vehicleName = 'Camioncino (Trasporto)';
                         break;
@@ -412,6 +630,9 @@ function getUserVehicle(playerid) {
                         break;
                     case 'C_Plane_Civil_01_racing_F':
                         vehicleName = 'Caesar BTT (Corsa)';
+                        break;
+                    case 'O_Heli_Transport_04_medevac_black_F':
+                        vehicleName = 'Mi-290 Taru (Medico)';
                         break;
                     // Barche
                     case 'C_Rubberboat':
@@ -492,125 +713,10 @@ function getUserVehicle(playerid) {
             $('#vehiclesize').html("Questo utente non possiede veicoli!");
         }
 
-    }).fail(function () {
+    })/*.fail(function () {
         $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
         $('#errorServer').removeAttr('hidden');
         $('#modulename').html("vehicle");
-    });
+    })*/;
 
-}
-
-/**
- *  Tramite il tipo ritorno la visualizzazione e l'elenco della fazione x
- *  @param: type
- *  @return: viewfactionlist
- */
-
-function showFactionList(type) {
-
-    $('#userFinderButton').attr('disabled',true);
-    $('#gangFinderButton').attr('disabled',true);
-    $('#copFinderButton').attr('disabled',true);
-    $('#medFinderButton').attr('disabled',true);
-
-    // TODO: Richiesto Json esposto direttamente con la lista fazioni in modo da non esporre al client la ricerca ed i dati degli utenti.
-
-    $.ajax({
-        url: playerDatabase,
-        type: 'GET',
-        dataType: "json",
-        timeout: 5000
-    }).done(function (data) {
-
-        var counterm = 1;
-        var countotalm;
-
-        for (var i = 0; i < data.length; i++) {
-
-            var side;
-
-            var sideCop = data[i].coplevel;
-            var sideMed = data[i].mediclevel;
-
-            if(type === "cop"){
-                $('#factionName').html("Elenco agenti in servizio");
-                side = sideCop;
-            }else if(type === "med"){
-                $('#factionName').html("Elenco medici in servizio");
-                side = sideMed;
-            }else{
-                console.log("Type necessario");
-            }
-
-            if (!(side === '0' || side === undefined)) {
-
-                if (data[i].adminlevel === '0') {
-
-                    $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #mainsearchpage, #noresult, #wantedlist').attr('hidden', true);
-                    $('#viewfactionlist').removeAttr('hidden');
-                    countotalm = counterm++;
-
-                    var plkPat = new RegExp('\[PLK\]', 'gi');
-                    var name = data[i].name;
-                    var playerid = data[i].playerid;
-                    var division;
-
-                    // cerco i membri della plk dalla tag (sperando ci sia)
-                    var cir = name.search(plkPat);
-
-                    if(cir === 1 && type === "cop"){
-                        division = '<i style="color: #759bc9" title="Polizia Locale" class="fas fa-building"></i>';
-                    }else if(type === "cop"){
-                        division = '<i style="color: #3D6594" title="Polizia di Stato" class="fas fa-balance-scale"></i>';
-                    }else{
-                        division = '<i style="color: #f18e38" title="Medico" class="fas fa-medkit"></i>';
-                    }
-
-                    var factionsMembers = $('<tr>' +
-                        '    <th scope="row">' + countotalm + '</th>' +
-                        '    <td> ' + name +'</td>' +
-                        '    <td class="statsdiv" style="text-align: center !important;">' + division + '</td>' +
-                        '    <td class="statsdiv" style="text-align: center !important;">' + side + '</td>' +
-                        '    <td title="Visualizza dettagli utente"  data-toggle="tooltip" id="'+playerid+'" data-id="'+playerid+'" data-placement="top" style="color: #007BCC;cursor:pointer;"><i class="fas fa-external-link-alt"></i></td>' +
-                        '</tr>');
-
-                    $('#appendFactionsMembers').append(factionsMembers);
-
-
-                }
-
-            }
-
-        }
-
-        $('#factionCounter').html($('#appendFactionsMembers tr').length);
-
-        for (var x = 0; x < data.length; x++) {
-
-            if(type === "cop"){
-                side = data[x].coplevel;
-            }else{
-                side = data[x].mediclevel;
-            }
-
-
-            if (!(side === '0' || side === undefined)) {
-
-                if (data[x].adminlevel === '0') {
-
-                    var membersid2 = data[x].playerid;
-
-                    $('#' + membersid2).on('click', function () {
-                        searchByPlayer($(this).data("id"));
-                    });
-
-                }
-            }
-        }
-
-    }).fail(function () {
-        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
-        $('#errorServer').removeAttr('hidden');
-        $('#modulename').html("player");
-    });
 }

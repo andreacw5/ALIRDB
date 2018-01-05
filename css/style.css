@@ -1,0 +1,209 @@
+/*
+*
+*                          ALIRDB v1.2 del 05/01/2018
+*
+*                                 MIT License
+*
+*    Copyright (c) 2017 Andrea Zago
+*
+*    Permission is hereby granted, free of charge, to any person obtaining a copy
+*    of this software and associated documentation files (the "Software"), to deal
+*    in the Software without restriction, including without limitation the rights
+*    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+*    copies of the Software, and to permit persons to whom the Software is
+*    furnished to do so, subject to the following conditions:
+*
+*    The above copyright notice and this permission notice shall be included in all
+*    copies or substantial portions of the Software.
+*
+*    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+*    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+*    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+*    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+*    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+*    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+*    SOFTWARE.
+*
+*/
+
+/* Show it is fixed to the top */
+body {
+    background-color: #212327;
+    font-family: 'Roboto',sans-serif;
+    padding-bottom: 20px;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+.navbar {
+    margin-top: 7%;
+    margin-bottom: 3%;
+    border-radius: 3px;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.jumbotron {
+    background-color: #2D3035;
+    color: #ffffff;
+    border-color: #303338;
+    border-radius: 3px !important;
+}
+
+.breadcrumb {
+    background-color: #2D3035;
+    color: #ffffff;
+    border-color: #303338;
+    border-radius: 3px !important;
+}
+
+.bg-dark {
+    background-color: #2D3035 !important;
+}
+
+.card{
+    background-color: #2D3035;
+    color: #ffffff;
+    border-color: #303338;
+}
+
+.a{
+    color: #3D6594;
+}
+
+.list-group-item{
+    background-color: #2D3035;
+    color: #ffffff;
+    border-color: #303338;
+}
+
+h5{
+    color: #007BCC;
+    font-style: oblique;
+}
+
+@media screen and (max-width: 1100px){
+
+    .pagec{
+        padding-top: 3%;
+    }
+
+    .padonphone{
+        margin-top: 2%;
+    }
+
+    .statsdiv{
+        display: none;
+    }
+
+
+}
+
+@media screen and (min-width: 1100px){
+    .pagec{
+        padding-top: 3%;
+    }
+}
+
+.padbot{
+    margin-bottom: 10px;
+}
+
+.searchcontainer{
+    padding-bottom: 2%;
+}
+
+.fa-database{
+    color: yellow;
+}
+
+.fa-star{
+    color: #ff8433;
+}
+
+.table-dark{
+    background-color: #2D3035 !important;
+}
+
+.cardstatborder{
+    border-right: 2px solid #2D3035
+}
+
+.modal-content {
+    background-color: #2D3035;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    color: white;
+}
+
+.modal-body b{
+    color: #007BCC;
+}
+
+.list-group-item-action:focus, .list-group-item-action:hover {
+    color: #c2d4e1;
+    background-color: #4c5156;
+}
+
+.loading {
+    font-size: 3em;
+    font-weight: bold;
+    left: 50%;
+    margin-left: -5em;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 10em;
+}
+
+span.load {
+    color: #70b48f;
+    animation: animateIn 6s cubic-bezier(0.635, -0.45, 0.345, 1.21) infinite both;
+    display: inline-block;
+    margin-left: -0.35em;
+    transform: translateX(10em);
+}
+span.load:nth-child(1) {
+    animation-delay: 0.16667s;
+}
+span.load:nth-child(2) {
+    animation-delay: 0.33333s;
+}
+span.load:nth-child(3) {
+    animation-delay: 0.5s;
+}
+span.load:nth-child(4) {
+    animation-delay: 0.66667s;
+}
+span.load:nth-child(5) {
+    animation-delay: 0.83333s;
+}
+span.load:nth-child(6) {
+    animation-delay: 1s;
+}
+span.load:nth-child(7) {
+    animation-delay: 1.16667s;
+}
+
+
+@keyframes animateIn {
+    0% {
+        transform: translateX(10em);
+    }
+    20%, 65% {
+        transform: translateX(0);
+    }
+    25% {
+        color: #80628a;
+    }
+    100% {
+        transform: translateX(-10em);
+    }
+}

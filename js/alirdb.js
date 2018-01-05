@@ -1,5 +1,7 @@
 /*
 *
+*                          ALIRDB v1.2 del 05/01/2018
+*
 *                                 MIT License
 *
 *    Copyright (c) 2017 Andrea Zago
@@ -25,24 +27,43 @@
 */
 
 /**
- *  Navigation js
- *  @author: Andreacw
+ *  Koala minifier combined file
+ *  Questo file permette di minimizzare tutti i file js del progetto in un'unico file minimizzato.
+ *  @author: Andreacw (This file)
+ *  @author: Ethan Lai (http://koala-app.com/) (Creator of Koala Application)
  */
 
+// @koala-append "player.js"
+// @koala-append "gang.js"
+// @koala-append "wanted.js"
+
+// Limitatore di ricerca configurabile
 var searchLimiter = 100;
-
-// Indirizzi ip per query GET
-// È una merda ma aggiungo il cors ulteriore per evitare il blocco http
-
+// Variabili connessione api
 var playerDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5100/players";
 var gangDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5200/gangs";
 var vehicleDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5300/vehicles";
 var wantedDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5400/wanted";
 var userDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5500/users";
 
+var steamProfileUrl = "http://steamcommunity.com/profiles/";
+
 // Abilito i tooltip ovunque
 $(function () {
     $('[data-toggle="tooltip"]').tooltip();
+});
+
+$.fn.extend({
+    animateCss: function (animationName, callback) {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        this.addClass('animated ' + animationName).one(animationEnd, function() {
+            $(this).removeClass('animated ' + animationName);
+            if (callback) {
+                callback();
+            }
+        });
+        return this;
+    }
 });
 
 /**
@@ -58,7 +79,10 @@ function statisticOnLoad() {
         timeout: 5000
     }).done(function (data) {
         $('#playerCounter').html(data.length)
-    });
+    })/*.fail(function () {
+        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
+        $('#connectionLost').removeAttr('hidden');
+    })*/;
 
     $.ajax({
         url: gangDatabase,
@@ -90,6 +114,7 @@ function statisticOnLoad() {
     $('#adminCounter').html("11");
 
 }
+
 statisticOnLoad();
 
 /**
@@ -97,6 +122,7 @@ statisticOnLoad();
  */
 
 function goToHome() {
+    // Vai alla pagina principale
     hideOpenWindow();
     $('#mainsearchpage').removeAttr('hidden');
     $('#listUserAppendElement, #appendgangmembers, #uservehicleappender, #listGangAppendElement, #appendFactionsMembers, #wantedresultappend, #appendinputationlist').empty();
@@ -109,7 +135,8 @@ function goToHome() {
 }
 
 function hideOpenWindow() {
-    $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #noresult, #viewfactionlist, #errorServer, #wantednav').attr('hidden', true);
+    // Chiudo tutte le finestre aperte
+    $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #noresult, #viewfactionlist, #errorServer, #wantednav, #thisuserisadmin, #connectionLost, #thisuserissupporter').attr('hidden', true);
 }
 
 /**
@@ -117,17 +144,21 @@ function hideOpenWindow() {
  */
 
 function hideAllInfoPanel() {
+    // Chiudo tutti i pannelli utente aperti
     $('#userinfopanel, #userlicensepanel, #uservehiclepanel, #userwantedpanel').hide().attr('hidden', true);
 }
 
 function showUserInfo() {
+    // Visualizzo il tab informazioni nella visualizzazione utente
     hideAllInfoPanel();
     $('#userinfopanel').show(300).removeAttr('hidden');
     $('#infonav').addClass('active');
     $('#licensenav, #groupsnav, #vehiclenav, #wantednav').attr('class', 'nav-item nav-link');
+    $('#userinfopanel').animateCss('bounceInRight');
 }
 
 /*function showUserLicense() {
+    // Visualizzo il tab licenze nella visualizzazione utente
     hideAllInfoPanel();
     $('#userlicensepanel').show(300).removeAttr('hidden');
     $('#licensenav').addClass('active');
@@ -135,16 +166,33 @@ function showUserInfo() {
 }*/
 
 function showUserWanted() {
+    // Visualizzo il tab dati giudiziari nella visualizzazione utente
     hideAllInfoPanel();
     $('#userwantedpanel').show(300).removeAttr('hidden');
     $('#wantednav').addClass('active');
     $('#licensenav, #groupsnav, #vehiclenav, #infonav').attr('class', 'nav-item nav-link');
+    $('#wantedresultappend').animateCss('bounceInRight');
 }
 
 function showUserVehicle() {
+    // Visualizzo il tab veicoli nella visualizzazione utente
     hideAllInfoPanel();
     $('#uservehiclepanel').show(300).removeAttr('hidden');
     $('#vehiclenav').addClass('active');
     $('#infonav, #groupsnav, #licensenav, #wantednav').attr('class', 'nav-item nav-link');
+    $('#uservehicleappender').animateCss('bounceInRight');
 }
 
+/**
+ *  Funzione per schermata di caricamento
+ */
+
+function loadingScreen() {
+    $('[data-toggle="tooltip"]').tooltip("hide");
+    $('#maindiv').attr('hidden',true);
+    $('#loadingdiv').removeAttr('hidden');
+    setTimeout(function(){
+        $('#loadingdiv').attr('hidden',true);
+        $('#maindiv').removeAttr('hidden')
+    }, 6000);
+}
