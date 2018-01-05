@@ -25,11 +25,6 @@
 */
 
 /**
- *  Gang.js
- *  @author: Andreacw
- */
-
-/**
  *  Compongo la tabella membri della gang avendo il nome della stessa
  *  @param: gang
  *  @return: formatted table appended on appendgangmembers

@@ -24,13 +24,13 @@
 *
 */
 
-/**
- *  Wanted js
- *  @author: Andreacw
- */
-
 var chargesName;
 var chargesFines;
+
+/**
+ *  Con il playerid genero la lista delle accuse solo se l'utente è ricercato
+ *  @param: playerid
+ */
 
 function getUserCharges(playerid) {
 
@@ -44,13 +44,14 @@ function getUserCharges(playerid) {
         timeout: 5000
     }).done(function (data) {
 
+        // Controllo che l'utente sia ricercato
         if(data[0] !== undefined){
 
             var charges = data[0][2];
             var fines = data[0][3];
             var chargesSet = data[0][4];
 
-            // se è 1 chargesSet il giocatore è ricercato creo quindi l'allerta
+            // controllo che l'utente sia ricercato attivamente
             if(chargesSet === 1){
 
                 $('#wantednav').removeAttr('hidden');
@@ -59,7 +60,7 @@ function getUserCharges(playerid) {
                     '                        <div class="col-12 padbot">' +
                     '                            <div class="card">' +
                     '                                <div class="card-body">' +
-                    '                                    <h4 class="card-title" style="color: #C43235">RICERCATO!</h4>' +
+                    '                                    <h4 class="card-title" style="color: #8B1A1A">RICERCATO!</h4>' +
                     '                                    <h6 class="card-subtitle mb-2 text-muted">Attualmente ricercato con '+ charges.length +' imputazioni a carico, con una taglia totale di '+ fines + '€ </h6>' +
                     '                                </div>' +
                     '                                <ul class="list-group list-group-flush" id="appendinputationlist">' +
@@ -89,6 +90,12 @@ function getUserCharges(playerid) {
 
 }
 
+/**
+ *  Con l'id dell'accusa ottengo il nome della stessa
+ *  @param: chargesCode
+ *  @return: chargesName (Capo d'accusa)
+ *  @return: chargesFines (Taglia singola accusa)
+ */
 
 function getChargesHumanName(chargesCode) {
 

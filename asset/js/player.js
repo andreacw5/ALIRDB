@@ -24,9 +24,39 @@
 *
 */
 
+// Inserisco la lista dei supporter
+var supportTeamList = [
+    {
+        "name": "Condor",
+        "pid": "76561198144454884"
+    },{
+        "name": "Johnny",
+        "pid": "76561198140659293"
+    },{
+        "name": "Waxe",
+        "pid": "76561198028284217"
+    },{
+        "name": "Hydraxon",
+        "pid": "76561198083359176"
+    },{
+        "name": "Garo",
+        "pid": "76561198090255073"
+    },{
+        "name": "Giammy",
+        "pid": "76561198105183086"
+    },{
+        "name": "Sartox",
+        "pid": "76561198093943497"
+    },{
+        "name": "Bonden",
+        "pid": "76561198080431444"
+    }
+];
+
 /**
- *  Player js
- *  @author: Andreacw
+ *  Effettuo la ricerca tra gli utenti in base al playerid fornito
+ *  @param: playerid
+ *  @return: data[i]
  */
 
 function searchByPlayer(playerid) {
@@ -71,6 +101,12 @@ function searchByPlayer(playerid) {
 
 
 }
+
+/**
+ *  In caso di numerosi risultati visualizzo la lista utenti trovati
+ *  @param: data
+ *  @return: playermultyresult
+ */
 
 function showUserList(data) {
 
@@ -117,6 +153,8 @@ function showUserList(data) {
 
 /**
  *  In caso di un solo risultato compongo la visualizzazione del giocatore.
+ *  @param: data
+ *  @return: visualizzazione dell'utente
  */
 
 function showUser(data) {
@@ -124,9 +162,22 @@ function showUser(data) {
     var playerid = data[0].playerid;
     var adminlv = data[0].adminlevel;
 
-    $('#playersearchview').removeAttr('hidden');
+    // Controllo se l'utente è un membro dello staff
+    if(adminlv === "1" || adminlv === "2" || adminlv === "3" || adminlv === "4" || adminlv === "5"){
+        $('#thisuserisadmin').removeAttr('hidden');
+    }else{
 
-    showUserInfo();
+        for (var x = 0; x < supportTeamList.length; x++) {
+
+            if(supportTeamList[x].pid === playerid){
+                $('#thisuserissupporter').removeAttr('hidden');
+                break;
+            }
+        }
+
+    }
+
+    $('#playersearchview').removeAttr('hidden');
 
     // Dati vari
     $('#usernameplace').html(data[0].name);
@@ -135,19 +186,9 @@ function showUser(data) {
     $('#usercash').html(data[0].cash);
     $('#useralias').html(data[0].aliases);
 
-    var linkSteam = "http://steamcommunity.com/profiles/" + playerid + "/";
+    var linkSteam = steamProfileUrl + playerid + "/";
 
     $('#steamLink').attr('href', linkSteam);
-
-    // Se è un'admin visualizzo l'icona amministratore, altrimenti l'icona utente
-
-    if(adminlv === "1" || adminlv === "2" || adminlv === "3" || adminlv === "4" || adminlv === "5"){
-        $('#thisuserisadmin').removeAttr('hidden');
-        $('#thisuserisuser').attr('hidden',true);
-    }else{
-        $('#thisuserisuser').removeAttr('hidden');
-        $('#thisuserisadmin').attr('hidden',true);
-    }
 
     // In base al livello donatore inserisco le stelle
     var donorlevel;
@@ -247,6 +288,8 @@ function showUser(data) {
     getUserVehicle(playerid);
 
     getUserCharges(playerid);
+
+    showUserInfo();
 
 }
 

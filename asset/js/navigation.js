@@ -24,21 +24,18 @@
 *
 */
 
-/**
- *  Navigation js
- *  @author: Andreacw
- */
-
+// Limitatore di ricerca configurabile
 var searchLimiter = 100;
+// Variabili connessione api
+var serverIp = "http://37.59.102.107";
+var cors = "https://cors-anywhere.herokuapp.com/";
+var playerDatabase = cors + serverIp + ":5100/players";
+var gangDatabase = cors + serverIp + ":5200/gangs";
+var vehicleDatabase = cors + serverIp + ":5300/vehicles";
+var wantedDatabase = cors + serverIp + ":5400/wanted";
+var userDatabase = cors + serverIp + ":5500/users";
 
-// Indirizzi ip per query GET
-// È una merda ma aggiungo il cors ulteriore per evitare il blocco http
-
-var playerDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5100/players";
-var gangDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5200/gangs";
-var vehicleDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5300/vehicles";
-var wantedDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5400/wanted";
-var userDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5500/users";
+var steamProfileUrl = "http://steamcommunity.com/profiles/";
 
 // Abilito i tooltip ovunque
 $(function () {
@@ -93,6 +90,7 @@ function statisticOnLoad() {
     $('#adminCounter').html("11");
 
 }
+
 statisticOnLoad();
 
 /**
@@ -100,6 +98,7 @@ statisticOnLoad();
  */
 
 function goToHome() {
+    // Vai alla pagina principale
     hideOpenWindow();
     $('#mainsearchpage').removeAttr('hidden');
     $('#listUserAppendElement, #appendgangmembers, #uservehicleappender, #listGangAppendElement, #appendFactionsMembers, #wantedresultappend, #appendinputationlist').empty();
@@ -112,7 +111,8 @@ function goToHome() {
 }
 
 function hideOpenWindow() {
-    $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #noresult, #viewfactionlist, #errorServer, #wantednav, #thisuserisadmin, #connectionLost').attr('hidden', true);
+    // Chiudo tutte le finestre aperte
+    $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #noresult, #viewfactionlist, #errorServer, #wantednav, #thisuserisadmin, #connectionLost, #thisuserissupporter').attr('hidden', true);
 }
 
 /**
@@ -120,10 +120,12 @@ function hideOpenWindow() {
  */
 
 function hideAllInfoPanel() {
+    // Chiudo tutti i pannelli utente aperti
     $('#userinfopanel, #userlicensepanel, #uservehiclepanel, #userwantedpanel').hide().attr('hidden', true);
 }
 
 function showUserInfo() {
+    // Visualizzo il tab informazioni nella visualizzazione utente
     hideAllInfoPanel();
     $('#userinfopanel').show(300).removeAttr('hidden');
     $('#infonav').addClass('active');
@@ -131,6 +133,7 @@ function showUserInfo() {
 }
 
 /*function showUserLicense() {
+    // Visualizzo il tab licenze nella visualizzazione utente
     hideAllInfoPanel();
     $('#userlicensepanel').show(300).removeAttr('hidden');
     $('#licensenav').addClass('active');
@@ -138,6 +141,7 @@ function showUserInfo() {
 }*/
 
 function showUserWanted() {
+    // Visualizzo il tab dati giudiziari nella visualizzazione utente
     hideAllInfoPanel();
     $('#userwantedpanel').show(300).removeAttr('hidden');
     $('#wantednav').addClass('active');
@@ -145,6 +149,7 @@ function showUserWanted() {
 }
 
 function showUserVehicle() {
+    // Visualizzo il tab veicoli nella visualizzazione utente
     hideAllInfoPanel();
     $('#uservehiclepanel').show(300).removeAttr('hidden');
     $('#vehiclenav').addClass('active');
