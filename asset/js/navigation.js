@@ -58,6 +58,9 @@ function statisticOnLoad() {
         timeout: 5000
     }).done(function (data) {
         $('#playerCounter').html(data.length)
+    }).fail(function () {
+        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
+        $('#connectionLost').removeAttr('hidden');
     });
 
     $.ajax({
@@ -109,7 +112,7 @@ function goToHome() {
 }
 
 function hideOpenWindow() {
-    $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #noresult, #viewfactionlist, #errorServer, #wantednav, #thisuserisadmin').attr('hidden', true);
+    $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #noresult, #viewfactionlist, #errorServer, #wantednav, #thisuserisadmin, #connectionLost').attr('hidden', true);
 }
 
 /**
