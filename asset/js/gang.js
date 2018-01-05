@@ -129,46 +129,10 @@ function showGang(data) {
         var membersid2 = data[0].members[x];
 
         $('#' + membersid2).on('click', function () {
+            startLoadingTransaction();
             searchByPlayer($(this).data("id"));
         });
     }
-}
-
-/**
- *  Sulla base dell'id dell'utente cerco sulla 5100 il nome dello stesso corrispondente
- *  @param: playerid
- *  @return: text on gangNamePlayerID
- */
-
-function getGangMembersName(playerid, owner) {
-
-    $.ajax({
-        url: playerDatabase,
-        type: 'GET',
-        data: {
-            q: playerid
-        },
-        dataType: "json",
-        timeout: 5000
-    }).done(function (data) {
-            if (data[0].name) {
-                if (data[0].playerid === owner) {
-                    $('#user' + playerid).html(data[0].name + "  (Leader)").css("color", "orange").attr('title', 'Questo utente è il capo della gang');
-                } else {
-                    $('#user' + playerid).html(data[0].name);
-                }
-
-            } else {
-                //TODO: Errore in caso non trovo il nome utente
-                $('#gangName' + playerid).html("Utente non trovato").attr('style', 'color: red');
-            }
-        }
-    ).fail(function () {
-        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
-        $('#errorServer').removeAttr('hidden');
-        $('#modulename').html("player");
-    });
-
 }
 
 /**
@@ -240,6 +204,7 @@ function showGangList(data) {
         var ownerId2 = data[x].owner;
 
         $('#' + ownerId2).on('click', function () {
+            startLoadingTransaction();
             searchByGang($(this).data("id"));
         });
     }

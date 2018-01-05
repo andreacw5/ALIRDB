@@ -145,6 +145,7 @@ function showUserList(data) {
         var playerId2 = data[x].playerid;
 
         $('#' + playerId2).on('click', function () {
+            startLoadingTransaction();
            searchByPlayer($(this).data("id"));
         });
     }
@@ -158,6 +159,8 @@ function showUserList(data) {
  */
 
 function showUser(data) {
+
+    $('#uservehicleappender').empty();
 
     var playerid = data[0].playerid;
     var adminlv = data[0].adminlevel;
@@ -398,6 +401,7 @@ function showFactionList(type) {
                     var membersid2 = data[x].playerid;
 
                     $('#' + membersid2).on('click', function () {
+                        startLoadingTransaction();
                         searchByPlayer($(this).data("id"));
                     });
 
@@ -410,6 +414,42 @@ function showFactionList(type) {
         $('#errorServer').removeAttr('hidden');
         $('#modulename').html("player");
     });
+}
+
+/**
+ *  Sulla base dell'id dell'utente cerco sulla 5100 il nome dello stesso corrispondente
+ *  @param: playerid
+ *  @return: text on gangNamePlayerID
+ */
+
+function getGangMembersName(playerid, owner) {
+
+    $.ajax({
+        url: playerDatabase,
+        type: 'GET',
+        data: {
+            q: playerid
+        },
+        dataType: "json",
+        timeout: 5000
+    }).done(function (data) {
+
+        if(data.length === 0){
+            $('#user' + playerid).html("Utente non trovato").attr('style', 'color: red');
+        }else{
+            if (data[0].playerid === owner) {
+                $('#user' + playerid).html(data[0].name + "  (Leader)").css("color", "orange").attr('title', 'Questo utente è il capo della gang');
+            } else {
+                $('#user' + playerid).html(data[0].name);
+            }
+        }
+
+    }).fail(function () {
+        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
+        $('#errorServer').removeAttr('hidden');
+        $('#modulename').html("player");
+    });
+
 }
 
 /**

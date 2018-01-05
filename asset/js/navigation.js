@@ -172,3 +172,11 @@ function showUserVehicle() {
     $('#uservehicleappender').animateCss('bounceInLeft');
 }
 
+function startLoadingTransaction() {
+    $('#maindiv').attr('hidden',true);
+    $('#loadingdiv').removeAttr('hidden');
+    setTimeout(function(){
+        $('#loadingdiv').attr('hidden',true);
+        $('#maindiv').removeAttr('hidden')
+    }, 6000);
+}

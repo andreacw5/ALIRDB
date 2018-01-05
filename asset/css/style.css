@@ -125,3 +125,60 @@ h5{
     color: #c2d4e1;
     background-color: #4c5156;
 }
+
+.loading {
+    font-size: 3em;
+    font-weight: bold;
+    left: 50%;
+    margin-left: -5em;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 10em;
+}
+
+span.load {
+    color: #70b48f;
+    animation: animateIn 6s cubic-bezier(0.635, -0.45, 0.345, 1.21) infinite both;
+    display: inline-block;
+    margin-left: -0.35em;
+    transform: translateX(10em);
+}
+span.load:nth-child(1) {
+    animation-delay: 0.16667s;
+}
+span.load:nth-child(2) {
+    animation-delay: 0.33333s;
+}
+span.load:nth-child(3) {
+    animation-delay: 0.5s;
+}
+span.load:nth-child(4) {
+    animation-delay: 0.66667s;
+}
+span.load:nth-child(5) {
+    animation-delay: 0.83333s;
+}
+span.load:nth-child(6) {
+    animation-delay: 1s;
+}
+span.load:nth-child(7) {
+    animation-delay: 1.16667s;
+}
+
+
+@keyframes animateIn {
+    0% {
+        transform: translateX(10em);
+    }
+    20%, 65% {
+        transform: translateX(0);
+    }
+    25% {
+        color: #80628a;
+    }
+    100% {
+        transform: translateX(-10em);
+    }
+}
