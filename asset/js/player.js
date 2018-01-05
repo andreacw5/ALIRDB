@@ -145,7 +145,7 @@ function showUserList(data) {
         var playerId2 = data[x].playerid;
 
         $('#' + playerId2).on('click', function () {
-            startLoadingTransaction();
+            loadingScreen();
            searchByPlayer($(this).data("id"));
         });
     }
@@ -401,7 +401,7 @@ function showFactionList(type) {
                     var membersid2 = data[x].playerid;
 
                     $('#' + membersid2).on('click', function () {
-                        startLoadingTransaction();
+                        loadingScreen();
                         searchByPlayer($(this).data("id"));
                     });
 

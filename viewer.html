@@ -34,7 +34,7 @@
         })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
     </script>-->
 </head>
-<body onload="startLoadingTransaction();">
+<body>
 <div id="loadingdiv" hidden>
     <div class="loading" id="loading">
         <span class="load">A</span>
@@ -80,12 +80,12 @@
                                id="searchinput">
                         <span class="input-group-btn">
                         <button class="btn btn-secondary toolt" type="button" data-toggle="tooltip" data-placement="top"
-                                title="Ricerca per utente o GUID" id="userFinderButton" onclick="startLoadingTransaction(); searchByPlayer();" style="cursor: pointer"><i
+                                title="Ricerca per utente o GUID" id="userFinderButton" onclick="loadingScreen(); searchByPlayer();" style="cursor: pointer"><i
                                 class="fas fa-user"></i></button>
                     </span>
                         <span class="input-group-btn">
                         <button class="btn btn-secondary toolt" type="button" data-toggle="tooltip" data-placement="top"
-                                title="Ricerca per gang" id="gangFinderButton" onclick="startLoadingTransaction(); searchByGang();" style="cursor: pointer"><i
+                                title="Ricerca per gang" id="gangFinderButton" onclick="loadingScreen(); searchByGang();" style="cursor: pointer"><i
                                 class="fas fa-users"></i></button>
                     </span>
                     </div>
@@ -95,10 +95,10 @@
                 <div class="row">
                     <div class="col">
                         <div>
-                            <button onclick="startLoadingTransaction(); showFactionList('cop');" id="copFinderButton" type="button" class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center" style="cursor: pointer"><i
+                            <button onclick="loadingScreen(); showFactionList('cop');" id="copFinderButton" type="button" class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center" style="cursor: pointer"><i
                                     class="fas fa-gavel"></i> <span>Elenco agenti</span> <span></span>
                             </button>
-                            <button onclick="startLoadingTransaction(); showFactionList('med');" id="medFinderButton" type="button" class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center" style="cursor: pointer"><i
+                            <button onclick="loadingScreen(); showFactionList('med');" id="medFinderButton" type="button" class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center" style="cursor: pointer"><i
                                     class="fas fa-user-md"></i> <span>Elenco medici</span> <span></span>
                             </button>
                             <!--<button onclick="startWantedMenu();" type="button" class="btn btn-warning btn-lg btn-block d-flex justify-content-between align-items-center" style="cursor: pointer"><i

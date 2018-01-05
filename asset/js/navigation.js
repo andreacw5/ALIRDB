@@ -160,7 +160,7 @@ function showUserWanted() {
     $('#userwantedpanel').show(300).removeAttr('hidden');
     $('#wantednav').addClass('active');
     $('#licensenav, #groupsnav, #vehiclenav, #infonav').attr('class', 'nav-item nav-link');
-    $('#wantedresultappend').animateCss('bounceInLeft');
+    $('#wantedresultappend').animateCss('bounceInRight');
 }
 
 function showUserVehicle() {
@@ -169,10 +169,15 @@ function showUserVehicle() {
     $('#uservehiclepanel').show(300).removeAttr('hidden');
     $('#vehiclenav').addClass('active');
     $('#infonav, #groupsnav, #licensenav, #wantednav').attr('class', 'nav-item nav-link');
-    $('#uservehicleappender').animateCss('bounceInLeft');
+    $('#uservehicleappender').animateCss('bounceInRight');
 }
 
-function startLoadingTransaction() {
+/**
+ *  Funzione per schermata di caricamento
+ */
+
+function loadingScreen() {
+    $('[data-toggle="tooltip"]').tooltip("hide");
     $('#maindiv').attr('hidden',true);
     $('#loadingdiv').removeAttr('hidden');
     setTimeout(function(){

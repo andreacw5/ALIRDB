@@ -129,7 +129,7 @@ function showGang(data) {
         var membersid2 = data[0].members[x];
 
         $('#' + membersid2).on('click', function () {
-            startLoadingTransaction();
+            loadingScreen();
             searchByPlayer($(this).data("id"));
         });
     }
@@ -155,6 +155,7 @@ function getGangName(playerid) {
 
         if (data.length === 1 ) {
             $('#usergangname').html(data[0].name).attr('style','color: #007BCC;cursor:pointer;').on('click', function () {
+                loadingScreen();
                 searchByGang($(this).html());
             });
         } else {
@@ -204,7 +205,7 @@ function showGangList(data) {
         var ownerId2 = data[x].owner;
 
         $('#' + ownerId2).on('click', function () {
-            startLoadingTransaction();
+            loadingScreen();
             searchByGang($(this).data("id"));
         });
     }
