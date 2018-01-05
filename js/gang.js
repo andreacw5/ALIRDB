@@ -64,11 +64,11 @@ function searchByGang(gang) {
             $('#noresult').removeAttr('hidden');
         }
 
-    }).fail(function () {
+    })/*.fail(function () {
         $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
         $('#errorServer').removeAttr('hidden');
         $('#modulename').html("gang");
-    });
+    })*/;
 
 }
 
@@ -162,11 +162,11 @@ function getGangName(playerid) {
             $('#usergangname').html(" Nessuna").removeAttr('style').off('click').attr('title','Questo utente non è in nessuna gang');
         }
 
-    }).fail(function () {
+    })/*.fail(function () {
         $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
         $('#errorServer').removeAttr('hidden');
         $('#modulename').html("gang");
-    });
+    })*/;
 
 }
 

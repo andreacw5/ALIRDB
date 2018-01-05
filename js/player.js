@@ -93,11 +93,11 @@ function searchByPlayer(playerid) {
             $('#noresult').removeAttr('hidden');
         }
 
-    }).fail(function () {
+    })/*.fail(function () {
         $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
         $('#errorServer').removeAttr('hidden');
         $('#modulename').html("player");
-    });
+    })*/;
 
 
 }
@@ -189,7 +189,7 @@ function showUser(data) {
     $('#usercash').html(data[0].cash);
     $('#useralias').html(data[0].aliases);
 
-    var linkSteam = steamProfileUrl + playerid + "/";
+    var linkSteam = steamProfileUrl + playerid;
 
     $('#steamLink').attr('href', linkSteam);
 
@@ -409,11 +409,11 @@ function showFactionList(type) {
             }
         }
 
-    }).fail(function () {
+    })/*.fail(function () {
         $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
         $('#errorServer').removeAttr('hidden');
         $('#modulename').html("player");
-    });
+    })*/;
 }
 
 /**
@@ -444,11 +444,11 @@ function getGangMembersName(playerid, owner) {
             }
         }
 
-    }).fail(function () {
+    })/*.fail(function () {
         $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
         $('#errorServer').removeAttr('hidden');
         $('#modulename').html("player");
-    });
+    })*/;
 
 }
 
@@ -713,10 +713,10 @@ function getUserVehicle(playerid) {
             $('#vehiclesize').html("Questo utente non possiede veicoli!");
         }
 
-    }).fail(function () {
+    })/*.fail(function () {
         $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
         $('#errorServer').removeAttr('hidden');
         $('#modulename').html("vehicle");
-    });
+    })*/;
 
 }

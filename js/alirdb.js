@@ -1,5 +1,7 @@
 /*
 *
+*                          ALIRDB v1.2 del 05/01/2018
+*
 *                                 MIT License
 *
 *    Copyright (c) 2017 Andrea Zago
@@ -23,6 +25,17 @@
 *    SOFTWARE.
 *
 */
+
+/**
+ *  Koala minifier combined file
+ *  Questo file permette di minimizzare tutti i file js del progetto in un'unico file minimizzato.
+ *  @author: Andreacw (This file)
+ *  @author: Ethan Lai (http://koala-app.com/) (Creator of Koala Application)
+ */
+
+// @koala-append "player.js"
+// @koala-append "gang.js"
+// @koala-append "wanted.js"
 
 // Limitatore di ricerca configurabile
 var searchLimiter = 100;
@@ -68,10 +81,10 @@ function statisticOnLoad() {
         timeout: 5000
     }).done(function (data) {
         $('#playerCounter').html(data.length)
-    }).fail(function () {
+    })/*.fail(function () {
         $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
         $('#connectionLost').removeAttr('hidden');
-    });
+    })*/;
 
     $.ajax({
         url: gangDatabase,
