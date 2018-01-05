@@ -40,13 +40,11 @@
 // Limitatore di ricerca configurabile
 var searchLimiter = 100;
 // Variabili connessione api
-var serverIp = "http://37.59.102.107";
-var cors = "https://cors-anywhere.herokuapp.com/";
-var playerDatabase = cors + serverIp + ":5100/players";
-var gangDatabase = cors + serverIp + ":5200/gangs";
-var vehicleDatabase = cors + serverIp + ":5300/vehicles";
-var wantedDatabase = cors + serverIp + ":5400/wanted";
-var userDatabase = cors + serverIp + ":5500/users";
+var playerDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5100/players";
+var gangDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5200/gangs";
+var vehicleDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5300/vehicles";
+var wantedDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5400/wanted";
+var userDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5500/users";
 
 var steamProfileUrl = "http://steamcommunity.com/profiles/";
 
