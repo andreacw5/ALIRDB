@@ -95,13 +95,16 @@ function showGang(data) {
         $('#gangplayernumber')
             .html(gangmemberlength)
             .attr('style', 'color:red');
-    } else if (gangmemberlength >= 9) {
+        $('#limitwarning').removeAttr('hidden');
+    } else if (gangmemberlength >= 10) {
         $('#gangplayernumber')
             .html(gangmemberlength)
             .attr('style', 'color:yellow');
+        $('#limitwarning').attr('hidden',true);
     } else {
         $('#gangplayernumber')
             .html(gangmemberlength);
+        $('#limitwarning').attr('hidden',true);
     }
 
 
@@ -188,12 +191,22 @@ function showGangList(data) {
         var ownerId = data[i].owner;
         var memberSize = data[i].members.length;
 
+        var gangColor;
+
+        if(memberSize >= 10){
+            gangColor = '#FFE17E';
+        }else if(memberSize > 12){
+            gangColor = '#FF3333';
+        }else{
+            gangColor = '#FFF';
+        }
+
         var listElement = $('<a style="cursor:pointer;" id="' + ownerId + '" data-id="' + ownerId + '" class="list-group-item list-group-item-action flex-column align-items-start">' +
             '    <div class="d-flex w-100 justify-content-between">' +
             '      <h5 class="mb-1">' + gangName + '</h5>' +
             '      <small><i class="fas fa-external-link-alt"></i></small>' +
             '    </div>' +
-            '    <small>Dimensioni: ' + memberSize + '/12 - Proprietario: ' + ownerId + '</small>' +
+            '    <small>Dimensioni: <span style="color: ' + gangColor + '">' + memberSize + '/12 </span> - Proprietario: ' + ownerId + '</small>' +
             '  </a>');
 
         $('#listGangAppendElement').append(listElement);
