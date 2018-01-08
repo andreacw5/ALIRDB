@@ -37,16 +37,83 @@
 // @koala-append "gang.js"
 // @koala-append "wanted.js"
 
+/**
+ *  Inizializzo le variabili globali
+ */
+
 // Limitatore di ricerca configurabile
 var searchLimiter = 100;
+
 // Variabili connessione api
 var playerDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5100/players";
 var gangDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5200/gangs";
 var vehicleDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5300/vehicles";
 var wantedDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5400/wanted";
 var userDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5500/users";
-
 var steamProfileUrl = "http://steamcommunity.com/profiles/";
+
+// Array ricercati
+
+var chargesArray = [
+    { name:"Competizioni illegali", fines:1000},
+    { name:"Guida senza patente", fines:300},
+    { name:"Guida pericolosa", fines:400},
+    { name:"Oltre i 10 km/h", fines:1000},
+    { name:"Oltre i 20 km/h", fines:2000},
+    { name:"Oltre i 30 km/h", fines:3000},
+    { name:"Oltre i 40 km/h", fines:5000},
+    { name:"Oltre i 60 km/h", fines:9000},
+    { name:"Guida a fari spenti", fines:120},
+    { name:"Veicolo in divieto di sosta", fines:75}, // TODO: Controllare valore
+    { name:"Disturbo alla quiete pubblica", fines:220},
+    { name:"Procurato allarme", fines:500},
+    { name:"Molestie ad un agente", fines:500},
+    { name:"Tentato suicidio", fines:1000},
+    { name:"Istigazione al suicidio", fines:1500},
+    { name:"Istigazione al delinquere", fines:2000},
+    { name:"Offese al pudore", fines:50},
+    { name:"Bracconaggio", fines:10000},
+    { name:"Evasione", fines:10000},
+    { name:"Complicità in evasione", fines:5000},
+    { name:"Tentato furto di un veicolo", fines:2500},
+    { name:"Utilizzo/Possesso di esplosivi", fines:2000},
+    { name:"Rapina", fines:4000},
+    { name:"Sequestro", fines:8000},
+    { name:"Tentato sequestro", fines:5000},
+    { name:"Possesso di droga", fines:7500},
+    { name:"Traffico di droga", fines:10000},
+    { name:"Furto di beni personali", fines:4000},
+    { name:"Ricettazione", fines:4000},
+    { name:"Tentato furto di veicolo civile", fines:2500},
+    { name:"Furto di veicolo civile", fines:5000},
+    { name:"Tentato furto di veicolo polizia", fines:3500},
+    { name:"Furto di veicolo polizia", fines:6000},
+    { name:"Possesso di arma illegale", fines:5000},
+    { name:"Possesso di arma illegale aggravato", fines:7500},
+    { name:"Possesso di equipaggiamento illegale", fines:2500},
+    { name:"Fuga dalla polizia", fines:2000},
+    { name:"Omicidio", fines:2000},
+    { name:"Vendita illegale di armi", fines:10000},
+    { name:"Uso di armi in citta", fines:2500},
+    { name:"Estorsione", fines:4000},
+    { name:"Tentata rapina", fines:2500},
+    { name:"Complicità in rapina", fines:1500},
+    { name:"Possesso di droga", fines:7500},
+    { name:"Uso di stupefacenti", fines:1000},
+    { name:"Terrorismo", fines:5000},
+    { name:"Violazione spazio aereo urbano", fines:1000},
+    { name:"Atterraggio senza autorizzazione", fines:750},
+    { name:"Prostituzione", fines:1500},
+    { name:"Tentata evasione", fines:50000},
+    { name:"Complicità in rapina", fines:2500},
+    { name:"Guida di mezzo non autorizzato", fines:700},
+    { name:"Mancanza di documenti identificativi", fines:500}
+];
+
+// Array veicoli
+
+
+
 
 // Abilito i tooltip ovunque
 $(function () {

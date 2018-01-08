@@ -139,7 +139,7 @@ function showGang(data) {
 }
 
 /**
- *  Avendo l'id del giocatore cerco il nome della gang in cui si trova
+ *  Con l'id del giocatore cerco il nome della gang in cui si trova
  *  @param: playerid
  *  @return: gangName
  */
