@@ -50,7 +50,7 @@ var gangDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:520
 var vehicleDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5300/vehicles";
 var wantedDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5400/wanted";
 var userDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5500/users";
-var steamProfileUrl = "http://steamcommunity.com/profiles/";
+var steamProfileUrl = "https://steamcommunity.com/profiles/";
 
 // Array ricercati
 
@@ -110,10 +110,16 @@ var chargesArray = [
     { name:"Mancanza di documenti identificativi", fines:500}
 ];
 
-// Array veicoli
+// Array supporter
 
-
-
+var supportTeamList = [
+    {name: "Johnny", pid: "76561198140659293"},
+    {name: "Waxe", pid: "76561198028284217"},
+    {name: "Hydraxon", pid: "76561198083359176"},
+    {name: "Giammy",pid: "76561198105183086"},
+    {name: "Sartox",pid: "76561198093943497"},
+    {name: "Bonden",pid: "76561198080431444"}
+];
 
 // Abilito i tooltip ovunque
 $(function () {

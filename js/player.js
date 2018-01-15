@@ -24,35 +24,6 @@
 *
 */
 
-// Inserisco la lista dei supporter
-var supportTeamList = [
-    {
-        "name": "Condor",
-        "pid": "76561198144454884"
-    },{
-        "name": "Johnny",
-        "pid": "76561198140659293"
-    },{
-        "name": "Waxe",
-        "pid": "76561198028284217"
-    },{
-        "name": "Hydraxon",
-        "pid": "76561198083359176"
-    },{
-        "name": "Garo",
-        "pid": "76561198090255073"
-    },{
-        "name": "Giammy",
-        "pid": "76561198105183086"
-    },{
-        "name": "Sartox",
-        "pid": "76561198093943497"
-    },{
-        "name": "Bonden",
-        "pid": "76561198080431444"
-    }
-];
-
 /**
  *  Effettuo la ricerca tra gli utenti in base al playerid fornito
  *  @param: playerid
