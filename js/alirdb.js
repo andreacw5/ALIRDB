@@ -119,6 +119,8 @@ var supportTeamList = [
     {name: "Giammy",pid: "76561198105183086"},
     {name: "Sartox",pid: "76561198093943497"},
     {name: "Pitta",pid: "76561198080734888"},
+    {name: "Bowen",pid: "76561198036665850"},
+    {name: "Spartano",pid: "76561198142032626"},
     {name: "Phil",pid: "76561197970281561"},
     {name: "Bonden",pid: "76561198080431444"}
 ];
