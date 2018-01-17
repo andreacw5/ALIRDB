@@ -94,7 +94,7 @@ function getUserCharges(playerid) {
 }
 
 /**
- *  Creo una tabella con tutte le accuse nell'array da visualizzare
+ *  Creo una tabella con tutte le accuse nell'array da visualizzare con le taglie per capo
  *  @param: chargesArray
  */
 
