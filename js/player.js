@@ -45,13 +45,10 @@ function searchByPlayer(playerid) {
     $('#mainsearchpage').attr('hidden',true);
 
     $.ajax({
-        url: playerDatabase,
+        url: playerDatabase + "/" + playerid,
         type: 'GET',
         timeout: 6000,
-        contentType: 'json',
-        data: {
-            q: playerid
-        }
+        contentType: 'json'
     }).done(function (data) {
 
         if(data.length > 1){
@@ -396,11 +393,8 @@ function showFactionList(type) {
 function getGangMembersName(playerid, owner) {
 
     $.ajax({
-        url: playerDatabase,
+        url: playerDatabase + "/" + playerid,
         type: 'GET',
-        data: {
-            q: playerid
-        },
         dataType: "json",
         timeout: 5000
     }).done(function (data) {
@@ -432,14 +426,13 @@ function getGangMembersName(playerid, owner) {
 function getUserVehicle(playerid) {
 
     $.ajax({
-        url: vehicleDatabase,
+        url: vehicleDatabase + "/" + playerid,
         type: 'GET',
         timeout: 5000,
-        contentType: 'json',
-        data: {
-            q: playerid
-        }
+        contentType: 'json'
     }).done(function (data) {
+
+        console.log(data);
 
         if(data.length > 0){
 

@@ -44,15 +44,11 @@ function searchByGang(gang) {
     $('#playersearchview, #playermultyresult, #gangmultyresult, #noresult, #viewfactionlist, #wantedlist').attr('hidden', true);
 
     $.ajax({
-        url: gangDatabase,
+        url: gangDatabase + "/" + gang,
         type: 'GET',
-        data: {
-            q: gang
-        },
         dataType: "json",
         timeout: 5000
     }).done(function (data) {
-
         if (data.length > 1) {
             $('#mainsearchpage').attr('hidden', true);
             showGangList(data);
@@ -147,11 +143,8 @@ function showGang(data) {
 function getGangName(playerid) {
 
     $.ajax({
-        url: gangDatabase,
+        url: gangDatabase + "/id/" + playerid,
         type: 'GET',
-        data: {
-            q: playerid
-        },
         dataType: "json",
         timeout: 5000
     }).done(function (data) {
