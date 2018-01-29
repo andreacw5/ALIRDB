@@ -79,12 +79,17 @@
                                id="searchinput">
                         <span class="input-group-btn">
                         <button class="btn btn-secondary toolt" type="button" data-toggle="tooltip" data-placement="top"
-                                title="Ricerca per utente o GUID" id="userFinderButton" onclick="loadingScreen(); searchByPlayer();" style="cursor: pointer"><i
+                                title="Ricerca per nome utente" id="userFinderButton" onclick="loadingScreen(); searchByPlayer('name');" style="cursor: pointer"><i
                                 class="fas fa-user"></i></button>
                     </span>
                         <span class="input-group-btn">
                         <button class="btn btn-secondary toolt" type="button" data-toggle="tooltip" data-placement="top"
-                                title="Ricerca per gang" id="gangFinderButton" onclick="loadingScreen(); searchByGang();" style="cursor: pointer"><i
+                                title="Ricerca per GUID utente" id="userIDFinderButton" onclick="loadingScreen(); searchByPlayer('playerid');" style="cursor: pointer"><i
+                                class="fas fa-user-plus"></i></button>
+                    </span>
+                        <span class="input-group-btn">
+                        <button class="btn btn-secondary toolt" type="button" data-toggle="tooltip" data-placement="top"
+                                title="Ricerca per nome gang" id="gangFinderButton" onclick="loadingScreen(); searchByGang();" style="cursor: pointer"><i
                                 class="fas fa-users"></i></button>
                     </span>
                     </div>

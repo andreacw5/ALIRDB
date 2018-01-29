@@ -150,11 +150,12 @@ $.fn.extend({
 function statisticOnLoad() {
 
     $.ajax({
-        url: playerDatabase,
+        url: playerDatabase + "/lenght/",
         type: 'GET',
         dataType: "json",
         timeout: 5000
     }).done(function (data) {
+        console.log(data);
         $('#playerCounter').html(data.length)
     })/*.fail(function () {
         $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);

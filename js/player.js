@@ -30,22 +30,32 @@
  *  @return: data[i]
  */
 
-function searchByPlayer(playerid) {
+function searchByPlayer(type, playerid) {
 
     $('#userFinderButton').attr('disabled',true);
     $('#gangFinderButton').attr('disabled',true);
     $('#copFinderButton').attr('disabled',true);
     $('#medFinderButton').attr('disabled',true);
 
+    var inputval = playerid;
+
     // Solo in caso non viene passato l'id uso il campo input per la ricerca
     if(!playerid){
-        playerid = $('#searchinput').val();
+        inputval = $('#searchinput').val();
+    }
+
+    var ajaxurl = "";
+
+    if(type === "name"){
+        ajaxurl = playerDatabase + "/name/" + inputval;
+    }else{
+        ajaxurl = playerDatabase + "/" + inputval;
     }
 
     $('#mainsearchpage').attr('hidden',true);
 
     $.ajax({
-        url: playerDatabase + "/" + playerid,
+        url: ajaxurl,
         type: 'GET',
         timeout: 6000,
         contentType: 'json'
@@ -114,7 +124,7 @@ function showUserList(data) {
 
         $('#' + playerId2).on('click', function () {
             loadingScreen();
-           searchByPlayer($(this).data("id"));
+           searchByPlayer('playerid', $(this).data("id"));
         });
     }
 
@@ -370,7 +380,7 @@ function showFactionList(type) {
 
                     $('#' + membersid2).on('click', function () {
                         loadingScreen();
-                        searchByPlayer($(this).data("id"));
+                        searchByPlayer('playerid', $(this).data("id"));
                     });
 
                 }
