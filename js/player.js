@@ -287,10 +287,8 @@ function showFactionList(type) {
     $('#copFinderButton').attr('disabled',true);
     $('#medFinderButton').attr('disabled',true);
 
-    // TODO: Richiesto Json esposto direttamente con la lista fazioni in modo da non esporre al client la ricerca ed i dati degli utenti.
-
     $.ajax({
-        url: playerDatabase,
+        url: playerDatabase + "/",
         type: 'GET',
         dataType: "json",
         timeout: 5000

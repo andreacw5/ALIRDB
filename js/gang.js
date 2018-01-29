@@ -129,7 +129,7 @@ function showGang(data) {
 
         $('#' + membersid2).on('click', function () {
             loadingScreen();
-            searchByPlayer($(this).data("id"));
+            searchByPlayer('playerid',$(this).data("id"));
         });
     }
 }
