@@ -155,41 +155,40 @@ function statisticOnLoad() {
         dataType: "json",
         timeout: 5000
     }).done(function (data) {
-        console.log(data);
-        $('#playerCounter').html(data.length)
+        $('#playerCounter').html(data.size)
     })/*.fail(function () {
         $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
         $('#connectionLost').removeAttr('hidden');
     })*/;
 
     $.ajax({
-        url: gangDatabase,
+        url: gangDatabase + "/lenght/",
         type: 'GET',
         dataType: "json",
         timeout: 5000
     }).done(function (data) {
-        $('#gangCounter').html(data.length)
+        $('#gangCounter').html(data.size)
     });
 
     $.ajax({
-        url: vehicleDatabase,
+        url: vehicleDatabase + "/lenght/",
         type: 'GET',
         dataType: "json",
         timeout: 5000
     }).done(function (data) {
-        $('#vehicleCounter').html(data.length)
+        $('#vehicleCounter').html(data.size)
     });
 
     $.ajax({
-        url: wantedDatabase,
+        url: wantedDatabase + "/lenght/",
         type: 'GET',
         dataType: "json",
         timeout: 5000
     }).done(function (data) {
-        $('#wantedCounter').html(data.length)
+        $('#wantedCounter').html(data.size)
     });
 
-    $('#adminCounter').html("11");
+    $('#adminCounter').html("10");
 
 }
 
