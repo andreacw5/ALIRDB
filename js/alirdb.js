@@ -50,6 +50,7 @@ var gangDatabase = "http://37.59.102.107:8000/gangs";
 var vehicleDatabase = "http://37.59.102.107:8000/vehicles";
 var wantedDatabase = "http://37.59.102.107:8000/wanted";
 var userDatabase = "http://37.59.102.107:8000/users";
+var listDatabase = "http://37.59.102.107:8000/lists";
 var steamProfileUrl = "https://steamcommunity.com/profiles/";
 
 // Array ricercati

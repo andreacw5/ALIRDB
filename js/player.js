@@ -264,7 +264,7 @@ function showUser(data) {
 
     $('#usermedlevel').html(mediclevelname);
 
-    getGangName(playerid);
+    //getGangName(playerid);
 
     getUserVehicle(playerid);
 
@@ -287,8 +287,14 @@ function showFactionList(type) {
     $('#copFinderButton').attr('disabled',true);
     $('#medFinderButton').attr('disabled',true);
 
+    /**
+     *  Type accettati:
+     *  cop - Lista agenti
+     *  med - Lista medici
+     */
+
     $.ajax({
-        url: playerDatabase + "/",
+        url: listDatabase + "/" + type,
         type: 'GET',
         dataType: "json",
         timeout: 5000
