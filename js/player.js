@@ -446,8 +446,6 @@ function getUserVehicle(playerid) {
         contentType: 'json'
     }).done(function (data) {
 
-        console.log(data);
-
         if(data.length > 0){
 
             $('#vehiclesize').html("Possiede " + data.length + " veicoli:");
