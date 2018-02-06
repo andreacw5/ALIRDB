@@ -30,28 +30,35 @@
  *  @return: data[i]
  */
 
-function searchByPlayer(playerid) {
+function searchByPlayer(type, playerid) {
 
     $('#userFinderButton').attr('disabled',true);
     $('#gangFinderButton').attr('disabled',true);
     $('#copFinderButton').attr('disabled',true);
     $('#medFinderButton').attr('disabled',true);
 
+    var inputval = playerid;
+
     // Solo in caso non viene passato l'id uso il campo input per la ricerca
     if(!playerid){
-        playerid = $('#searchinput').val();
+        inputval = $('#searchinput').val();
+    }
+
+    var ajaxurl = "";
+
+    if(type === "name"){
+        ajaxurl = playerDatabase + "/name/" + inputval;
+    }else{
+        ajaxurl = playerDatabase + "/" + inputval;
     }
 
     $('#mainsearchpage').attr('hidden',true);
 
     $.ajax({
-        url: playerDatabase,
+        url: ajaxurl,
         type: 'GET',
         timeout: 6000,
-        contentType: 'json',
-        data: {
-            q: playerid
-        }
+        contentType: 'json'
     }).done(function (data) {
 
         if(data.length > 1){
@@ -117,7 +124,7 @@ function showUserList(data) {
 
         $('#' + playerId2).on('click', function () {
             loadingScreen();
-           searchByPlayer($(this).data("id"));
+           searchByPlayer('playerid', $(this).data("id"));
         });
     }
 
@@ -257,7 +264,7 @@ function showUser(data) {
 
     $('#usermedlevel').html(mediclevelname);
 
-    getGangName(playerid);
+    //getGangName(playerid);
 
     getUserVehicle(playerid);
 
@@ -280,10 +287,14 @@ function showFactionList(type) {
     $('#copFinderButton').attr('disabled',true);
     $('#medFinderButton').attr('disabled',true);
 
-    // TODO: Richiesto Json esposto direttamente con la lista fazioni in modo da non esporre al client la ricerca ed i dati degli utenti.
+    /**
+     *  Type accettati:
+     *  cop - Lista agenti
+     *  med - Lista medici
+     */
 
     $.ajax({
-        url: playerDatabase,
+        url: listDatabase + "/" + type,
         type: 'GET',
         dataType: "json",
         timeout: 5000
@@ -373,7 +384,7 @@ function showFactionList(type) {
 
                     $('#' + membersid2).on('click', function () {
                         loadingScreen();
-                        searchByPlayer($(this).data("id"));
+                        searchByPlayer('playerid', $(this).data("id"));
                     });
 
                 }
@@ -396,11 +407,8 @@ function showFactionList(type) {
 function getGangMembersName(playerid, owner) {
 
     $.ajax({
-        url: playerDatabase,
+        url: playerDatabase + "/" + playerid,
         type: 'GET',
-        data: {
-            q: playerid
-        },
         dataType: "json",
         timeout: 5000
     }).done(function (data) {
@@ -432,14 +440,13 @@ function getGangMembersName(playerid, owner) {
 function getUserVehicle(playerid) {
 
     $.ajax({
-        url: vehicleDatabase,
+        url: vehicleDatabase + "/" + playerid,
         type: 'GET',
         timeout: 5000,
-        contentType: 'json',
-        data: {
-            q: playerid
-        }
+        contentType: 'json'
     }).done(function (data) {
+
+        console.log(data);
 
         if(data.length > 0){
 

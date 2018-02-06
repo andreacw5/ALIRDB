@@ -207,3 +207,7 @@ span.load:nth-child(7) {
         transform: translateX(-10em);
     }
 }
+
+.noborder{
+    border-top: none !important;
+}

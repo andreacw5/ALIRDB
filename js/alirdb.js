@@ -1,6 +1,6 @@
 /*
 *
-*                          ALIRDB v1.2 del 05/01/2018
+*                          ALIRDB v1.4 del 05/02/2018
 *
 *                                 MIT License
 *
@@ -45,11 +45,12 @@
 var searchLimiter = 100;
 
 // Variabili connessione api
-var playerDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5100/players";
-var gangDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5200/gangs";
-var vehicleDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5300/vehicles";
-var wantedDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5400/wanted";
-var userDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:5500/users";
+var playerDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/players";
+var gangDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/gangs";
+var vehicleDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/vehicles";
+var wantedDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/wanted";
+var userDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/users";
+var listDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/lists";
 var steamProfileUrl = "https://steamcommunity.com/profiles/";
 
 // Array ricercati
@@ -150,45 +151,45 @@ $.fn.extend({
 function statisticOnLoad() {
 
     $.ajax({
-        url: playerDatabase,
+        url: playerDatabase + "/lenght/",
         type: 'GET',
         dataType: "json",
         timeout: 5000
     }).done(function (data) {
-        $('#playerCounter').html(data.length)
+        $('#playerCounter').html(data.size)
     })/*.fail(function () {
         $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
         $('#connectionLost').removeAttr('hidden');
     })*/;
 
     $.ajax({
-        url: gangDatabase,
+        url: gangDatabase + "/lenght/",
         type: 'GET',
         dataType: "json",
         timeout: 5000
     }).done(function (data) {
-        $('#gangCounter').html(data.length)
+        $('#gangCounter').html(data.size)
     });
 
     $.ajax({
-        url: vehicleDatabase,
+        url: vehicleDatabase + "/lenght/",
         type: 'GET',
         dataType: "json",
         timeout: 5000
     }).done(function (data) {
-        $('#vehicleCounter').html(data.length)
+        $('#vehicleCounter').html(data.size)
     });
 
     $.ajax({
-        url: wantedDatabase,
+        url: wantedDatabase + "/lenght/",
         type: 'GET',
         dataType: "json",
         timeout: 5000
     }).done(function (data) {
-        $('#wantedCounter').html(data.length)
+        $('#wantedCounter').html(data.size)
     });
 
-    $('#adminCounter').html("11");
+    $('#adminCounter').html("10");
 
 }
 
