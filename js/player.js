@@ -561,9 +561,6 @@ function getUserVehicle(playerid) {
                     case 'C_Van_02_vehicle_F':
                         vehicleName = 'Camioncino (Cargo)';
                         break;
-                    case 'C_Van_02_medevac_F':
-                        vehicleName = 'Ambulanza';
-                        break;
                     // Elicotteri
                     case 'C_Heli_Light_01_civil_F':
                         vehicleName = 'MH-900';
@@ -573,15 +570,6 @@ function getUserVehicle(playerid) {
                         break;
                     case 'B_Heli_Transport_01_F':
                         vehicleName = 'Ghosthawk';
-                        break;
-                    case 'O_Heli_Transport_04_F':
-                        vehicleName = 'Mi-290 Taru';
-                        break;
-                    case 'O_Heli_Transport_04_medevac_F':
-                        vehicleName = 'Mi-290 Taru (Medico) ';
-                        break;
-                    case 'B_Heli_Transport_03_unarmed_F':
-                        vehicleName = 'Huron';
                         break;
                     case 'B_Heli_Light_01_stripped_F':
                         vehicleName = 'Hummingbird (Ricettato)';
@@ -629,9 +617,6 @@ function getUserVehicle(playerid) {
                     case 'C_Boat_Civil_01_F':
                         vehicleName = 'Motoscafo';
                         break;
-                    case 'C_Boat_Civil_01_police_F':
-                        vehicleName = 'Motoscafo (Polizia)';
-                        break;
                     case 'C_Boat_Civil_01_rescue_F':
                         vehicleName = 'Motoscafo (Soccorso)';
                         break;
@@ -675,7 +660,7 @@ function getUserVehicle(playerid) {
                     '                        <div class="card">' +
                     '                            <div class="card-body">' +
                     '                                <h4 class="card-title">'+ vehicleType + ' ' + vehicleName +'</h4>' +
-                    '                                <h6 class="card-subtitle mb-2 text-muted">' + sideText + ', targato '+ vehiclePlate +' (colore '+vehicleColor+')</h6>' +
+                    '                                <h6 class="card-subtitle mb-2 text-muted">Targato '+ vehiclePlate +' (colore '+vehicleColor+')</h6>' +
                     '                            </div>' +
                     '                        </div>' +
                     '                    </div>');
