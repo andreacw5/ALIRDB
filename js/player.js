@@ -264,7 +264,7 @@ function showUser(data) {
 
     $('#usermedlevel').html(mediclevelname);
 
-    //getGangName(playerid);
+    getGangName(playerid);
 
     getUserVehicle(playerid);
 
@@ -445,8 +445,6 @@ function getUserVehicle(playerid) {
         timeout: 5000,
         contentType: 'json'
     }).done(function (data) {
-
-        console.log(data);
 
         if(data.length > 0){
 
