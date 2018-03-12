@@ -55,8 +55,8 @@ var gangDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:800
 var vehicleDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/vehicles";
 var wantedDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/wanted";
 var userDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/users";
-var listDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:22400/lists";
-var donorDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:22400/donor";
+var listDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/lists";
+var donorDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/donor";
 var steamProfileUrl = "https://steamcommunity.com/profiles/";
 
 // Array ricercati
