@@ -47,7 +47,6 @@
     </div>
 </div>
 <div class="container" id="maindiv">
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" style="font-size: 150%; cursor:pointer;" data-toggle="tooltip" data-placement="top"
            title="Torna alla pagina principale" onclick="goToHome()"><i class="fas fa-database"></i> <b
@@ -72,8 +71,6 @@
     </nav>
 
     <main role="main">
-        <h4 style="text-align: center; color: #ffff00"> PRE-RELEASE V1.4 </h4>
-        <h4 style="text-align: center; color: #ffff00"> Questa build è un'anticipazione del rilascio 1.4, potrebbe contenere bug! </h4>
         <br>
         <section id="mainsearchpage">
             <div class="row">
@@ -83,17 +80,20 @@
                                id="searchinput">
                         <span class="input-group-btn">
                         <button class="btn btn-secondary toolt" type="button" data-toggle="tooltip" data-placement="top"
-                                title="Ricerca per nome utente" id="userFinderButton" onclick="loadingScreen(); searchByPlayer('name');" style="cursor: pointer"><i
+                                title="Ricerca per nome utente" id="userFinderButton"
+                                onclick="loadingScreen(); searchByPlayer('name');" style="cursor: pointer"><i
                                 class="fas fa-user"></i></button>
                     </span>
                         <span class="input-group-btn">
                         <button class="btn btn-secondary toolt" type="button" data-toggle="tooltip" data-placement="top"
-                                title="Ricerca per GUID utente" id="userIDFinderButton" onclick="loadingScreen(); searchByPlayer('playerid');" style="cursor: pointer"><i
+                                title="Ricerca per GUID utente" id="userIDFinderButton"
+                                onclick="loadingScreen(); searchByPlayer('playerid');" style="cursor: pointer"><i
                                 class="fas fa-user-plus"></i></button>
                     </span>
                         <span class="input-group-btn">
                         <button class="btn btn-secondary toolt" type="button" data-toggle="tooltip" data-placement="top"
-                                title="Ricerca per nome gang" id="gangFinderButton" onclick="loadingScreen(); searchByGang();" style="cursor: pointer"><i
+                                title="Ricerca per nome gang" id="gangFinderButton"
+                                onclick="loadingScreen(); searchByGang();" style="cursor: pointer"><i
                                 class="fas fa-users"></i></button>
                     </span>
                     </div>
@@ -103,10 +103,16 @@
                 <div class="row">
                     <div class="col">
                         <div>
-                            <button onclick="loadingScreen(); showFactionList('cop');" id="copFinderButton" type="button" class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center" style="cursor: pointer"><i
+                            <button onclick="loadingScreen(); showFactionList('cop');" id="copFinderButton"
+                                    type="button"
+                                    class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center"
+                                    style="cursor: pointer"><i
                                     class="fas fa-gavel"></i> <span>Elenco agenti</span> <span></span>
                             </button>
-                            <button onclick="loadingScreen(); showFactionList('med');" id="medFinderButton" type="button" class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center" style="cursor: pointer"><i
+                            <button onclick="loadingScreen(); showFactionList('med');" id="medFinderButton"
+                                    type="button"
+                                    class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center"
+                                    style="cursor: pointer"><i
                                     class="fas fa-user-md"></i> <span>Elenco medici</span> <span></span>
                             </button>
                             <!--<button onclick="startWantedMenu();" type="button" class="btn btn-warning btn-lg btn-block d-flex justify-content-between align-items-center" style="cursor: pointer"><i
@@ -118,23 +124,28 @@
                                 <ul class="list-group">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <i class="fas fa-user"></i> <span>Giocatori</span>
-                                        <span class="badge badge-primary badge-pill"><span id="playerCounter"><i class="fas fa-sync-alt fa-spin"></i></span></span>
+                                        <span class="badge badge-primary badge-pill"><span id="playerCounter"><i
+                                                class="fas fa-sync-alt fa-spin"></i></span></span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <i class="fas fa-users"></i> <span>Gang</span>
-                                        <span class="badge badge-primary badge-pill"><span id="gangCounter"><i class="fas fa-sync-alt fa-spin"></i></span></span>
+                                        <span class="badge badge-primary badge-pill"><span id="gangCounter"><i
+                                                class="fas fa-sync-alt fa-spin"></i></span></span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <i class="fas fa-user-times"></i> <span>Ricercati</span>
-                                        <span class="badge badge-primary badge-pill"><span id="wantedCounter"><i class="fas fa-sync-alt fa-spin"></i></span></span>
+                                        <span class="badge badge-primary badge-pill"><span id="wantedCounter"><i
+                                                class="fas fa-sync-alt fa-spin"></i></span></span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <i class="fas fa-user-secret"></i> <span>Amministratori</span>
-                                        <span class="badge badge-primary badge-pill"><span id="adminCounter"><i class="fas fa-sync-alt fa-spin"></i></span></span>
+                                        <span class="badge badge-primary badge-pill"><span id="adminCounter"><i
+                                                class="fas fa-sync-alt fa-spin"></i></span></span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <i class="fas fa-truck"></i> <span>Veicoli</span>
-                                        <span class="badge badge-primary badge-pill"><span id="vehicleCounter"><i class="fas fa-sync-alt fa-spin"></i></span></span>
+                                        <span class="badge badge-primary badge-pill"><span id="vehicleCounter"><i
+                                                class="fas fa-sync-alt fa-spin"></i></span></span>
                                     </li>
                                 </ul>
                             </div>
@@ -183,8 +194,12 @@
                         <thead>
                         <tr>
                             <th class="noborder" scope="col">Nickname</th>
-                            <th style="border-top: none !important; text-align: center !important;" class="statsdiv" scope="col">Divisione</th>
-                            <th style="border-top: none !important; text-align: center !important;"  class="statsdiv" scope="col">Livello</th>
+                            <th style="border-top: none !important; text-align: center !important;" class="statsdiv"
+                                scope="col">Divisione
+                            </th>
+                            <th style="border-top: none !important; text-align: center !important;" class="statsdiv"
+                                scope="col">Livello
+                            </th>
                             <th class="noborder" scope="col"></th>
                         </tr>
                         </thead>
@@ -206,8 +221,12 @@
                 <div class="row">
                     <div class="col-12 padbot">
                         <h3>
-                            <span id="thisuserissupporter" data-toggle="tooltip" data-placement="top" title="Questo utente è un membro del supporto utenti" style="color: #8ACE68;" hidden><i class="fas fa-user-secret"></i> </span>
-                            <span id="thisuserisadmin" data-toggle="tooltip" data-placement="top" title="Questo utente è un'amministratore" style="color: #8B1A1A;" hidden><i class="fas fa-user-secret"></i> </span>
+                            <span id="thisuserissupporter" data-toggle="tooltip" data-placement="top"
+                                  title="Questo utente è un membro del supporto utenti" style="color: #8ACE68;"
+                                  hidden><i class="fas fa-user-secret"></i> </span>
+                            <span id="thisuserisadmin" data-toggle="tooltip" data-placement="top"
+                                  title="Questo utente è un'amministratore" style="color: #8B1A1A;" hidden><i
+                                    class="fas fa-user-secret"></i> </span>
                             <span id="usernameplace"></span>
                             <small style="font-size: smaller; color: #44484d;">(<span id="playeridplace"></span>)
                             </small>
@@ -361,63 +380,84 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" style="color: white" id="helpModals"><i class="fas fa-info"></i> Pagina di aiuto</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="cursor: pointer; font-style: normal">
+                <h5 class="modal-title" style="color: white" id="helpModals"><i class="fas fa-info"></i> Pagina di aiuto
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        style="cursor: pointer; font-style: normal">
                     <span aria-hidden="true"><i style="color: white;" class="fas fa-times"></i></span>
                 </button>
             </div>
             <div class="modal-body">
                 <b>Introduzione</b>
                 <p>
-                    Questo applicativo online ti permette di avere sempre sotto mano le tue statistiche, i tuoi veicoli e le tue finanze.
-                    Potrai sapere in che gang ti trovi ed i nomi dei tuoi compagni, visionare i loro conti, sapere se hanno dei mezzi e quali.
+                    Questo applicativo online ti permette di avere sempre sotto mano le tue statistiche, i tuoi veicoli
+                    e le tue finanze.
+                    Potrai sapere in che gang ti trovi ed i nomi dei tuoi compagni, visionare i loro conti, sapere se
+                    hanno dei mezzi e quali.
                 </p>
 
                 <b>Ricerca Player</b>
                 <p>
-                    La ricerca player consente di trovare un'utente all'interno del database tramite qualsiasi dato dell'utente, sia esso playerId, alias usati o nominativo attuale, se il risultato trovato è più di uno,
-                    otterrai la lista con al massimo 100 nominativi. Questa funzione fornisce svariate informazioni divise in menù:
+                    La ricerca player consente di trovare un'utente all'interno del database tramite qualsiasi dato
+                    dell'utente, sia esso playerId, alias usati o nominativo attuale, se il risultato trovato è più di
+                    uno,
+                    otterrai la lista con al massimo 100 nominativi. Questa funzione fornisce svariate informazioni
+                    divise in menù:
 
-                    <ul>
-                        <li><b>Informazioni</b>: tutte le informazioni sull'utente, quali patrimonio, informazioni su whitelist e gang associata, statistiche ed alias;</li>
-                        <li><b>Veicoli</b>: verranno mostrati i veicoli, la loro tipologia ed il loro nome con associazione alla fazione di appartenenza (blu: polizia, giallo: aca, arancione: medici, bianco: civili);</li>
-                        <li><b>Licenze</b>: Prossimamente disponibile la visualizzazione delle licenze possedute.</li>
-                        <li><b>Fedina penale</b>: Nel caso l'utente sia ricercato sarà possibile visionare la lista delle imputazioni a carico e la taglia a carico.</li>
-                        <li><b>Steam</b>: Link al profilo steam dell'utente.</li>
-                        <li><b>Forum</b>: Se configurato, link al profilo sul forum dell'utente.</li>
-                    </ul>
+                <ul>
+                    <li><b>Informazioni</b>: tutte le informazioni sull'utente, quali patrimonio, informazioni su
+                        whitelist e gang associata, statistiche ed alias;
+                    </li>
+                    <li><b>Veicoli</b>: verranno mostrati i veicoli, la loro tipologia ed il loro nome con associazione
+                        alla fazione di appartenenza (blu: polizia, giallo: aca, arancione: medici, bianco: civili);
+                    </li>
+                    <li><b>Licenze</b>: Prossimamente disponibile la visualizzazione delle licenze possedute.</li>
+                    <li><b>Fedina penale</b>: Nel caso l'utente sia ricercato sarà possibile visionare la lista delle
+                        imputazioni a carico e la taglia a carico.
+                    </li>
+                    <li><b>Steam</b>: Link al profilo steam dell'utente.</li>
+                    <li><b>Forum</b>: Se configurato, link al profilo sul forum dell'utente.</li>
+                </ul>
                 </p>
 
                 <b>Ricerca gruppi</b>
 
                 <p>
-                    Fornendo il nominativo della gang è possibile vedere i suoi componenti, il proprietario ed i conteggi sul massimale,
+                    Fornendo il nominativo della gang è possibile vedere i suoi componenti, il proprietario ed i
+                    conteggi sul massimale,
                     in caso di più di 12 membri verrà mostrata un'allerta per avvisare la violazione del regolamento!
                 </p>
 
                 <b>Elenco agenti</b>
                 <p>
-                    Ottieni l'elenco degli agenti in servizio ed il loro livello di whitelist, ricorda che gli admin non sono mai mostrati!
+                    Ottieni l'elenco degli agenti in servizio ed il loro livello di whitelist, ricorda che gli admin non
+                    sono mai mostrati!
 
-                    <ul>
-                        <li><b>Divisione</b>: Permette di verificare l'appartenenza di un membro ad una determinata divisione interna (PLK, PdA o Doc).</li>
-                        <li><b>Grado</b>: Il grado in quella determinata fazione del player.</li>
-                    </ul>
+                <ul>
+                    <li><b>Divisione</b>: Permette di verificare l'appartenenza di un membro ad una determinata
+                        divisione interna (PLK, PdA o Doc).
+                    </li>
+                    <li><b>Grado</b>: Il grado in quella determinata fazione del player.</li>
+                </ul>
                 </p>
 
                 <b>Elenco medici</b>
                 <p>
-                    Ottieni l'elenco dei medici in servizio ed il loro livello di whitelist, ricorda che gli admin non sono mai mostrati!
+                    Ottieni l'elenco dei medici in servizio ed il loro livello di whitelist, ricorda che gli admin non
+                    sono mai mostrati!
                 </p>
 
                 <b>Note ulteriori sul funzionamento</b>
                 <p>
-                    Al fine di non creare vulnerabilità sul server di gioco il database viene trasferito su un server esterno da li esposto al server del forum, questa procedura viene effettuata automaticamente ogni 30 minuti con scatti random in modo da non permettere vulnerabilità nel trasferimento.
+                    Al fine di non creare vulnerabilità sul server di gioco il database viene trasferito su un server
+                    esterno da li esposto al server del forum, questa procedura viene effettuata automaticamente ogni 30
+                    minuti con scatti random in modo da non permettere vulnerabilità nel trasferimento.
                 </p>
 
                 <b>Accessi all'applicativo</b>
                 <p>
-                    L'accesso a questo applicativo è esclusivo per i donatori, superdonatori, investitori, membri di fazioni ufficiali ed allo staff.
+                    L'accesso a questo applicativo è esclusivo per i donatori, superdonatori, investitori, membri di
+                    fazioni ufficiali ed allo staff.
                     Chi non fa parte di questi gruppi non potrà accedervi!!
                 </p>
 
@@ -431,18 +471,21 @@
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script defer src="https://alir.eu/etero/js/fontawesome5.min.js"></script>
+<!--<script src="asset/js/alirdb.min.js"></script>-->
+<script src="js/alirdb.js"></script>
+<script src="js/player.js"></script>
+<script src="js/gang.js"></script>
+<script src="js/wanted.js"></script>
+
+{template="includeJS" app="core" group="global" location="global" params=""}
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
         integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
         crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
         integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
         crossorigin="anonymous"></script>
-<script defer src="https://alir.eu/etero/js/fontawesome5.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-<!--<script src="asset/js/alirdb.min.js"></script>-->
-<script src="js/alirdb.js"></script>
-<script src="js/player.js"></script>
-<script src="js/gang.js"></script>
-<script src="js/wanted.js"></script>
 </body>
 </html>

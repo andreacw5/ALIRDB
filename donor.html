@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ALIRDB - Donor check</title>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#317EFB"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="ALIR Database Viewer">
+    <meta name="keywords" content="Altis, Italia, ALIR, alir, db">
+    <meta name="author" content="Andreacw">
+    <!-- Page favicon -->
+    <link rel="icon" href="https://i.imgur.com/SSdiFqD.png" type="image/gif"/>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <!-- Other CSS -->
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    <!-- Hotjar Tracking Code for www.alir.eu -->
+    <!--<script>
+        (function (h, o, t, j, a, r) {
+            h.hj = h.hj || function () {
+                (h.hj.q = h.hj.q || []).push(arguments)
+            };
+            h._hjSettings = {hjid: 680245, hjsv: 6};
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script');
+            r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>-->
+</head>
+<body>
+<div id="loadingdiv" hidden>
+    <div class="loading" id="loading">
+        <span class="load">A</span>
+        <span class="load">L</span>
+        <span class="load">I</span>
+        <span class="load">R</span>
+        <span class="load">:</span>
+        <span class="load">D</span>
+        <span class="load">B</span>
+    </div>
+</div>
+<div class="container" id="maindiv">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" style="font-size: 150%; cursor:pointer;" data-toggle="tooltip" data-placement="top"
+           title="Torna alla pagina principale" onclick="returnToDonor()"><i class="fas fa-database"></i> <b
+                style="color: #007BCC">ALIR</b>DB</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
+                aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample09">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.alir.eu/" data-toggle="tooltip" data-placement="top"
+                       title="Torna al forum"> <i class="fas fa-external-link-alt"></i> Torna al forum</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section id="mainsearchpage">
+            <div class="pagec">
+                <div class="row">
+                    <div class="col">
+                        <div>
+                            <button onclick="loadingScreen(); showDonorList('1');" id="level1button"
+                                    type="button"
+                                    class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center"
+                                    style="cursor: pointer"><i
+                                    class="fas fa-euro-sign"></i> <span>Elenco donatori liv.1</span> <span></span>
+                            </button>
+                            <button onclick="loadingScreen(); showDonorList('2');" id="level2button"
+                                    type="button"
+                                    class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center"
+                                    style="cursor: pointer"><i
+                                    class="fas fa-euro-sign"></i> <span>Elenco donatori liv.2</span> <span></span>
+                            </button>
+                            <!--<button onclick="startWantedMenu();" type="button" class="btn btn-warning btn-lg btn-block d-flex justify-content-between align-items-center" style="cursor: pointer"><i
+                                    class="fas fa-sign-in-alt"></i> <span>Banca dati ricercati</span> <span></span>
+                            </button>-->
+                        </div>
+                        <div class="pagec">
+                            <div class="card">
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <i class="fas fa-euro-sign"></i> <span>Donatori liv. 1</span>
+                                        <span class="badge badge-primary badge-pill"><span id="donorl1counter"><i
+                                                class="fas fa-sync-alt fa-spin"></i></span></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <i class="fas fa-euro-sign"></i> <span>Donatori liv. 2</span>
+                                        <span class="badge badge-primary badge-pill"><span id="donorl2counter"><i
+                                                class="fas fa-sync-alt fa-spin"></i></span></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="viewDonorList" hidden>
+            <div class="card">
+                <h4 class="card-header">
+                    <i class="fas fa-users"></i> <span id="tableName"></span>
+                </h4>
+                <div class="card-body" style="padding: 1% !important;">
+                    <table class="table table-dark">
+                        <thead>
+                        <tr>
+                            <th class="noborder" scope="col">Nome</th>
+                            <th style="border-top: none !important;" class="statsdiv"
+                                scope="col">Playerid
+                            </th>
+                            <th style="border-top: none !important;" class="statsdiv"
+                                scope="col">Livello
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody id="appendDonorList">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <nav aria-label="breadcrumb" role="navigation" class="pagec">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">
+              <span>Made with <i style="color: firebrick" class="fas fa-heart animated infinite pulse"></i> by <a
+                      href="https://www.alir.eu/profile/3-andreacw/" data-toggle="tooltip" data-placement="top"
+                      title="Visualizza il profilo di Andreacw">Andreacw</a></span> - <a href="https://www.alir.eu/"
+                                                                                         data-toggle="tooltip"
+                                                                                         data-placement="top"
+                                                                                         title="Vai al sito internet (alir.eu)">ALIR</a>
+                <i class="fab fa-creative-commons"></i> - <i
+                    class="fab fa-github"></i> <a data-toggle="tooltip" data-placement="top"
+                                                  title="Visualizza su GitHub"
+                                                  href="https://github.com/andreacw5/ALIRBD"> GitHub</a>
+            </li>
+        </ol>
+    </nav>
+
+
+</div>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script defer src="https://alir.eu/etero/js/fontawesome5.min.js"></script>
+<!--<script src="asset/js/alirdb.min.js"></script>-->
+<script src="js/alirdb.js"></script>
+<script src="js/player.js"></script>
+<script src="js/gang.js"></script>
+<script src="js/wanted.js"></script>
+<script src="js/donor.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+</body>
+</html>

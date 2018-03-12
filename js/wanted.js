@@ -38,7 +38,10 @@ function getUserCharges(playerid) {
             q: playerid
         },
         dataType: "json",
-        timeout: 5000
+        timeout: 5000,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Authorization", authLogin);
+        }
     }).done(function (data) {
 
         // Controllo che l'utente sia ricercato
