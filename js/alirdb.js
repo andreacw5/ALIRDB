@@ -120,14 +120,14 @@ var chargesArray = [
 // Array supporter
 
 var supportTeamList = [
-    {name: "Johnny", pid: "76561198140659293"},
-    {name: "Sartox",pid: "76561198093943497"},
-    {name: "Bowen",pid: "76561198036665850"},
-    {name: "Phil",pid: "76561197970281561"},
-    {name: "Luciano",pid: "76561198186082483"},
-    {name: "Moro",pid: "76561198146039433"},
-    {name: "Osen2k",pid: "76561198169260949"},
-    {name: "Bonden",pid: "76561198080431444"}
+    { name: "Johnny", pid: "76561198140659293"},
+    { name: "Sartox", pid: "76561198093943497"},
+    { name: "Bowen", pid: "76561198036665850"},
+    { name: "Phil", pid: "76561197970281561"},
+    { name: "Luciano", pid: "76561198186082483"},
+    { name: "Moro", pid: "76561198146039433"},
+    { name: "Osen2k", pid: "76561198169260949"},
+    { name: "Bonden", pid: "76561198080431444"}
 ];
 
 // Abilito i tooltip ovunque
