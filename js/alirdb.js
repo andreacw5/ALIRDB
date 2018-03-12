@@ -1,6 +1,6 @@
 /*
 *
-*                          ALIRDB v1.4 del 05/02/2018
+*                          ALIRDB v1.4 del 12/03/2018
 *
 *                                 MIT License
 *
@@ -124,6 +124,9 @@ var supportTeamList = [
     {name: "Sartox",pid: "76561198093943497"},
     {name: "Bowen",pid: "76561198036665850"},
     {name: "Phil",pid: "76561197970281561"},
+    {name: "Luciano",pid: "76561198186082483"},
+    {name: "Moro",pid: "76561198146039433"},
+    {name: "Osen2k",pid: "76561198169260949"},
     {name: "Bonden",pid: "76561198080431444"}
 ];
 
