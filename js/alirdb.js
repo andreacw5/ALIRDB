@@ -36,6 +36,12 @@
 // @koala-append "player.js"
 // @koala-append "gang.js"
 // @koala-append "wanted.js"
+// @koala-append "donor.js"
+
+// auth
+var requestUser = "alirgoggles";
+var requestPass = "apritisesamo";
+var authLogin = "Basic " + btoa(requestUser + ":" + requestPass);
 
 /**
  *  Inizializzo le variabili globali
@@ -115,13 +121,8 @@ var chargesArray = [
 
 var supportTeamList = [
     {name: "Johnny", pid: "76561198140659293"},
-    {name: "Waxe", pid: "76561198028284217"},
-    {name: "Hydraxon", pid: "76561198083359176"},
-    {name: "Giammy",pid: "76561198105183086"},
     {name: "Sartox",pid: "76561198093943497"},
-    {name: "Pitta",pid: "76561198080734888"},
     {name: "Bowen",pid: "76561198036665850"},
-    {name: "Spartano",pid: "76561198142032626"},
     {name: "Phil",pid: "76561197970281561"},
     {name: "Bonden",pid: "76561198080431444"}
 ];
@@ -154,7 +155,10 @@ function statisticOnLoad() {
         url: playerDatabase + "/lenght/",
         type: 'GET',
         dataType: "json",
-        timeout: 5000
+        timeout: 5000,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Authorization", authLogin);
+        }
     }).done(function (data) {
         $('#playerCounter').html(data.size)
     })/*.fail(function () {
@@ -166,7 +170,10 @@ function statisticOnLoad() {
         url: gangDatabase + "/lenght/",
         type: 'GET',
         dataType: "json",
-        timeout: 5000
+        timeout: 5000,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Authorization", authLogin);
+        }
     }).done(function (data) {
         $('#gangCounter').html(data.size)
     });
@@ -175,7 +182,10 @@ function statisticOnLoad() {
         url: vehicleDatabase + "/lenght/",
         type: 'GET',
         dataType: "json",
-        timeout: 5000
+        timeout: 5000,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Authorization", authLogin);
+        }
     }).done(function (data) {
         $('#vehicleCounter').html(data.size)
     });
@@ -184,7 +194,10 @@ function statisticOnLoad() {
         url: wantedDatabase + "/lenght/",
         type: 'GET',
         dataType: "json",
-        timeout: 5000
+        timeout: 5000,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Authorization", authLogin);
+        }
     }).done(function (data) {
         $('#wantedCounter').html(data.size)
     });

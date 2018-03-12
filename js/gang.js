@@ -47,7 +47,10 @@ function searchByGang(gang) {
         url: gangDatabase + "/" + gang,
         type: 'GET',
         dataType: "json",
-        timeout: 5000
+        timeout: 5000,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Authorization", authLogin);
+        }
     }).done(function (data) {
         if (data.length > 1) {
             $('#mainsearchpage').attr('hidden', true);
@@ -146,7 +149,10 @@ function getGangName(playerid) {
         url: gangDatabase + "/id/" + playerid,
         type: 'GET',
         dataType: "json",
-        timeout: 5000
+        timeout: 5000,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Authorization", authLogin);
+        }
     }).done(function (data) {
 
         if (data.length === 1 ) {

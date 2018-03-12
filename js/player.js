@@ -297,7 +297,10 @@ function showFactionList(type) {
         url: listDatabase + "/" + type,
         type: 'GET',
         dataType: "json",
-        timeout: 5000
+        timeout: 5000,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Authorization", authLogin);
+        }
     }).done(function (data) {
 
         for (var i = 0; i < data.length; i++) {
@@ -410,7 +413,10 @@ function getGangMembersName(playerid, owner) {
         url: playerDatabase + "/" + playerid,
         type: 'GET',
         dataType: "json",
-        timeout: 5000
+        timeout: 5000,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Authorization", authLogin);
+        }
     }).done(function (data) {
 
         if(data.length === 0){
@@ -443,7 +449,10 @@ function getUserVehicle(playerid) {
         url: vehicleDatabase + "/" + playerid,
         type: 'GET',
         timeout: 5000,
-        contentType: 'json'
+        contentType: 'json',
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Authorization", authLogin);
+        }
     }).done(function (data) {
 
         if(data.length > 0){
