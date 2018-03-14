@@ -58,10 +58,6 @@ function showDonorList(level) {
 
         }
 
-        if(data.length = 0){
-            alert('ma!');
-        }
-
     });
 
 }

@@ -58,7 +58,10 @@ function searchByPlayer(type, playerid) {
         url: ajaxurl,
         type: 'GET',
         timeout: 6000,
-        contentType: 'json'
+        contentType: 'json',
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Authorization", authLogin);
+        }
     }).done(function (data) {
 
         if(data.length > 1){
@@ -673,7 +676,7 @@ function getUserVehicle(playerid) {
                     '                            </div>' +
                     '                        </div>' +
                     '                    </div>');
-                
+
 
                 $('#uservehicleappender').append(vehicle);
 
