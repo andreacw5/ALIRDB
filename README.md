@@ -1,5 +1,7 @@
 # ALIRBD
 
+###### STATS: 112 richieste fallite - 295 ricerche utenti - 1385 richieste totali dal 20 al 31 - 03 2018
+
 Il repo contiene tutto il codice relativo alla pagina di visualizzazione del database di ALIR, disponibile sul sito ([link](https://www.alir.eu/db/dbviewer/)).
 
 L'applicazione è creata per permettere un monitoraggio costante sia da parte degli utenti, sia da parte dell'amministrazione che in pochi secondi anche senza disponibilità di database alla mano possono controllare un'utente o una gang tranquillamente dal proprio browser, da qualunque dispositivo.
