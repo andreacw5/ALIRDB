@@ -332,18 +332,12 @@ function showFactionList(type) {
                     $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #mainsearchpage, #noresult, #wantedlist').attr('hidden', true);
                     $('#viewfactionlist').removeAttr('hidden');
 
-                    var plkPat = new RegExp('\[PLK\]', 'gi');
                     var name = data[i].name;
                     var playerid = data[i].playerid;
                     var division;
 
-                    // cerco i membri della plk dalla tag (sperando ci sia)
-                    var cir = name.search(plkPat);
-
-                    if (cir === 1 && type === "cop") {
-                        division = '<i style="color: #759bc9" title="Polizia Locale" class="fas fa-building"></i>';
-                    } else if (type === "cop") {
-                        division = '<i style="color: #3D6594" title="Polizia di Stato" class="fas fa-balance-scale"></i>';
+                    if (type === "cop") {
+                        division = '<i style="color: #3D6594" title="Carabinieri" class="fas fa-balance-scale"></i>';
                     } else {
                         division = '<i style="color: #f18e38" title="Medico" class="fas fa-medkit"></i>';
                     }
