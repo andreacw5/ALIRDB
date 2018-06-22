@@ -1,28 +1,28 @@
 /*
-*
-*                                 MIT License
-*
-*    Copyright (c) 2018 Andrea Zago
-*
-*    Permission is hereby granted, free of charge, to any person obtaining a copy
-*    of this software and associated documentation files (the "Software"), to deal
-*    in the Software without restriction, including without limitation the rights
-*    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-*    copies of the Software, and to permit persons to whom the Software is
-*    furnished to do so, subject to the following conditions:
-*
-*    The above copyright notice and this permission notice shall be included in all
-*    copies or substantial portions of the Software.
-*
-*    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-*    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-*    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-*    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-*    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-*    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-*    SOFTWARE.
-*
-*/
+ *
+ *                                 MIT License
+ *
+ *    Copyright (c) 2018 Andrea Zago
+ *
+ *    Permission is hereby granted, free of charge, to any person obtaining a copy
+ *    of this software and associated documentation files (the "Software"), to deal
+ *    in the Software without restriction, including without limitation the rights
+ *    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *    copies of the Software, and to permit persons to whom the Software is
+ *    furnished to do so, subject to the following conditions:
+ *
+ *    The above copyright notice and this permission notice shall be included in all
+ *    copies or substantial portions of the Software.
+ *
+ *    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *    SOFTWARE.
+ *
+ */
 
 /**
  *  Con il playerid genero la lista delle accuse solo se l'utente è ricercato
@@ -40,19 +40,19 @@ function getUserCharges(playerid) {
         dataType: "json",
         timeout: 5000,
         beforeSend: function (xhr) {
-            xhr.setRequestHeader ("Authorization", authLogin);
+            xhr.setRequestHeader("Authorization", authLogin);
         }
     }).done(function (data) {
 
         // Controllo che l'utente sia ricercato
-        if(data[0] !== undefined){
+        if (data[0] !== undefined) {
 
             var charges = data[0][2];
             var fines = data[0][3];
             var chargesSet = data[0][4];
 
             // controllo che l'utente sia ricercato attivamente
-            if(chargesSet === 1){
+            if (chargesSet === 1) {
 
                 $('#wantednav').removeAttr('hidden');
 
@@ -61,7 +61,7 @@ function getUserCharges(playerid) {
                     '                            <div class="card">' +
                     '                                <div class="card-body">' +
                     '                                    <h4 class="card-title" style="color: #8B1A1A">RICERCATO!</h4>' +
-                    '                                    <h6 class="card-subtitle mb-2 text-muted">Attualmente ricercato con '+ charges.length +' imputazioni a carico, con una taglia totale di '+ fines + '€ </h6>' +
+                    '                                    <h6 class="card-subtitle mb-2 text-muted">Attualmente ricercato con ' + charges.length + ' imputazioni a carico, con una taglia totale di ' + fines + '€ </h6>' +
                     '                                </div>' +
                     '                                <ul class="list-group list-group-flush" id="appendinputationlist">' +
                     '                                </ul>' +
@@ -81,7 +81,7 @@ function getUserCharges(playerid) {
                         chargesFines = chargesArray[data[0][2][i] + 1].fines;
                     }
 
-                    var wantedChargesList = $('<li class="list-group-item">' + chargesName + ' ('  + chargesFines  +  ' €)</li>');
+                    var wantedChargesList = $('<li class="list-group-item">' + chargesName + ' (' + chargesFines + ' €)</li>');
 
                     $('#appendinputationlist').append(wantedChargesList);
                 }

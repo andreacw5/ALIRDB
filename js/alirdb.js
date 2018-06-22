@@ -1,30 +1,30 @@
 /*
-*
-*                          ALIRDB v1.4 del 12/03/2018
-*
-*                                 MIT License
-*
-*    Copyright (c) 2018 Andrea Zago
-*
-*    Permission is hereby granted, free of charge, to any person obtaining a copy
-*    of this software and associated documentation files (the "Software"), to deal
-*    in the Software without restriction, including without limitation the rights
-*    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-*    copies of the Software, and to permit persons to whom the Software is
-*    furnished to do so, subject to the following conditions:
-*
-*    The above copyright notice and this permission notice shall be included in all
-*    copies or substantial portions of the Software.
-*
-*    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-*    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-*    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-*    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-*    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-*    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-*    SOFTWARE.
-*
-*/
+ *
+ *                          ALIRDB v1.4 del 12/03/2018
+ *
+ *                                 MIT License
+ *
+ *    Copyright (c) 2018 Andrea Zago
+ *
+ *    Permission is hereby granted, free of charge, to any person obtaining a copy
+ *    of this software and associated documentation files (the "Software"), to deal
+ *    in the Software without restriction, including without limitation the rights
+ *    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *    copies of the Software, and to permit persons to whom the Software is
+ *    furnished to do so, subject to the following conditions:
+ *
+ *    The above copyright notice and this permission notice shall be included in all
+ *    copies or substantial portions of the Software.
+ *
+ *    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *    SOFTWARE.
+ *
+ */
 
 /**
  *  Koala minifier combined file
@@ -61,72 +61,246 @@ var steamProfileUrl = "https://steamcommunity.com/profiles/";
 
 // Array ricercati
 
-var chargesArray = [
-    { name:"Competizioni illegali", fines:1000},
-    { name:"Guida senza patente", fines:300},
-    { name:"Guida pericolosa", fines:400},
-    { name:"Oltre i 10 km/h", fines:1000},
-    { name:"Oltre i 20 km/h", fines:2000},
-    { name:"Oltre i 30 km/h", fines:3000},
-    { name:"Oltre i 40 km/h", fines:5000},
-    { name:"Oltre i 60 km/h", fines:9000},
-    { name:"Guida a fari spenti", fines:120},
-    { name:"Veicolo in divieto di sosta", fines:75}, // TODO: Controllare valore
-    { name:"Disturbo alla quiete pubblica", fines:220},
-    { name:"Procurato allarme", fines:500},
-    { name:"Molestie ad un agente", fines:500},
-    { name:"Tentato suicidio", fines:1000},
-    { name:"Istigazione al suicidio", fines:1500},
-    { name:"Istigazione al delinquere", fines:2000},
-    { name:"Offese al pudore", fines:50},
-    { name:"Bracconaggio", fines:10000},
-    { name:"Evasione", fines:10000},
-    { name:"Complicità in evasione", fines:5000},
-    { name:"Tentato furto di un veicolo", fines:2500},
-    { name:"Utilizzo/Possesso di esplosivi", fines:2000},
-    { name:"Rapina", fines:4000},
-    { name:"Sequestro", fines:8000},
-    { name:"Tentato sequestro", fines:5000},
-    { name:"Possesso di droga", fines:7500},
-    { name:"Traffico di droga", fines:10000},
-    { name:"Furto di beni personali", fines:4000},
-    { name:"Ricettazione", fines:4000},
-    { name:"Tentato furto di veicolo civile", fines:2500},
-    { name:"Furto di veicolo civile", fines:5000},
-    { name:"Tentato furto di veicolo polizia", fines:3500},
-    { name:"Furto di veicolo polizia", fines:6000},
-    { name:"Possesso di arma illegale", fines:5000},
-    { name:"Possesso di arma illegale aggravato", fines:7500},
-    { name:"Possesso di equipaggiamento illegale", fines:2500},
-    { name:"Fuga dalla polizia", fines:2000},
-    { name:"Omicidio", fines:2000},
-    { name:"Vendita illegale di armi", fines:10000},
-    { name:"Uso di armi in citta", fines:2500},
-    { name:"Estorsione", fines:4000},
-    { name:"Tentata rapina", fines:2500},
-    { name:"Complicità in rapina", fines:1500},
-    { name:"Possesso di droga", fines:7500},
-    { name:"Uso di stupefacenti", fines:1000},
-    { name:"Terrorismo", fines:5000},
-    { name:"Violazione spazio aereo urbano", fines:1000},
-    { name:"Atterraggio senza autorizzazione", fines:750},
-    { name:"Prostituzione", fines:1500},
-    { name:"Tentata evasione", fines:50000},
-    { name:"Complicità in rapina", fines:2500},
-    { name:"Guida di mezzo non autorizzato", fines:700},
-    { name:"Mancanza di documenti identificativi", fines:500}
+var chargesArray = [{
+        name: "Competizioni illegali",
+        fines: 1000
+    },
+    {
+        name: "Guida senza patente",
+        fines: 300
+    },
+    {
+        name: "Guida pericolosa",
+        fines: 400
+    },
+    {
+        name: "Oltre i 10 km/h",
+        fines: 1000
+    },
+    {
+        name: "Oltre i 20 km/h",
+        fines: 2000
+    },
+    {
+        name: "Oltre i 30 km/h",
+        fines: 3000
+    },
+    {
+        name: "Oltre i 40 km/h",
+        fines: 5000
+    },
+    {
+        name: "Oltre i 60 km/h",
+        fines: 9000
+    },
+    {
+        name: "Guida a fari spenti",
+        fines: 120
+    },
+    {
+        name: "Veicolo in divieto di sosta",
+        fines: 75
+    }, // TODO: Controllare valore
+    {
+        name: "Disturbo alla quiete pubblica",
+        fines: 220
+    },
+    {
+        name: "Procurato allarme",
+        fines: 500
+    },
+    {
+        name: "Molestie ad un agente",
+        fines: 500
+    },
+    {
+        name: "Tentato suicidio",
+        fines: 1000
+    },
+    {
+        name: "Istigazione al suicidio",
+        fines: 1500
+    },
+    {
+        name: "Istigazione al delinquere",
+        fines: 2000
+    },
+    {
+        name: "Offese al pudore",
+        fines: 50
+    },
+    {
+        name: "Bracconaggio",
+        fines: 10000
+    },
+    {
+        name: "Evasione",
+        fines: 10000
+    },
+    {
+        name: "Complicità in evasione",
+        fines: 5000
+    },
+    {
+        name: "Tentato furto di un veicolo",
+        fines: 2500
+    },
+    {
+        name: "Utilizzo/Possesso di esplosivi",
+        fines: 2000
+    },
+    {
+        name: "Rapina",
+        fines: 4000
+    },
+    {
+        name: "Sequestro",
+        fines: 8000
+    },
+    {
+        name: "Tentato sequestro",
+        fines: 5000
+    },
+    {
+        name: "Possesso di droga",
+        fines: 7500
+    },
+    {
+        name: "Traffico di droga",
+        fines: 10000
+    },
+    {
+        name: "Furto di beni personali",
+        fines: 4000
+    },
+    {
+        name: "Ricettazione",
+        fines: 4000
+    },
+    {
+        name: "Tentato furto di veicolo civile",
+        fines: 2500
+    },
+    {
+        name: "Furto di veicolo civile",
+        fines: 5000
+    },
+    {
+        name: "Tentato furto di veicolo polizia",
+        fines: 3500
+    },
+    {
+        name: "Furto di veicolo polizia",
+        fines: 6000
+    },
+    {
+        name: "Possesso di arma illegale",
+        fines: 5000
+    },
+    {
+        name: "Possesso di arma illegale aggravato",
+        fines: 7500
+    },
+    {
+        name: "Possesso di equipaggiamento illegale",
+        fines: 2500
+    },
+    {
+        name: "Fuga dalla polizia",
+        fines: 2000
+    },
+    {
+        name: "Omicidio",
+        fines: 2000
+    },
+    {
+        name: "Vendita illegale di armi",
+        fines: 10000
+    },
+    {
+        name: "Uso di armi in citta",
+        fines: 2500
+    },
+    {
+        name: "Estorsione",
+        fines: 4000
+    },
+    {
+        name: "Tentata rapina",
+        fines: 2500
+    },
+    {
+        name: "Complicità in rapina",
+        fines: 1500
+    },
+    {
+        name: "Possesso di droga",
+        fines: 7500
+    },
+    {
+        name: "Uso di stupefacenti",
+        fines: 1000
+    },
+    {
+        name: "Terrorismo",
+        fines: 5000
+    },
+    {
+        name: "Violazione spazio aereo urbano",
+        fines: 1000
+    },
+    {
+        name: "Atterraggio senza autorizzazione",
+        fines: 750
+    },
+    {
+        name: "Prostituzione",
+        fines: 1500
+    },
+    {
+        name: "Tentata evasione",
+        fines: 50000
+    },
+    {
+        name: "Complicità in rapina",
+        fines: 2500
+    },
+    {
+        name: "Guida di mezzo non autorizzato",
+        fines: 700
+    },
+    {
+        name: "Mancanza di documenti identificativi",
+        fines: 500
+    }
 ];
 
 // Array supporter
 
-var supportTeamList = [
-    { name: "Johnny", pid: "76561198140659293"},
-    { name: "Sartox", pid: "76561198093943497"},
-    { name: "Phil", pid: "76561197970281561"},
-    { name: "Luciano", pid: "76561198186082483"},
-    { name: "Moro", pid: "76561198146039433"},
-    { name: "Osen2k", pid: "76561198169260949"},
-    { name: "Bonden", pid: "76561198080431444"}
+var supportTeamList = [{
+        name: "Johnny",
+        pid: "76561198140659293"
+    },
+    {
+        name: "Sartox",
+        pid: "76561198093943497"
+    },
+    {
+        name: "Phil",
+        pid: "76561197970281561"
+    },
+    {
+        name: "Luciano",
+        pid: "76561198186082483"
+    },
+    {
+        name: "Moro",
+        pid: "76561198146039433"
+    },
+    {
+        name: "Bonden",
+        pid: "76561198080431444"
+    }
 ];
 
 // Abilito i tooltip ovunque
@@ -137,7 +311,7 @@ $(function () {
 $.fn.extend({
     animateCss: function (animationName, callback) {
         var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-        this.addClass('animated ' + animationName).one(animationEnd, function() {
+        this.addClass('animated ' + animationName).one(animationEnd, function () {
             $(this).removeClass('animated ' + animationName);
             if (callback) {
                 callback();
@@ -159,14 +333,11 @@ function statisticOnLoad() {
         dataType: "json",
         timeout: 5000,
         beforeSend: function (xhr) {
-            xhr.setRequestHeader ("Authorization", authLogin);
+            xhr.setRequestHeader("Authorization", authLogin);
         }
     }).done(function (data) {
         $('#playerCounter').html(data.size)
-    })/*.fail(function () {
-        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
-        $('#connectionLost').removeAttr('hidden');
-    })*/;
+    });
 
     $.ajax({
         url: gangDatabase + "/lenght/",
@@ -174,7 +345,7 @@ function statisticOnLoad() {
         dataType: "json",
         timeout: 5000,
         beforeSend: function (xhr) {
-            xhr.setRequestHeader ("Authorization", authLogin);
+            xhr.setRequestHeader("Authorization", authLogin);
         }
     }).done(function (data) {
         $('#gangCounter').html(data.size)
@@ -186,7 +357,7 @@ function statisticOnLoad() {
         dataType: "json",
         timeout: 5000,
         beforeSend: function (xhr) {
-            xhr.setRequestHeader ("Authorization", authLogin);
+            xhr.setRequestHeader("Authorization", authLogin);
         }
     }).done(function (data) {
         $('#vehicleCounter').html(data.size)
@@ -198,7 +369,7 @@ function statisticOnLoad() {
         dataType: "json",
         timeout: 5000,
         beforeSend: function (xhr) {
-            xhr.setRequestHeader ("Authorization", authLogin);
+            xhr.setRequestHeader("Authorization", authLogin);
         }
     }).done(function (data) {
         $('#wantedCounter').html(data.size)
@@ -282,10 +453,10 @@ function showUserVehicle() {
 
 function loadingScreen() {
     $('[data-toggle="tooltip"]').tooltip("hide");
-    $('#maindiv').attr('hidden',true);
+    $('#maindiv').attr('hidden', true);
     $('#loadingdiv').removeAttr('hidden');
-    setTimeout(function(){
-        $('#loadingdiv').attr('hidden',true);
+    setTimeout(function () {
+        $('#loadingdiv').attr('hidden', true);
         $('#maindiv').removeAttr('hidden')
     }, 6000);
 }

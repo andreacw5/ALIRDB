@@ -63,11 +63,7 @@ function searchByGang(gang) {
             $('#noresult').removeAttr('hidden');
         }
 
-    })/*.fail(function () {
-        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
-        $('#errorServer').removeAttr('hidden');
-        $('#modulename').html("gang");
-    })*/;
+    });
 
 }
 

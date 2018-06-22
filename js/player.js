@@ -1,28 +1,28 @@
 /*
-*
-*                                 MIT License
-*
-*    Copyright (c) 2018 Andrea Zago
-*
-*    Permission is hereby granted, free of charge, to any person obtaining a copy
-*    of this software and associated documentation files (the "Software"), to deal
-*    in the Software without restriction, including without limitation the rights
-*    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-*    copies of the Software, and to permit persons to whom the Software is
-*    furnished to do so, subject to the following conditions:
-*
-*    The above copyright notice and this permission notice shall be included in all
-*    copies or substantial portions of the Software.
-*
-*    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-*    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-*    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-*    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-*    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-*    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-*    SOFTWARE.
-*
-*/
+ *
+ *                                 MIT License
+ *
+ *    Copyright (c) 2018 Andrea Zago
+ *
+ *    Permission is hereby granted, free of charge, to any person obtaining a copy
+ *    of this software and associated documentation files (the "Software"), to deal
+ *    in the Software without restriction, including without limitation the rights
+ *    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *    copies of the Software, and to permit persons to whom the Software is
+ *    furnished to do so, subject to the following conditions:
+ *
+ *    The above copyright notice and this permission notice shall be included in all
+ *    copies or substantial portions of the Software.
+ *
+ *    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *    SOFTWARE.
+ *
+ */
 
 /**
  *  Effettuo la ricerca tra gli utenti in base al playerid fornito
@@ -32,27 +32,27 @@
 
 function searchByPlayer(type, playerid) {
 
-    $('#userFinderButton').attr('disabled',true);
-    $('#gangFinderButton').attr('disabled',true);
-    $('#copFinderButton').attr('disabled',true);
-    $('#medFinderButton').attr('disabled',true);
+    $('#userFinderButton').attr('disabled', true);
+    $('#gangFinderButton').attr('disabled', true);
+    $('#copFinderButton').attr('disabled', true);
+    $('#medFinderButton').attr('disabled', true);
 
     var inputval = playerid;
 
     // Solo in caso non viene passato l'id uso il campo input per la ricerca
-    if(!playerid){
+    if (!playerid) {
         inputval = $('#searchinput').val();
     }
 
     var ajaxurl = "";
 
-    if(type === "name"){
+    if (type === "name") {
         ajaxurl = playerDatabase + "/name/" + inputval;
-    }else{
+    } else {
         ajaxurl = playerDatabase + "/" + inputval;
     }
 
-    $('#mainsearchpage').attr('hidden',true);
+    $('#mainsearchpage').attr('hidden', true);
 
     $.ajax({
         url: ajaxurl,
@@ -60,25 +60,27 @@ function searchByPlayer(type, playerid) {
         timeout: 6000,
         contentType: 'json',
         beforeSend: function (xhr) {
-            xhr.setRequestHeader ("Authorization", authLogin);
+            xhr.setRequestHeader("Authorization", authLogin);
         }
     }).done(function (data) {
 
-        if(data.length > 1){
+        if (data.length > 1) {
             showUserList(data);
-        }else if(data.length === 1){
+        } else if (data.length === 1) {
             $('#playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #noresult, #wantedlist').attr('hidden', true);
             showUser(data);
-        }else{
+        } else {
             $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
             $('#noresult').removeAttr('hidden');
         }
 
-    })/*.fail(function () {
-        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
-        $('#errorServer').removeAttr('hidden');
-        $('#modulename').html("player");
-    })*/;
+    })
+    /*.fail(function () {
+            $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
+            $('#errorServer').removeAttr('hidden');
+            $('#modulename').html("player");
+        })*/
+    ;
 
 
 }
@@ -95,10 +97,10 @@ function showUserList(data) {
 
     var searchN;
 
-    if(data.length > searchLimiter){
+    if (data.length > searchLimiter) {
         searchN = searchLimiter;
         $('#resultsize').html(searchLimiter);
-    }else{
+    } else {
         searchN = data.length;
         $('#resultsize').html(data.length);
     }
@@ -127,7 +129,7 @@ function showUserList(data) {
 
         $('#' + playerId2).on('click', function () {
             loadingScreen();
-           searchByPlayer('playerid', $(this).data("id"));
+            searchByPlayer('playerid', $(this).data("id"));
         });
     }
 
@@ -147,13 +149,13 @@ function showUser(data) {
     var adminlv = data[0].adminlevel;
 
     // Controllo se l'utente è un membro dello staff
-    if(adminlv === "1" || adminlv === "2" || adminlv === "3" || adminlv === "4" || adminlv === "5"){
+    if (adminlv === "1" || adminlv === "2" || adminlv === "3" || adminlv === "4" || adminlv === "5") {
         $('#thisuserisadmin').removeAttr('hidden');
-    }else{
+    } else {
 
         for (var x = 0; x < supportTeamList.length; x++) {
 
-            if(supportTeamList[x].pid === playerid){
+            if (supportTeamList[x].pid === playerid) {
                 $('#thisuserissupporter').removeAttr('hidden');
                 break;
             }
@@ -177,7 +179,7 @@ function showUser(data) {
     // In base al livello donatore inserisco le stelle
     var donorlevel;
 
-    switch(data[0].donorlevel) {
+    switch (data[0].donorlevel) {
         case "1":
             donorlevel = $('<i class="fa fa-star"></i>');
             break;
@@ -205,7 +207,7 @@ function showUser(data) {
     // In base al livello cop del giocatore metto il nome del grado
     var copnamelevel;
 
-    switch(data[0].coplevel){
+    switch (data[0].coplevel) {
         case "1":
             copnamelevel = " Agente - Livello 1";
             break;
@@ -245,7 +247,7 @@ function showUser(data) {
     // In base al livello med del giocatore metto il nome del grado
     var mediclevelname;
 
-    switch(data[0].mediclevel){
+    switch (data[0].mediclevel) {
         case "1":
             mediclevelname = " Medico - Livello 1";
             break;
@@ -285,10 +287,10 @@ function showUser(data) {
 
 function showFactionList(type) {
 
-    $('#userFinderButton').attr('disabled',true);
-    $('#gangFinderButton').attr('disabled',true);
-    $('#copFinderButton').attr('disabled',true);
-    $('#medFinderButton').attr('disabled',true);
+    $('#userFinderButton').attr('disabled', true);
+    $('#gangFinderButton').attr('disabled', true);
+    $('#copFinderButton').attr('disabled', true);
+    $('#medFinderButton').attr('disabled', true);
 
     /**
      *  Type accettati:
@@ -302,7 +304,7 @@ function showFactionList(type) {
         dataType: "json",
         timeout: 5000,
         beforeSend: function (xhr) {
-            xhr.setRequestHeader ("Authorization", authLogin);
+            xhr.setRequestHeader("Authorization", authLogin);
         }
     }).done(function (data) {
 
@@ -313,13 +315,13 @@ function showFactionList(type) {
             var sideCop = data[i].coplevel;
             var sideMed = data[i].mediclevel;
 
-            if(type === "cop"){
+            if (type === "cop") {
                 $('#factionName').html("Elenco agenti in servizio");
                 side = sideCop;
-            }else if(type === "med"){
+            } else if (type === "med") {
                 $('#factionName').html("Elenco medici in servizio");
                 side = sideMed;
-            }else{
+            } else {
                 console.log("Type necessario");
             }
 
@@ -338,24 +340,24 @@ function showFactionList(type) {
                     // cerco i membri della plk dalla tag (sperando ci sia)
                     var cir = name.search(plkPat);
 
-                    if(cir === 1 && type === "cop"){
+                    if (cir === 1 && type === "cop") {
                         division = '<i style="color: #759bc9" title="Polizia Locale" class="fas fa-building"></i>';
-                    }else if(type === "cop"){
+                    } else if (type === "cop") {
                         division = '<i style="color: #3D6594" title="Polizia di Stato" class="fas fa-balance-scale"></i>';
-                    }else{
+                    } else {
                         division = '<i style="color: #f18e38" title="Medico" class="fas fa-medkit"></i>';
                     }
 
-                    var factionsMembers = $('<tr id="row'+playerid+'">' +
-                        '    <td> ' + name +'</td>' +
+                    var factionsMembers = $('<tr id="row' + playerid + '">' +
+                        '    <td> ' + name + '</td>' +
                         '    <td class="statsdiv" style="text-align: center !important;">' + division + '</td>' +
                         '    <td class="statsdiv" style="text-align: center !important;">' + side + '</td>' +
-                        '    <td title="Visualizza dettagli utente"  data-toggle="tooltip" id="'+playerid+'" data-id="'+playerid+'" data-placement="top" style="color: #007BCC;cursor:pointer;"><i class="fas fa-external-link-alt"></i></td>' +
+                        '    <td title="Visualizza dettagli utente"  data-toggle="tooltip" id="' + playerid + '" data-id="' + playerid + '" data-placement="top" style="color: #007BCC;cursor:pointer;"><i class="fas fa-external-link-alt"></i></td>' +
                         '</tr>');
 
                     $('#appendFactionsMembers').append(factionsMembers);
 
-                    if(type === "med") {
+                    if (type === "med") {
                         for (var y = 0; y < supportTeamList.length; y++) {
 
                             if (supportTeamList[y].pid === playerid) {
@@ -375,9 +377,9 @@ function showFactionList(type) {
 
         for (var x = 0; x < data.length; x++) {
 
-            if(type === "cop"){
+            if (type === "cop") {
                 side = data[x].coplevel;
-            }else{
+            } else {
                 side = data[x].mediclevel;
             }
 
@@ -397,11 +399,13 @@ function showFactionList(type) {
             }
         }
 
-    })/*.fail(function () {
-        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
-        $('#errorServer').removeAttr('hidden');
-        $('#modulename').html("player");
-    })*/;
+    })
+    /*.fail(function () {
+            $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
+            $('#errorServer').removeAttr('hidden');
+            $('#modulename').html("player");
+        })*/
+    ;
 }
 
 /**
@@ -418,13 +422,13 @@ function getGangMembersName(playerid, owner) {
         dataType: "json",
         timeout: 5000,
         beforeSend: function (xhr) {
-            xhr.setRequestHeader ("Authorization", authLogin);
+            xhr.setRequestHeader("Authorization", authLogin);
         }
     }).done(function (data) {
 
-        if(data.length === 0){
+        if (data.length === 0) {
             $('#user' + playerid).html("Utente non trovato").attr('style', 'color: red');
-        }else{
+        } else {
             if (data[0].playerid === owner) {
                 $('#user' + playerid).html(data[0].name + "  (Leader)").css("color", "orange").attr('title', 'Questo utente è il capo della gang');
             } else {
@@ -432,11 +436,13 @@ function getGangMembersName(playerid, owner) {
             }
         }
 
-    })/*.fail(function () {
-        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
-        $('#errorServer').removeAttr('hidden');
-        $('#modulename').html("player");
-    })*/;
+    })
+    /*.fail(function () {
+            $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
+            $('#errorServer').removeAttr('hidden');
+            $('#modulename').html("player");
+        })*/
+    ;
 
 }
 
@@ -454,11 +460,11 @@ function getUserVehicle(playerid) {
         timeout: 5000,
         contentType: 'json',
         beforeSend: function (xhr) {
-            xhr.setRequestHeader ("Authorization", authLogin);
+            xhr.setRequestHeader("Authorization", authLogin);
         }
     }).done(function (data) {
 
-        if(data.length > 0){
+        if (data.length > 0) {
 
             $('#vehiclesize').html("Possiede " + data.length + " veicoli:");
 
@@ -511,7 +517,7 @@ function getUserVehicle(playerid) {
                     case 'I_G_Van_01_transport_F':
                         vehicleName = 'Furgone (Cassone)';
                         break;
-                    // Zamak
+                        // Zamak
                     case 'O_Truck_02_transport_F':
                         vehicleName = 'Zamak (Trasporto)';
                         break;
@@ -524,7 +530,7 @@ function getUserVehicle(playerid) {
                     case 'O_Truck_02_fuel_F':
                         vehicleName = 'Zamak (Carburante)';
                         break;
-                    // HEMTT
+                        // HEMTT
                     case 'B_Truck_01_transport_F':
                         vehicleName = 'HEMTT (Trasporto)';
                         break;
@@ -540,14 +546,14 @@ function getUserVehicle(playerid) {
                     case 'B_Truck_01_mover_F':
                         vehicleName = 'HEMTT (Solo cabina)';
                         break;
-                    // Camioncino
+                        // Camioncino
                     case 'C_Van_01_box_F':
                         vehicleName = 'Furgone (Cassone)';
                         break;
                     case 'C_Van_01_fuel_F':
                         vehicleName = 'Furgone (Carburante)';
                         break;
-                    // Tempest
+                        // Tempest
                     case 'O_T_Truck_03_covered_ghex_F':
                         vehicleName = 'Tempest Apex (Telonato)';
                         break;
@@ -560,7 +566,7 @@ function getUserVehicle(playerid) {
                     case 'O_Truck_03_covered_F':
                         vehicleName = 'Tempest (Telonato)';
                         break;
-                    // Altro
+                        // Altro
                     case 'C_Kart_01_Fuel_F':
                         vehicleName = 'Kart';
                         break;
@@ -573,7 +579,7 @@ function getUserVehicle(playerid) {
                     case 'C_Van_02_vehicle_F':
                         vehicleName = 'Camioncino (Cargo)';
                         break;
-                    // Elicotteri
+                        // Elicotteri
                     case 'C_Heli_Light_01_civil_F':
                         vehicleName = 'MH-900';
                         break;
@@ -610,7 +616,7 @@ function getUserVehicle(playerid) {
                     case 'O_Heli_Transport_04_medevac_black_F':
                         vehicleName = 'Mi-290 Taru (Medico)';
                         break;
-                    // Barche
+                        // Barche
                     case 'C_Rubberboat':
                         vehicleName = 'Gommone';
                         break;
@@ -648,22 +654,22 @@ function getUserVehicle(playerid) {
                 var iconcolor;
                 var sideText;
 
-                if(vehicleSide === "cop"){
+                if (vehicleSide === "cop") {
                     iconcolor = "#4286f4";
                     sideText = "Veicolo della polizia";
-                }else if(vehicleSide === "med"){
+                } else if (vehicleSide === "med") {
                     iconcolor = "#d8a011";
                     sideText = "Veicolo medico";
-                }else{
+                } else {
                     iconcolor = "#ffffff";
                     sideText = "Veicolo civile"
                 }
 
-                if(data[i].type === "Car"){
+                if (data[i].type === "Car") {
                     vehicleType = '<i class="fas fa-car" style="color: ' + iconcolor + ';"></i>';
-                }else if(data[i].type === "Air"){
+                } else if (data[i].type === "Air") {
                     vehicleType = '<i class="fas fa-plane" style="color: ' + iconcolor + ';"></i>';
-                }else{
+                } else {
                     vehicleType = '<i class="fas fa-ship" style="color: ' + iconcolor + ';"></i>';
                 }
 
@@ -671,8 +677,8 @@ function getUserVehicle(playerid) {
                 var vehicle = $('<div class="col-12 padbot">' +
                     '                        <div class="card">' +
                     '                            <div class="card-body">' +
-                    '                                <h4 class="card-title">'+ vehicleType + ' ' + vehicleName +'</h4>' +
-                    '                                <h6 class="card-subtitle mb-2 text-muted">Targato '+ vehiclePlate +' (colore '+vehicleColor+')</h6>' +
+                    '                                <h4 class="card-title">' + vehicleType + ' ' + vehicleName + '</h4>' +
+                    '                                <h6 class="card-subtitle mb-2 text-muted">Targato ' + vehiclePlate + ' (colore ' + vehicleColor + ')</h6>' +
                     '                            </div>' +
                     '                        </div>' +
                     '                    </div>');
@@ -682,14 +688,16 @@ function getUserVehicle(playerid) {
 
             }
 
-        }else{
+        } else {
             $('#vehiclesize').html("Questo utente non possiede veicoli!");
         }
 
-    })/*.fail(function () {
-        $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
-        $('#errorServer').removeAttr('hidden');
-        $('#modulename').html("vehicle");
-    })*/;
+    })
+    /*.fail(function () {
+            $('#playersearchview, #playermultyresult, #gangsearchview, #gangmultyresult, #viewfactionlist, #mainsearchpage, #wantedlist').attr('hidden', true);
+            $('#errorServer').removeAttr('hidden');
+            $('#modulename').html("vehicle");
+        })*/
+    ;
 
 }

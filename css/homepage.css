@@ -1,0 +1,455 @@
+@import url('https://fonts.googleapis.com/css?family=Exo');
+@import url('https://fonts.googleapis.com/css?family=Krona+One');
+/* GLOBAL STYLES
+-------------------------------------------------- */
+
+.font-krona {
+    font-family: 'Krona One', sans-serif;
+    text-transform: uppercase;
+}
+
+footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background: linear-gradient(141deg, #404040 0%, #393939 51%, #333333 75%);
+}
+
+footer p {
+    margin-bottom: .25rem;
+}
+
+html {
+    font-family: 'Exo', sans-serif;
+}
+
+body {
+    padding-top: 5.7rem;
+    color: #ffffff;
+    font-family: 'Exo', sans-serif;
+    background: #1a1c1f;
+}
+
+nav {
+    font-size: x-large;
+    font-weight: bold;
+    background: linear-gradient(141deg, #404040 0%, #393939 51%, #333333 75%);
+    border-bottom: 1px solid #333333;
+}
+
+a {
+    color: #f8f9fa;
+}
+
+.worksans {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.wstitle {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.tip {
+    position: absolute;
+    color: rgb(117, 117, 117);
+    margin: 10px 5px;
+}
+
+/* Carousel base class */
+
+.carousel {
+    margin-bottom: 1%;
+}
+
+/* Since positioning the image, we need to help out the caption */
+
+.carousel-caption {
+    bottom: 3rem;
+    z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+
+.carousel-item {
+    height: 20rem;
+    background-color: #777;
+}
+
+.carousel-item>img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 32rem;
+}
+
+/* Center align the text within the three columns below the carousel */
+
+.infolink {
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+.infolink:hover {
+    color: #0056b3 !important;
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 40em) {
+    /* Bump up size of carousel content */
+    .carousel-caption p {
+        margin-bottom: 1.25rem;
+        font-size: 1.25rem;
+        line-height: 1.4;
+    }
+    .featurette-heading {
+        font-size: 50px;
+    }
+}
+
+@media (min-width: 62em) {
+    .featurette-heading {
+        margin-top: 7rem;
+    }
+}
+
+.pricing-header {
+    max-width: 700px;
+}
+
+.card-deck .card {
+    min-width: 200px;
+}
+
+.fas {
+    position: relative;
+    /* Adjust these values accordingly */
+    top: 5px;
+    left: 5px;
+}
+
+.button-arma {
+    background-color: rgba(0, 0, 0, .35);
+    box-shadow: 0 0 6px -1px #000;
+    border-radius: 0 !important;
+    border: 1px solid #000;
+    text-align: center;
+    color: white;
+}
+
+.w-100 {
+    opacity: 0.6;
+    filter: alpha(opacity=30);
+}
+
+a.text-muted:hover {
+    text-decoration: none;
+    color: #ffffff !important;
+}
+
+.button-arma:hover {
+    background-color: hsla(0, 0%, 100%, .08);
+    box-shadow: 0 0 6px -1px #000;
+    border-radius: 0 !important;
+    border: 1px solid #000;
+    text-align: center;
+    color: white;
+}
+
+.card {
+    margin-top: 10px;
+    border-radius: 0 !important;
+    opacity: 1;
+    background-color: #353535;
+}
+
+.card-news {
+    margin-top: 10px;
+    border-radius: 0 !important;
+    color: white;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, .35);
+    text-align: center;
+}
+
+p.card {
+    background-color: rgba(0, 0, 0, .35);
+}
+
+#alirCarousel {
+    border-radius: 0 !important;
+    border: 1px solid #383838;
+    opacity: 1;
+    background-color: #353535;
+}
+
+.card-header {
+    background: #333333;
+}
+
+.card-gaming {
+    border-radius: 0 !important;
+    opacity: 1;
+}
+
+.mincard {
+    min-height: 200px;
+}
+
+.list-community {
+    position: relative;
+    display: block;
+    padding-bottom: 5px;
+}
+
+.news-img {
+    opacity: 0.3;
+    filter: alpha(opacity=60);
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.card-img-top:hover {
+    border: #0056b3 2px solid;
+}
+
+hr {
+    border-top: 1px solid #2b2b2f;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 45px;
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+}
+
+.services-line {
+    background-color: rgba(0, 0, 0, .35);
+    box-shadow: 0 0 6px -1px #000;
+    border-radius: 0 !important;
+    border: 1px solid #000;
+    text-align: center;
+}
+
+.carosel-style-black {
+    background-color: rgba(0, 0, 0, .35);
+}
+
+.title-carosel {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.card-black {
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, .35);
+    box-shadow: 0 0 6px -1px #000;
+    font-size: 20px;
+    border-radius: 0 !important;
+    border: 1px solid #000;
+    font-weight: 300;
+    text-align: center;
+}
+
+.footer-black {
+    background-color: rgba(0, 0, 0, .35);
+    box-shadow: 0 0 6px -1px #000;
+    border: 1px solid #000;
+    padding: 2%;
+    border-radius: 0 !important;
+}
+
+a {
+    outline: none;
+}
+
+.modal-content {
+    border-color: #2b2b2f;
+    background-color: #2d3035;
+    color: #ffffff;
+}
+
+/* Centered text */
+
+.centered {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-footer {
+    padding: 2px !important;
+    background-color: #5f5f64 !important;
+    color: white !important;
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, .125);
+}
+
+small.textgray {
+    color: #516575 !important;
+}
+
+a.text-muted {
+    color: #b5babe !important;
+}
+
+.list-group-item {
+    border-color: #2b2b2f;
+    background-color: #2d3035;
+    color: #ffffff;
+}
+
+small.text-muted {
+    color: #b5babe !important;
+}
+
+/* MOBILE RESPONSIVE
+-------------------------------------------------- */
+
+@media screen and (max-width: 1100px) {
+    #alirCarousel {
+        display: none;
+    }
+    .welcome {
+        display: none;
+    }
+    .mobilepadder {
+        padding-top: 6% !important;
+    }
+    body {
+        padding-top: 3.7rem !important;
+    }
+    .pagec {
+        margin-top: 4px;
+    }
+    main {
+        margin-top: 1em;
+    }
+    .hideonphone {
+        display: none;
+    }
+}
+
+/* Scroll animation
+-------------------------------------------------- */
+
+#back-top {
+    position: fixed;
+    bottom: 30px;
+    margin-left: -150px;
+}
+
+#back-top a {
+    width: 108px;
+    display: block;
+    text-align: center;
+    font: 11px/100% Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #bbb;
+    /* transition */
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    transition: 1s;
+}
+
+#back-top a:hover {
+    color: #000;
+}
+
+/* arrow icon (span tag) */
+
+#back-top span {
+    width: 108px;
+    height: 108px;
+    display: block;
+    margin-bottom: 7px;
+    background: #ddd url(up-arrow.png) no-repeat center center;
+    /* rounded corners */
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    /* transition */
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    transition: 1s;
+}
+
+#back-top a:hover span {
+    background-color: #777;
+}
+
+/* Btn a restyle
+-------------------------------------------------- */
+
+a.btn {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid #FFFFFF;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-weight: 300;
+    color: #FFFFFF;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+a.btn:hover {
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+@media all and (max-width:30em) {
+    a.btn {
+        display: block;
+        margin: 0.4em auto;
+    }
+}
+
+/* Cookies area 
+-------------------------------------------------- */
+
+.cookiePolicy.is-active {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+}
+
+.cookiePolicy a {
+    color: #208798;
+    text-decoration: none;
+}
+
+.cookiePolicy__close {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    cursor: pointer;
+}
+
+.cookiePolicy__close svg {
+    display: inline-block;
+    fill: #208798;
+}
+
+@media screen and (max-width: 1024px) {
+    .cookiePolicy {
+        height: auto;
+        padding: 24px 48px;
+        line-height: 1.4;
+    }
+    .cookiePolicy__close {
+        top: 27px;
+        margin: 0;
+    }
+}

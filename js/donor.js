@@ -47,7 +47,7 @@ function showDonorList(level) {
                 $('#viewDonorList').removeAttr('hidden');
 
                 var donorMemberList = $('<tr> ' +
-                    '<td>' + name + '</td>' + ' <td> '  + playerid +  ' </td>' + ' <td> '  + donorlevel +  ' </td>' +
+                    '<td>' + name + '</td>' + ' <td> ' + playerid + ' </td>' + ' <td> ' + donorlevel + ' </td>' +
                     '</tr>');
 
                 $('#appendDonorList').append(donorMemberList);

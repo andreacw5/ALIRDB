@@ -1,474 +1,536 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>ALIRDB - Database</title>
     <!-- Required meta tags -->
+    <title>ALIR - Database</title>
     <meta charset="UTF-8">
-    <meta name="theme-color" content="#317EFB"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="ALIR Database Viewer">
     <meta name="keywords" content="Altis, Italia, ALIR, alir, db">
     <meta name="author" content="Andreacw">
     <!-- Page favicon -->
-    <link rel="icon" href="https://i.imgur.com/SSdiFqD.png" type="image/gif"/>
+    <link rel="icon" href="https://i.imgur.com/SSdiFqD.png" type="image/png" sizes="16x16" />
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
     <!-- Other CSS -->
-    <link href="css/style.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css">
+    <!-- Custom styles for this template -->
+    <link href="css//css/homepage.min.css" rel="stylesheet">
+    <!--<link href="/css/homepage.css" rel="stylesheet">-->
+    <!-- Other CSS -->
+    <link href="css/style.css" rel="stylesheet" />
 </head>
+
 <body>
-<div id="loadingdiv" hidden>
-    <div class="loading" id="loading">
-        <span class="load">A</span>
-        <span class="load">L</span>
-        <span class="load">I</span>
-        <span class="load">R</span>
-        <span class="load">:</span>
-        <span class="load">D</span>
-        <span class="load">B</span>
-    </div>
-</div>
-<div class="container" id="maindiv">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" style="font-size: 150%; cursor:pointer;" data-toggle="tooltip" data-placement="top"
-           title="Torna alla pagina principale" onclick="goToHome()"><i class="fas fa-database"></i> <b
-                style="color: #007BCC">ALIR</b>DB</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
-                aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarsExample09">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" style="cursor:pointer;" data-toggle="modal" data-target="#helpModal"
-                       title="Informazioni su ALIRDB"> <i class="fas fa-info-circle "></i> Aiuto</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://www.alir.eu/" data-toggle="tooltip" data-placement="top"
-                       title="Torna al forum"> <i class="fas fa-external-link-alt"></i> Torna al forum</a>
-                </li>
-            </ul>
+    <div id="loadingdiv" hidden>
+        <div class="loading" id="loading">
+            <span class="load">A</span>
+            <span class="load">L</span>
+            <span class="load">I</span>
+            <span class="load">R</span>
+            <span class="load">:</span>
+            <span class="load">D</span>
+            <span class="load">B</span>
         </div>
-    </nav>
-
-    <main role="main">
-        <br>
-        <section id="mainsearchpage">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="input-group-btn">
-                        <input type="text" class="form-control" placeholder="Cerca per..." aria-label="Cerca per..."
-                               id="searchinput">
-                        <span class="input-group-btn">
-                        <button class="btn btn-secondary toolt" type="button" data-toggle="tooltip" data-placement="top"
-                                title="Ricerca per nome utente" id="userFinderButton"
-                                onclick="loadingScreen(); searchByPlayer('name');" style="cursor: pointer"><i
-                                class="fas fa-user"></i></button>
-                    </span>
-                        <span class="input-group-btn">
-                        <button class="btn btn-secondary toolt" type="button" data-toggle="tooltip" data-placement="top"
-                                title="Ricerca per GUID utente" id="userIDFinderButton"
-                                onclick="loadingScreen(); searchByPlayer('playerid');" style="cursor: pointer"><i
-                                class="fas fa-user-plus"></i></button>
-                    </span>
-                        <span class="input-group-btn">
-                        <button class="btn btn-secondary toolt" type="button" data-toggle="tooltip" data-placement="top"
-                                title="Ricerca per nome gang" id="gangFinderButton"
-                                onclick="loadingScreen(); searchByGang();" style="cursor: pointer"><i
-                                class="fas fa-users"></i></button>
-                    </span>
-                    </div>
+    </div>
+    <div class="container" id="maindiv">
+        <header id="top">
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <a class="navbar-brand font-krona" onclick="goToHome()" style="margin-left: 10%">
+                    <i class="fas fa-database"></i>
+                    <b style="color: #007BCC">ALIR</b>DB</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex " style="margin-right: 7%">
+                        <li class="nav-item active">
+                            <a class="nav-link hvr-underline-from-left" href="/">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link hvr-underline-from-left" href="/forums/">FORUM</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link hvr-underline-from-left" href="/about/" style="cursor:pointer;" data-toggle="modal" data-target="#helpModal"
+                                title="Informazioni su ALIRDB">AIUTO</a>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            <div class="pagec">
-                <div class="row">
-                    <div class="col">
-                        <div>
-                            <button onclick="loadingScreen(); showFactionList('cop');" id="copFinderButton"
-                                    type="button"
-                                    class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center"
-                                    style="cursor: pointer"><i
-                                    class="fas fa-gavel"></i> <span>Elenco agenti</span> <span></span>
-                            </button>
-                            <button onclick="loadingScreen(); showFactionList('med');" id="medFinderButton"
-                                    type="button"
-                                    class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center"
-                                    style="cursor: pointer"><i
-                                    class="fas fa-user-md"></i> <span>Elenco medici</span> <span></span>
-                            </button>
-                            <!--<button onclick="startWantedMenu();" type="button" class="btn btn-warning btn-lg btn-block d-flex justify-content-between align-items-center" style="cursor: pointer"><i
+            </nav>
+        </header>
+
+        <main role="main">
+            <div class="container mobilepadder" style="padding-top: 2%; padding-bottom: 2%;">
+                <section id="mainsearchpage">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="input-group-btn">
+                                <input type="text" class="form-control" placeholder="Cerca per..." aria-label="Cerca per..." id="searchinput">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-secondary toolt" type="button" data-toggle="tooltip" data-placement="top" title="Ricerca per nome utente"
+                                        id="userFinderButton" onclick="loadingScreen(); searchByPlayer('name');" style="cursor: pointer">
+                                        <i class="fas fa-user"></i>
+                                    </button>
+                                </span>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-secondary toolt" type="button" data-toggle="tooltip" data-placement="top" title="Ricerca per GUID utente"
+                                        id="userIDFinderButton" onclick="loadingScreen(); searchByPlayer('playerid');" style="cursor: pointer">
+                                        <i class="fas fa-user-plus"></i>
+                                    </button>
+                                </span>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-secondary toolt" type="button" data-toggle="tooltip" data-placement="top" title="Ricerca per nome gang"
+                                        id="gangFinderButton" onclick="loadingScreen(); searchByGang();" style="cursor: pointer">
+                                        <i class="fas fa-users"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pagec">
+                        <div class="row">
+                            <div class="col">
+                                <div>
+                                    <button onclick="loadingScreen(); showFactionList('cop');" id="copFinderButton" type="button" class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center"
+                                        style="cursor: pointer">
+                                        <i class="fas fa-gavel"></i>
+                                        <span>Elenco agenti</span>
+                                        <span></span>
+                                    </button>
+                                    <button onclick="loadingScreen(); showFactionList('med');" id="medFinderButton" type="button" class="btn btn-secondary btn-lg btn-block d-flex justify-content-between align-items-center"
+                                        style="cursor: pointer">
+                                        <i class="fas fa-user-md"></i>
+                                        <span>Elenco medici</span>
+                                        <span></span>
+                                    </button>
+                                    <!--<button onclick="startWantedMenu();" type="button" class="btn btn-warning btn-lg btn-block d-flex justify-content-between align-items-center" style="cursor: pointer"><i
                                     class="fas fa-sign-in-alt"></i> <span>Banca dati ricercati</span> <span></span>
                             </button>-->
-                        </div>
-                        <div class="pagec">
-                            <div class="card">
-                                <ul class="list-group">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <i class="fas fa-user"></i> <span>Giocatori</span>
-                                        <span class="badge badge-primary badge-pill"><span id="playerCounter"><i
-                                                class="fas fa-sync-alt fa-spin"></i></span></span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <i class="fas fa-users"></i> <span>Gang</span>
-                                        <span class="badge badge-primary badge-pill"><span id="gangCounter"><i
-                                                class="fas fa-sync-alt fa-spin"></i></span></span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <i class="fas fa-user-times"></i> <span>Ricercati</span>
-                                        <span class="badge badge-primary badge-pill"><span id="wantedCounter"><i
-                                                class="fas fa-sync-alt fa-spin"></i></span></span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <i class="fas fa-user-secret"></i> <span>Amministratori</span>
-                                        <span class="badge badge-primary badge-pill"><span id="adminCounter"><i
-                                                class="fas fa-sync-alt fa-spin"></i></span></span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <i class="fas fa-truck"></i> <span>Veicoli</span>
-                                        <span class="badge badge-primary badge-pill"><span id="vehicleCounter"><i
-                                                class="fas fa-sync-alt fa-spin"></i></span></span>
-                                    </li>
-                                </ul>
+                                </div>
+                                <div class="pagec">
+                                    <div class="card">
+                                        <ul class="list-group">
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <i class="fas fa-user"></i>
+                                                <span>Giocatori</span>
+                                                <span class="badge badge-primary badge-pill">
+                                                    <span id="playerCounter">
+                                                        <i class="fas fa-sync-alt fa-spin"></i>
+                                                    </span>
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <i class="fas fa-users"></i>
+                                                <span>Gang</span>
+                                                <span class="badge badge-primary badge-pill">
+                                                    <span id="gangCounter">
+                                                        <i class="fas fa-sync-alt fa-spin"></i>
+                                                    </span>
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <i class="fas fa-user-times"></i>
+                                                <span>Ricercati</span>
+                                                <span class="badge badge-primary badge-pill">
+                                                    <span id="wantedCounter">
+                                                        <i class="fas fa-sync-alt fa-spin"></i>
+                                                    </span>
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <i class="fas fa-user-secret"></i>
+                                                <span>Amministratori</span>
+                                                <span class="badge badge-primary badge-pill">
+                                                    <span id="adminCounter">
+                                                        <i class="fas fa-sync-alt fa-spin"></i>
+                                                    </span>
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <i class="fas fa-truck"></i>
+                                                <span>Veicoli</span>
+                                                <span class="badge badge-primary badge-pill">
+                                                    <span id="vehicleCounter">
+                                                        <i class="fas fa-sync-alt fa-spin"></i>
+                                                    </span>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-        <section id="gangmultyresult" hidden>
-            <h4>Ho trovato <span id="gangresultsize"></span> risultati:
-            </h4>
-            <div class="list-group" id="listGangAppendElement">
-            </div>
-        </section>
-        <section id="gangsearchview" hidden>
-            <div class="card">
-                <h4 class="card-header">
-                    <i class="fas fa-users"></i> <span id="singlegangname"></span>
-                    <small>(<span id="gangplayernumber"></span>/12)</small>
-                </h4>
-                <h4 id="limitwarning" hidden>Limite massimo superato, questa gang viola il regolamento!</h4>
-                <div class="card-body" style="padding: 1% !important;">
-                    <table class="table table-dark">
-                        <thead>
-                        <tr>
-                            <th class="noborder" scope="col">#</th>
-                            <th class="noborder" scope="col">Nickname</th>
-                            <th class="noborder statsdiv" scope="col">Playerid</th>
-                            <th class="noborder" scope="col"></th>
-                        </tr>
-                        </thead>
-                        <tbody id="appendgangmembers">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-        <section id="viewfactionlist" hidden>
-            <div class="card">
-                <h4 class="card-header">
-                    <i class="fas fa-users"></i> <span id="factionName"></span>
-                    <small style="color: #696d72;">Totale: <span id="factionCounter"></span></small>
-                </h4>
-                <div class="card-body" style="padding: 1% !important;">
-                    <table class="table table-dark">
-                        <thead>
-                        <tr>
-                            <th class="noborder" scope="col">Nickname</th>
-                            <th style="border-top: none !important; text-align: center !important;" class="statsdiv"
-                                scope="col">Divisione
-                            </th>
-                            <th style="border-top: none !important; text-align: center !important;" class="statsdiv"
-                                scope="col">Livello
-                            </th>
-                            <th class="noborder" scope="col"></th>
-                        </tr>
-                        </thead>
-                        <tbody id="appendFactionsMembers">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-        <section id="playermultyresult" hidden>
-            <h4>Ho trovato <span id="resultsize"></span> risultati:
-                <small>(Max 100)</small>
-            </h4>
-            <div class="list-group" id="listUserAppendElement">
-            </div>
-        </section>
-        <section id="playersearchview" hidden>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 padbot">
-                        <h3>
-                            <span id="thisuserissupporter" data-toggle="tooltip" data-placement="top"
-                                  title="Questo utente è un membro del supporto utenti" style="color: #8ACE68;"
-                                  hidden><i class="fas fa-user-secret"></i> </span>
-                            <span id="thisuserisadmin" data-toggle="tooltip" data-placement="top"
-                                  title="Questo utente è un'amministratore" style="color: #8B1A1A;" hidden><i
-                                    class="fas fa-user-secret"></i> </span>
-                            <span id="usernameplace"></span>
-                            <small style="font-size: smaller; color: #44484d;">(<span id="playeridplace"></span>)
+                </section>
+                <section id="gangmultyresult" hidden>
+                    <h4>Ho trovato
+                        <span id="gangresultsize"></span> risultati:
+                    </h4>
+                    <div class="list-group" id="listGangAppendElement">
+                    </div>
+                </section>
+                <section id="gangsearchview" hidden>
+                    <div class="card">
+                        <h4 class="card-header">
+                            <i class="fas fa-users"></i>
+                            <span id="singlegangname"></span>
+                            <small>(
+                                <span id="gangplayernumber"></span>/12)</small>
+                        </h4>
+                        <h4 id="limitwarning" hidden>Limite massimo superato, questa gang viola il regolamento!</h4>
+                        <div class="card-body" style="padding: 1% !important;">
+                            <table class="table table-dark">
+                                <thead>
+                                    <tr>
+                                        <th class="noborder" scope="col">#</th>
+                                        <th class="noborder" scope="col">Nickname</th>
+                                        <th class="noborder statsdiv" scope="col">Playerid</th>
+                                        <th class="noborder" scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="appendgangmembers">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <section id="viewfactionlist" hidden>
+                    <div class="card">
+                        <h4 class="card-header">
+                            <i class="fas fa-users"></i>
+                            <span id="factionName"></span>
+                            <small style="color: #696d72;">Totale:
+                                <span id="factionCounter"></span>
                             </small>
-                        </h3>
+                        </h4>
+                        <div class="card-body" style="padding: 1% !important;">
+                            <table class="table table-dark">
+                                <thead>
+                                    <tr>
+                                        <th class="noborder" scope="col">Nickname</th>
+                                        <th style="border-top: none !important; text-align: center !important;" class="statsdiv" scope="col">Divisione
+                                        </th>
+                                        <th style="border-top: none !important; text-align: center !important;" class="statsdiv" scope="col">Livello
+                                        </th>
+                                        <th class="noborder" scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="appendFactionsMembers">
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <div class="col-12 padbot">
-                        <nav class="nav nav-pills nav-fill">
-                            <a id="infonav" class="nav-item nav-link active" href="#" onclick="showUserInfo()"
-                               data-toggle="tooltip" data-placement="top" title="Informazioni generali">Informazioni</a>
-                            <!--<a id="licensenav" class="nav-item nav-link disabled"
+                </section>
+                <section id="playermultyresult" hidden>
+                    <h4>Ho trovato
+                        <span id="resultsize"></span> risultati:
+                        <small>(Max 100)</small>
+                    </h4>
+                    <div class="list-group" id="listUserAppendElement">
+                    </div>
+                </section>
+                <section id="playersearchview" hidden>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 padbot">
+                                <h3>
+                                    <span id="thisuserissupporter" data-toggle="tooltip" data-placement="top" title="Questo utente è un membro del supporto utenti"
+                                        style="color: #8ACE68;" hidden>
+                                        <i class="fas fa-user-secret"></i>
+                                    </span>
+                                    <span id="thisuserisadmin" data-toggle="tooltip" data-placement="top" title="Questo utente è un'amministratore" style="color: #8B1A1A;"
+                                        hidden>
+                                        <i class="fas fa-user-secret"></i>
+                                    </span>
+                                    <span id="usernameplace"></span>
+                                    <small style="font-size: smaller; color: #44484d;">(
+                                        <span id="playeridplace"></span>)
+                                    </small>
+                                </h3>
+                            </div>
+                            <div class="col-12 padbot">
+                                <nav class="nav nav-pills nav-fill">
+                                    <a id="infonav" class="nav-item nav-link active" href="#" onclick="showUserInfo()" data-toggle="tooltip" data-placement="top"
+                                        title="Informazioni generali">Informazioni</a>
+                                    <!--<a id="licensenav" class="nav-item nav-link disabled"
                                data-toggle="tooltip" data-placement="top" title="Coming soon">Licenze</a>-->
-                            <a id="vehiclenav" class="nav-item nav-link" href="#" onclick="showUserVehicle()"
-                               data-toggle="tooltip" data-placement="top" title="Veicoli nel garage">Veicoli</a>
-                            <!--<a id="licensenav" class="nav-item nav-link disabled"
+                                    <a id="vehiclenav" class="nav-item nav-link" href="#" onclick="showUserVehicle()" data-toggle="tooltip" data-placement="top"
+                                        title="Veicoli nel garage">Veicoli</a>
+                                    <!--<a id="licensenav" class="nav-item nav-link disabled"
                                data-toggle="tooltip" data-placement="top" title="Licenze non disponibili attualmente"><i class="fas fa-id-badge"></i></a>-->
-                            <a id="wantednav" hidden class="nav-item nav-link" href="#" onclick="showUserWanted()"
-                               data-toggle="tooltip" data-placement="top" title="Dati giudiziari">Dati Giudiziari</a>
-                            <a class="nav-item nav-link" id="steamLink" data-toggle="tooltip" data-placement="top"
-                               title="Link all'account Steam" target="_blank">Steam</a>
-                            <a class="nav-item nav-link" id="forumLink" hidden href="#" data-toggle="tooltip"
-                               data-placement="top"
-                               title="Link al profilo sul forum">Account</a>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <section id="userinfopanel">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm padbot">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Patrimonio</h4>
-                                    <h6 class="card-subtitle mb-2 text-muted">Le informazioni finanziarie</h6>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Fondo bancario: <span class="pull-right"><span
-                                            id="userbankacc"></span> €</span></li>
-                                    <li class="list-group-item">Contanti: <span class="pull-right"><span
-                                            id="usercash"></span> €</span></li>
-                                    <li class="list-group-item">Livello donatore: <span class="pull-right"><span
-                                            id="userdonorlevel"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i></span></span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-sm padbot">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Gruppi</h4>
-                                    <h6 class="card-subtitle mb-2 text-muted">Le associazioni dell'utente</h6>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Gang: <span id="usergangname" class="pull-right"><span
-                                            id="usergangon"><i class="fas fa-sync-alt fa-spin"></i></span></span></li>
-                                    <li class="list-group-item">Polizia: <span class="pull-right"><span
-                                            id="usercoplevel"></span></span>
-                                    </li>
-                                    <li class="list-group-item">Medici: <span class="pull-right"><span
-                                            id="usermedlevel"></span></span>
-                                    </li>
-                                </ul>
+                                    <a id="wantednav" hidden class="nav-item nav-link" href="#" onclick="showUserWanted()" data-toggle="tooltip" data-placement="top"
+                                        title="Dati giudiziari">Dati Giudiziari</a>
+                                    <a class="nav-item nav-link" id="steamLink" data-toggle="tooltip" data-placement="top" title="Link all'account Steam" target="_blank">Steam</a>
+                                    <a class="nav-item nav-link" id="forumLink" hidden href="#" data-toggle="tooltip" data-placement="top" title="Link al profilo sul forum">Account</a>
+                                </nav>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 padbot">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Alias</h4>
-                                    <h6 class="card-subtitle mb-2 text-muted">Il nome utilizzato in precedenza
-                                        dall'utente</h6>
+                    <section id="userinfopanel">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm padbot">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Patrimonio</h4>
+                                            <h6 class="card-subtitle mb-2 text-muted">Le informazioni finanziarie</h6>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Fondo bancario:
+                                                <span class="pull-right">
+                                                    <span id="userbankacc"></span> €</span>
+                                            </li>
+                                            <li class="list-group-item">Contanti:
+                                                <span class="pull-right">
+                                                    <span id="usercash"></span> €</span>
+                                            </li>
+                                            <li class="list-group-item">Livello donatore:
+                                                <span class="pull-right">
+                                                    <span id="userdonorlevel">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </span>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <ul class="list-group list-group-flush" id="useraliasappend">
-                                    <li class="list-group-item" id="useralias"></li>
-                                </ul>
+                                <div class="col-sm padbot">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Gruppi</h4>
+                                            <h6 class="card-subtitle mb-2 text-muted">Le associazioni dell'utente</h6>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Gang:
+                                                <span id="usergangname" class="pull-right">
+                                                    <span id="usergangon">
+                                                        <i class="fas fa-sync-alt fa-spin"></i>
+                                                    </span>
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item">Polizia:
+                                                <span class="pull-right">
+                                                    <span id="usercoplevel"></span>
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item">Medici:
+                                                <span class="pull-right">
+                                                    <span id="usermedlevel"></span>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 padbot">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Alias</h4>
+                                            <h6 class="card-subtitle mb-2 text-muted">Il nome utilizzato in precedenza dall'utente
+                                            </h6>
+                                        </div>
+                                        <ul class="list-group list-group-flush" id="useraliasappend">
+                                            <li class="list-group-item" id="useralias"></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    </section>
+                    <section id="userwantedpanel" hidden>
+                        <div id="wantedresultappend" hidden></div>
+                    </section>
+                    <section id="uservehiclepanel" hidden>
+                        <h4 id="vehiclesize"></h4>
+                        <div class="row" id="uservehicleappender"></div>
+                    </section>
+                </section>
+                <section id="noresult" hidden>
+                    <div class="jumbotron jumbotron-fluid">
+                        <div class="container">
+                            <h1 class="display-4" style="color: #3D6594">Nessun risultato (404)</h1>
+                            <p class="lead">Spiacente, con la ricerca da te effettuata non ho trovato corrispondenze!</p>
+                            <a class="lead" style="color: #007BCC;cursor:pointer;" onclick="goToHome();">Torna alla pagina principale e prova con altri elementi!
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
                     </div>
+                </section>
+                <section id="errorServer" hidden>
+                    <div class="jumbotron jumbotron-fluid">
+                        <div class="container">
+                            <h1 class="display-4" style="color: red; text-align: center">ERRORE 500</h1>
+                            <br>
+                            <p class="lead">Il modulo
+                                <span id="modulename"></span> non risponde!</p>
+                            <p>Riprova più tardi!</p>
+                        </div>
+                    </div>
+                </section>
+                <section id="errorFind" hidden>
+                    <div class="jumbotron jumbotron-fluid">
+                        <div class="container">
+                            <h1 class="display-4">400 - ERRORE</h1>
+                            <p class="lead">Si è verificato un'errore generico ad ALIR:DB! Ricarica la pagina!</p>
+                        </div>
+                    </div>
+                </section>
+                <section id="connectionLost" hidden>
+                    <div class="jumbotron jumbotron-fluid">
+                        <div class="container">
+                            <h1 class="display-4">Connessione assente</h1>
+                            <p class="lead">Connessione scaduta con il server, ricarica la pagina premendo
+                                <b>F5</b>!</p>
+                            <p>In caso il problema persiste segnalalo ad un'amministratore!</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+
+        <nav aria-label="breadcrumb" role="navigation" class="pagec">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>Made with
+                        <i style="color: firebrick" class="fas fa-heart animated infinite pulse"></i> by
+                        <a href="https://www.alir.eu/profile/3-andreacw/" data-toggle="tooltip" data-placement="top" title="Visualizza il profilo di Andreacw">Andreacw</a>
+                    </span> -
+                    <a href="https://www.alir.eu/" data-toggle="tooltip" data-placement="top" title="Vai al sito internet (alir.eu)">ALIR</a>
+                    <i class="fab fa-creative-commons"></i> -
+                    <i class="fab fa-github"></i>
+                    <a data-toggle="tooltip" data-placement="top" title="Visualizza su GitHub" href="https://github.com/andreacw5/ALIRBD">
+                        GitHub</a>
+                </li>
+            </ol>
+        </nav>
+
+
+    </div>
+
+    <!-- Help modal -->
+    <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="helpModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="color: white" id="helpModals">
+                        <i class="fas fa-info"></i> Pagina di aiuto
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="cursor: pointer; font-style: normal">
+                        <span aria-hidden="true">
+                            <i style="color: white;" class="fas fa-times"></i>
+                        </span>
+                    </button>
                 </div>
-            </section>
-            <section id="userwantedpanel" hidden>
-                <div id="wantedresultappend" hidden></div>
-            </section>
-            <section id="uservehiclepanel" hidden>
-                <h4 id="vehiclesize"></h4>
-                <div class="row" id="uservehicleappender"></div>
-            </section>
-        </section>
-        <section id="noresult" hidden>
-            <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                    <h1 class="display-4" style="color: #3D6594">Nessun risultato (404)</h1>
-                    <p class="lead">Spiacente, con la ricerca da te effettuata non ho trovato corrispondenze!</p>
-                    <a class="lead" style="color: #007BCC;cursor:pointer;" onclick="goToHome();">Torna alla pagina
-                        principale e prova con altri elementi! <i class="fas fa-external-link-alt"></i></a>
+                <div class="modal-body">
+                    <b>Introduzione</b>
+                    <p>
+                        Questo applicativo online ti permette di avere sempre sotto mano le tue statistiche, i tuoi veicoli e le tue finanze. Potrai
+                        sapere in che gang ti trovi ed i nomi dei tuoi compagni, visionare i loro conti, sapere se hanno
+                        dei mezzi e quali.
+                    </p>
+
+                    <b>Ricerca Player</b>
+                    <p>
+                        La ricerca player consente di trovare un'utente all'interno del database tramite qualsiasi dato dell'utente, sia esso playerId,
+                        alias usati o nominativo attuale, se il risultato trovato è più di uno, otterrai la lista con al
+                        massimo 100 nominativi. Questa funzione fornisce svariate informazioni divise in menù:
+
+                        <ul>
+                            <li>
+                                <b>Informazioni</b>: tutte le informazioni sull'utente, quali patrimonio, informazioni su whitelist
+                                e gang associata, statistiche ed alias;
+                            </li>
+                            <li>
+                                <b>Veicoli</b>: verranno mostrati i veicoli, la loro tipologia ed il loro nome con associazione
+                                alla fazione di appartenenza (blu: polizia, giallo: aca, arancione: medici, bianco: civili);
+                            </li>
+                            <li>
+                                <b>Licenze</b>: Prossimamente disponibile la visualizzazione delle licenze possedute.</li>
+                            <li>
+                                <b>Fedina penale</b>: Nel caso l'utente sia ricercato sarà possibile visionare la lista delle
+                                imputazioni a carico e la taglia a carico.
+                            </li>
+                            <li>
+                                <b>Steam</b>: Link al profilo steam dell'utente.</li>
+                            <li>
+                                <b>Forum</b>: Se configurato, link al profilo sul forum dell'utente.</li>
+                        </ul>
+                    </p>
+
+                    <b>Ricerca gruppi</b>
+
+                    <p>
+                        Fornendo il nominativo della gang è possibile vedere i suoi componenti, il proprietario ed i conteggi sul massimale, in caso
+                        di più di 12 membri verrà mostrata un'allerta per avvisare la violazione del regolamento!
+                    </p>
+
+                    <b>Elenco agenti</b>
+                    <p>
+                        Ottieni l'elenco degli agenti in servizio ed il loro livello di whitelist, ricorda che gli admin non sono mai mostrati!
+
+                        <ul>
+                            <li>
+                                <b>Divisione</b>: Permette di verificare l'appartenenza di un membro ad una determinata divisione
+                                interna (PLK, PdA o Doc).
+                            </li>
+                            <li>
+                                <b>Grado</b>: Il grado in quella determinata fazione del player.</li>
+                        </ul>
+                    </p>
+
+                    <b>Elenco medici</b>
+                    <p>
+                        Ottieni l'elenco dei medici in servizio ed il loro livello di whitelist, ricorda che gli admin non sono mai mostrati!
+                    </p>
+
+                    <b>Note ulteriori sul funzionamento</b>
+                    <p>
+                        Al fine di non creare vulnerabilità sul server di gioco il database viene trasferito su un server esterno da li esposto al
+                        server del forum, questa procedura viene effettuata automaticamente ogni 15 minuti con scatti random
+                        in modo da non permettere vulnerabilità nel trasferimento.
+                    </p>
+
+                    <b>Accessi all'applicativo</b>
+                    <p>
+                        L'accesso a questo applicativo è esclusivo per i donatori, superdonatori, investitori, membri di fazioni ufficiali ed allo
+                        staff. Chi non fa parte di questi gruppi non potrà accedervi!!
+                    </p>
+
                 </div>
-            </div>
-        </section>
-        <section id="errorServer" hidden>
-            <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                    <h1 class="display-4" style="color: red; text-align: center">ERRORE 500</h1>
-                    <br>
-                    <p class="lead">Il modulo <span id="modulename"></span> non risponde!</p>
-                    <p>Riprova più tardi!</p>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
                 </div>
-            </div>
-        </section>
-        <section id="errorFind" hidden>
-            <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                    <h1 class="display-4">400 - ERRORE</h1>
-                    <p class="lead">Si è verificato un'errore generico ad ALIR:DB! Ricarica la pagina!</p>
-                </div>
-            </div>
-        </section>
-        <section id="connectionLost" hidden>
-            <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                    <h1 class="display-4">Connessione assente</h1>
-                    <p class="lead">Connessione scaduta con il server, ricarica la pagina premendo <b>F5</b>!</p>
-                    <p>In caso il problema persiste segnalalo ad un'amministratore!</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <nav aria-label="breadcrumb" role="navigation" class="pagec">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page">
-              <span>Made with <i style="color: firebrick" class="fas fa-heart animated infinite pulse"></i> by <a
-                      href="https://www.alir.eu/profile/3-andreacw/" data-toggle="tooltip" data-placement="top"
-                      title="Visualizza il profilo di Andreacw">Andreacw</a></span> - <a href="https://www.alir.eu/"
-                                                                                         data-toggle="tooltip"
-                                                                                         data-placement="top"
-                                                                                         title="Vai al sito internet (alir.eu)">ALIR</a>
-                <i class="fab fa-creative-commons"></i> - <i
-                    class="fab fa-github"></i> <a data-toggle="tooltip" data-placement="top"
-                                                  title="Visualizza su GitHub"
-                                                  href="https://github.com/andreacw5/ALIRBD"> GitHub</a>
-            </li>
-        </ol>
-    </nav>
-
-
-</div>
-
-<!-- Help modal -->
-<div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="helpModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" style="color: white" id="helpModals"><i class="fas fa-info"></i> Pagina di aiuto
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        style="cursor: pointer; font-style: normal">
-                    <span aria-hidden="true"><i style="color: white;" class="fas fa-times"></i></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <b>Introduzione</b>
-                <p>
-                    Questo applicativo online ti permette di avere sempre sotto mano le tue statistiche, i tuoi veicoli
-                    e le tue finanze.
-                    Potrai sapere in che gang ti trovi ed i nomi dei tuoi compagni, visionare i loro conti, sapere se
-                    hanno dei mezzi e quali.
-                </p>
-
-                <b>Ricerca Player</b>
-                <p>
-                    La ricerca player consente di trovare un'utente all'interno del database tramite qualsiasi dato
-                    dell'utente, sia esso playerId, alias usati o nominativo attuale, se il risultato trovato è più di
-                    uno,
-                    otterrai la lista con al massimo 100 nominativi. Questa funzione fornisce svariate informazioni
-                    divise in menù:
-
-                <ul>
-                    <li><b>Informazioni</b>: tutte le informazioni sull'utente, quali patrimonio, informazioni su
-                        whitelist e gang associata, statistiche ed alias;
-                    </li>
-                    <li><b>Veicoli</b>: verranno mostrati i veicoli, la loro tipologia ed il loro nome con associazione
-                        alla fazione di appartenenza (blu: polizia, giallo: aca, arancione: medici, bianco: civili);
-                    </li>
-                    <li><b>Licenze</b>: Prossimamente disponibile la visualizzazione delle licenze possedute.</li>
-                    <li><b>Fedina penale</b>: Nel caso l'utente sia ricercato sarà possibile visionare la lista delle
-                        imputazioni a carico e la taglia a carico.
-                    </li>
-                    <li><b>Steam</b>: Link al profilo steam dell'utente.</li>
-                    <li><b>Forum</b>: Se configurato, link al profilo sul forum dell'utente.</li>
-                </ul>
-                </p>
-
-                <b>Ricerca gruppi</b>
-
-                <p>
-                    Fornendo il nominativo della gang è possibile vedere i suoi componenti, il proprietario ed i
-                    conteggi sul massimale,
-                    in caso di più di 12 membri verrà mostrata un'allerta per avvisare la violazione del regolamento!
-                </p>
-
-                <b>Elenco agenti</b>
-                <p>
-                    Ottieni l'elenco degli agenti in servizio ed il loro livello di whitelist, ricorda che gli admin non
-                    sono mai mostrati!
-
-                <ul>
-                    <li><b>Divisione</b>: Permette di verificare l'appartenenza di un membro ad una determinata
-                        divisione interna (PLK, PdA o Doc).
-                    </li>
-                    <li><b>Grado</b>: Il grado in quella determinata fazione del player.</li>
-                </ul>
-                </p>
-
-                <b>Elenco medici</b>
-                <p>
-                    Ottieni l'elenco dei medici in servizio ed il loro livello di whitelist, ricorda che gli admin non
-                    sono mai mostrati!
-                </p>
-
-                <b>Note ulteriori sul funzionamento</b>
-                <p>
-                    Al fine di non creare vulnerabilità sul server di gioco il database viene trasferito su un server
-                    esterno da li esposto al server del forum, questa procedura viene effettuata automaticamente ogni 15
-                    minuti con scatti random in modo da non permettere vulnerabilità nel trasferimento.
-                </p>
-
-                <b>Accessi all'applicativo</b>
-                <p>
-                    L'accesso a questo applicativo è esclusivo per i donatori, superdonatori, investitori, membri di
-                    fazioni ufficiali ed allo staff.
-                    Chi non fa parte di questi gruppi non potrà accedervi!!
-                </p>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
             </div>
         </div>
     </div>
-</div>
 
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script defer src="https://alir.eu/etero/js/fontawesome5.min.js"></script>
-<!--<script src="asset/js/alirdb.min.js"></script>-->
-<script src="js/alirdb.js"></script>
-<script src="js/player.js"></script>
-<script src="js/gang.js"></script>
-<script src="js/wanted.js"></script>
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+   crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+    <script defer src="https://alir.eu/etero/js/fontawesome5013.js"></script>
+    <!--<script src="asset/js/alirdb.min.js"></script>-->
+    <script src="js/alirdb.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/gang.js"></script>
+    <script src="js/wanted.js"></script>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
-        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
         crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
-        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
         crossorigin="anonymous"></script>
 </body>
+
 </html>
