@@ -15,8 +15,6 @@ function loadDonorStat() {
 
         console.log(data.onelev);
 
-
-
     });
 
 }
