@@ -1,5 +1,7 @@
 # ALIRBD
 
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fandreacw5%2FALIRDB.svg?type=small)](https://app.fossa.io/projects/git%2Bgithub.com%2Fandreacw5%2FALIRDB?ref=badge_small)
+
 ###### STATS: 112 richieste fallite - 295 ricerche utenti - 1385 richieste totali dal 20 al 31 - 03 2018
 
 Il repo contiene tutto il codice relativo alla pagina di visualizzazione del database di ALIR, disponibile sul sito ([link](https://www.alir.eu/db/dbviewer/)).
@@ -61,3 +63,7 @@ Nella visualizzazione delle liste di fazione sarà possibile visualizzare i segu
 Le statistiche visualizzate nella prima pagina permettono di monitorare le dimensioni delle tabelle del nostro server che diventano ogni giorno più grandi <3
 
 I valori vengono raccolti ogni 30 minuti dal database ufficiale del server di ALIR e trasferiti sul server di ALIRDB per l'esposizione tramite API.
+
+### License
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fandreacw5%2FALIRDB.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fandreacw5%2FALIRDB?ref=badge_large)
