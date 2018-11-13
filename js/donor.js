@@ -35,7 +35,7 @@ function showDonorList(level) {
         }
     }).done(function (data) {
 
-        $('#tableName').html('Elenco donatori - Liv. ' + level);
+        $('#tableName').html("Elenco donatori - Liv. " + level);
 
         for (var i = 0; i < data.length; i++) {
 

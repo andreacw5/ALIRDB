@@ -38,30 +38,29 @@
 // @koala-append "wanted.js"
 
 // auth
-var requestUser = "alirgoggles";
-var requestPass = "apritisesamo";
-var authLogin = "Basic " + btoa(requestUser + ":" + requestPass);
+const requestUser = "alirgoggles";
+const requestPass = "apritisesamo";
+let authLogin = "Basic " + btoa(requestUser + ":" + requestPass);
 
 /**
  *  Inizializzo le variabili globali
  */
 
 // Limitatore di ricerca configurabile
-var searchLimiter = 100;
+let searchLimiter = 100;
 
 // Variabili connessione api
-var playerDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/players";
-var gangDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/gangs";
-var vehicleDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/vehicles";
-var wantedDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/wanted";
-var userDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/users";
-var listDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/lists";
-var donorDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/donor";
-var steamProfileUrl = "https://steamcommunity.com/profiles/";
+const playerDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/players";
+const gangDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/gangs";
+const vehicleDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/vehicles";
+const wantedDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/wanted";
+const listDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/lists";
+const donorDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/donor";
+const steamProfileUrl = "https://steamcommunity.com/profiles/";
 
 // Array ricercati
 
-var chargesArray = [
+const chargesArray = [
     { name:"Competizioni illegali", fines:1000},
     { name:"Guida senza patente", fines:300},
     { name:"Guida pericolosa", fines:400},
@@ -178,7 +177,7 @@ function statisticOnLoad() {
             xhr.setRequestHeader ("Authorization", authLogin);
         }
     }).done(function (data) {
-        $('#gangCounter').html(data.size)
+        $('#gangCounter').html(data.size);
     });
 
     $.ajax({
@@ -202,7 +201,7 @@ function statisticOnLoad() {
             xhr.setRequestHeader ("Authorization", authLogin);
         }
     }).done(function (data) {
-        $('#wantedCounter').html(data.size)
+        $('#wantedCounter').html(data.size);
     });
 
     $('#adminCounter').html("10");
