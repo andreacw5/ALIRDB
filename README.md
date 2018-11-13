@@ -1,8 +1,8 @@
 # ALIRBD
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fandreacw5%2FALIRDB.svg?type=small)](https://app.fossa.io/projects/git%2Bgithub.com%2Fandreacw5%2FALIRDB?ref=badge_small)
-
-###### STATS: 112 richieste fallite - 295 ricerche utenti - 1385 richieste totali dal 20 al 31 - 03 2018
+[![Maintainability](https://api.codeclimate.com/v1/badges/aeefaa3a2d6c6f864bdb/maintainability)](https://codeclimate.com/github/andreacw5/ALIRDB/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/aeefaa3a2d6c6f864bdb/test_coverage)](https://codeclimate.com/github/andreacw5/ALIRDB/test_coverage)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ff94c08bcdcf46f5930fd7f6a4896d86)](https://www.codacy.com/app/andreacw5/ALIRDB?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=andreacw5/ALIRDB&amp;utm_campaign=Badge_Grade)
 
 Il repo contiene tutto il codice relativo alla pagina di visualizzazione del database di ALIR, disponibile sul sito ([link](https://www.alir.eu/db/dbviewer/)).
 
