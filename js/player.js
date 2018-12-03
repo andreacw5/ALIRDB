@@ -181,37 +181,37 @@ function showUser(data) {
 
     switch(data[0].coplevel){
         case "1":
-            copnamelevel = " Agente - Livello 1";
+            copnamelevel = " Carabiniere - Livello 1";
             break;
         case "2":
-            copnamelevel = " Agente Scelto - Livello 2";
+            copnamelevel = " Appuntato - Livello 2";
             break;
         case "3":
-            copnamelevel = " Assistente - Livello 3";
+            copnamelevel = " Appuntato scelto - Livello 3";
             break;
         case "4":
-            copnamelevel = " Assistente Capo - Livello 4";
+            copnamelevel = " Brigadiere - Livello 4";
             break;
         case "5":
-            copnamelevel = " Sovrintendente - Livello 5";
+            copnamelevel = " Brigadiere Capo - Livello 5";
             break;
         case "6":
-            copnamelevel = " Sovrintendente Capo - Livello 6";
+            copnamelevel = " Maresciallo - Livello 6";
             break;
         case "7":
-            copnamelevel = " Ispettore - Livello 7";
+            copnamelevel = " Maresciallo Capo - Livello 7";
             break;
         case "8":
-            copnamelevel = " Ispettore Capo - Livello 8";
+            copnamelevel = " Tenente - Livello 8";
             break;
         case "9":
-            copnamelevel = " Commissario - Livello 9";
+            copnamelevel = " Capitano - Livello 9";
             break;
         case "10":
-            copnamelevel = " Questore - Livello 10";
+            copnamelevel = " Colonnello - Livello 10";
             break;
         default:
-            copnamelevel = " Non è un'agente!";
+            copnamelevel = " Non è un'carabiniere!";
     }
 
     $('#usercoplevel').html(copnamelevel);
