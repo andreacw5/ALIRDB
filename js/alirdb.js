@@ -36,6 +36,7 @@
 // @koala-append "player.js"
 // @koala-append "gang.js"
 // @koala-append "wanted.js"
+// @koala-append "donor.js"
 
 // auth
 const requestUser = "alirgoggles";
