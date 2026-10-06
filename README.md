@@ -64,6 +64,33 @@ Le statistiche visualizzate nella prima pagina permettono di monitorare le dimen
 
 I valori vengono raccolti ogni 30 minuti dal database ufficiale del server di ALIR e trasferiti sul server di ALIRDB per l'esposizione tramite API.
 
+### Avvio in locale (2026)
+
+Il server API originale (`37.59.102.107:8000`) non esiste più. `server.py` lo ricrea: database SQLite con schema in stile Altis Life ([`db/schema.sql`](db/schema.sql)), dati finti e le stesse route/risposte JSON che si aspetta il frontend. Serve solo Python 3, nessuna dipendenza.
+
+```bash
+python3 server.py           # http://localhost:8000/viewer.html  (donor.html per i donatori)
+python3 server.py --reset   # ricrea il DB da zero
+```
+
+Il DB (`db/alirdb.sqlite`, ignorato da git) si genera al primo avvio. Il seed è deterministico: rigenerandolo i dati sono sempre gli stessi.
+
+- ~3300 giocatori, 120 gang, ~400 ricercati, ~8000 veicoli, 83 agenti, 41 medici, 10 admin
+- Il profilo del veterano è **Elettrodo** (alias **Cola**, Steam ID `76561198012345678`): capo del Cartello di Kavala, 7 veicoli, ricercato. Cercando "Cola" si trova solo lui.
+- Per cambiare i numeri: `N_PLAYERS` e le proporzioni in `seed()` di `server.py`, poi `--reset`.
+
+#### Screenshot per il portfolio
+
+Gli screenshot stanno in `heyatom-portfolio/public/shots/alirdb/` e si generano dal portfolio (sito `alirdb` in `scripts/shots.mjs`). Con il server acceso:
+
+```bash
+python3 server.py                  # qui, in ALIRDB
+pnpm shots alirdb                  # in heyatom-portfolio
+og/render.sh work                  # in heyatom-portfolio, se cambia l'anteprima (rifà le OG di tutti i progetti)
+```
+
+Se ALIRDB è spento, `pnpm shots` salta il sito e tiene gli screenshot esistenti. Le viste dell'app non hanno URL propri, quindi ogni scatto esegue un pezzo di JS (es. `searchByGang('Cartello di Kavala')`): se cambiano i dati del seed, aggiornare lì nomi e ID.
+
 ### License
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fandreacw5%2FALIRDB.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fandreacw5%2FALIRDB?ref=badge_large)
