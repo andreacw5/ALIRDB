@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "alirdb", "runtimeExecutable": "python3", "runtimeArgs": ["server.py", "--reset"], "port": 8000 }
+  ]
+}

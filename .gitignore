@@ -2,3 +2,5 @@
 .iml
 
 *.iml
+db/alirdb.sqlite
+__pycache__/

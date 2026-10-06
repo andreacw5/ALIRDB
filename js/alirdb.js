@@ -51,12 +51,12 @@ let authLogin = "Basic " + btoa(requestUser + ":" + requestPass);
 let searchLimiter = 100;
 
 // Variabili connessione api
-const playerDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/players";
-const gangDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/gangs";
-const vehicleDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/vehicles";
-const wantedDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/wanted";
-const listDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/lists";
-const donorDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/donor";
+const playerDatabase = "/players";
+const gangDatabase = "/gangs";
+const vehicleDatabase = "/vehicles";
+const wantedDatabase = "/wanted";
+const listDatabase = "/lists";
+const donorDatabase = "/donor";
 const steamProfileUrl = "https://steamcommunity.com/profiles/";
 
 // Array ricercati
@@ -283,10 +283,4 @@ function showUserVehicle() {
 
 function loadingScreen() {
     $('[data-toggle="tooltip"]').tooltip("hide");
-    $('#maindiv').attr('hidden',true);
-    $('#loadingdiv').removeAttr('hidden');
-    setTimeout(function(){
-        $('#loadingdiv').attr('hidden',true);
-        $('#maindiv').removeAttr('hidden')
-    }, 6000);
 }

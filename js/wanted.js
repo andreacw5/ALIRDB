@@ -1,4 +1,3 @@
-const wantedDatabase = "https://cors-anywhere.herokuapp.com/http://37.59.102.107:8000/wanted";
 
 /**
  *  Con il playerid genero la lista delle accuse solo se l'utente è ricercato
